@@ -1,0 +1,58 @@
+body {background-color: #30304c;
+      font-family: 'Oswald', sans-serif;
+      }
+
+
+.contenedor{
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+  margin: auto;
+  padding:  60px 0;
+}
+
+.head{
+  padding: 0;
+  height: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  color: #fff;
+}
+
+header{
+
+  height: 50vh;
+  background-image:  url(Imagenes/Head.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+h3{ 
+      color: white;
+      margin-left: 10%;
+
+}
+
+.Fr{
+      color: white;
+      font-size: 20px;
+      margin-left: 10%;
+      
+}
+
+.Alum{
+  color: white;
+      font-size: 20px;
+      margin-left: 10%;
+}
+
+
+
+.Cursos{
+      margin-top: 100px;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Art & Learn</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="estilogeneral.css">
+	<link rel="stylesheet" type="text/css" href="footer.css">
+</head>
+
+
+<body>
+<header> 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Art & Learn</a>
+    </div>
+    <ul class="nav navbar-nav">
+     <!-- <li class="active"><a href="#">Home</a></li>-->
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#recientes">Reciente</a></li>
+          <li><a href="#populares">Populares</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </li>
+     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Bootstrap</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">PHP</a></li>
+          <li><a href="#">BDMM</a></li>
+          
+        </ul>
+      </li>
+    </ul> 
+    <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="Registro.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav> 
+   	<div class="contenedor head">
+  	<h1 class="titulo">Aprende a crear paginas web!</h1>
+  	<p class="copy"> Revisa nuestros nuevos cursos de HTML!</p>
+  </div>
+
+  </header>
+
+  <main>
+  	<section class="services contenedor" id="recientes">
+  		<h1 class="subtitulo"> Cursos Recientes </h1>
+  		<div class="contenedor-servicio"> 
+
+  		</div>
+  	</section>
+
+<section class="gallery" id="galeria"> 
+	<div class="contenedor"> 
+		<h2 class="subtitulo">Galeria</h2>
+		<h3 class="subtitulo">Apreciemos los trabajos de esta semana!</h3>
+		<div class="contenedor-galeria">
+			<img class="img-galeria"src="Imagenes/uno.jpg" alt="">
+			<img class="img-galeria" src="Imagenes/dos.jpg" alt="">
+			<img class="img-galeria" src="Imagenes/tres.jpg" alt="">
+			<img class="img-galeria" src="Imagenes/cuatro.jpg" alt="">
+			<img class="img-galeria" src="Imagenes/cinco.jpg" alt="">
+			<img class="img-galeria" src="Imagenes/seis.jpg" alt="">
+		</div>
+	</div>
+</section>
+
+
+<!-- <section class="imagen-light">
+	<img src="Imagenes/bx-x.svg" alt="" class="close">
+	<img src="" alt="" class="agregar-imagen">
+</section> -->
+
+<section class="contenedor" id="populares">
+	<h2 class="subtitulo"> Categorias populares: </h2>
+	<section class="Popular">
+		<div class="cont-popular">
+			<img src="Imagenes/Designer _Outline.svg" alt="">
+			<h3 class="n-popu">CSS </h3>
+		</div>
+
+		<div class="cont-popular">
+			<img src="Imagenes/Designer _Outline2.svg" alt="">
+			<h3 class="n-popu">JavaScript</h3>
+		</div>
+
+		<div class="cont-popular">
+			<img src="Imagenes/Fast Working_Outline.svg" alt="">
+			<h3 class="n-popu">Bootstrap</h3>
+		</div>
+
+
+	</section>
+	
+
+	</section>
+
+
+  </main>
+
+
+<footer id="contacto">
+	<div class="contenedor footer-content">
+		<div class="contact-us"> 
+			<h2 class="brand"> Art & Learn</h2>
+			<p>Aprende mas por menos</p>
+		</div>
+		<div class="social-media">
+			<a href="" class="social-media-icon">
+				<i class='bx bxl-facebook-circle'></i>
+			</a>
+
+			<a href="" class="social-media-icon">
+			<i class='bx bxl-instagram' ></i>	
+			</a>
+
+			<a href="" class="social-media-icon">
+				<i class='bx bxl-twitter' ></i>
+			</a>
+
+		</div>
+	</div>
+	
+</footer>
+
+
+
+</body>
+</html>
