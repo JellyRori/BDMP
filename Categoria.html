@@ -5,14 +5,11 @@
 	<title>Categoria</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="footer.css">
-  
-  
-
+ <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  	
    <link rel="stylesheet" type="text/css" href="css/CategoriaC.css">
 
 </head>
@@ -20,80 +17,107 @@
 
 
 <header>
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!--navbar-expand-lg: clase para manipular la visibilidad del botón dependiendo del tamaño-->
-                <div class="container-fluid">
-                    <div class="navbar-header">
-  				    	<a class="navbar-brand" href="index.html">Art & Learn</a>
-  				   </div>
-                    <!--Boton menu plegable responsivo-->
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#contenidoMenu"
-                        aria-controls="contenidoMenu"
-                        aria-expanded="false"
-                        aria-label="Mostrar/Ocultar Navegacion"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   	
 
-                    <!--Enlaces del navbar-->
-                    <div class="collapse navbar-collapse" id="contenidoMenu">
-                        <!--Enlaces-->
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Inicio</a>
-                            </li>
+   	      <div class="container-fluid">
+   	                	
+   	       	 <div class="navbar-header">
+   	  			<a class="navbar-brand" href="index.html">Art & Learn</a>
+   	  		</div>
 
-                            <!--DropDown -->
-                            <li class="nav-item dropdown">
-                                <a href="#" 
-                                class="nav-link dropdown-toggle"
-                                id="submenuProductos"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                >
-                                   Menu
-                                </a>
+   	  			       <!--Boton menu plegable responsivo-->
+   	  			       <button
+   	  			           class="navbar-toggler"
+   	  			           type="button"
+   	  			           data-bs-toggle="collapse"
+   	  			           data-bs-target="#contenidoMenu"
+   	  			           aria-controls="contenidoMenu"
+   	  			           aria-expanded="false"
+   	  			           aria-label="Mostrar/Ocultar Navegacion"
+   	  			       >
+   	  			           <span class="navbar-toggler-icon"></span>
+   	  			       </button>
 
-                                <!--Lista de subElementosdentro del elemento-->
-                                
-                                		<span class="caret"></span>
-                                	</a>
-   							   		<ul class="dropdown-menu">
-   							   		  	<li><a href="#">Reciente</a></li>
-   							   		  	<li><a href="#">Populares</a></li>
-   							   		  	<li><a href="#">Galeria</a></li>
-   							   		  	<li><a href="#">Contacto</a></li>
-   							   		</ul>
-   							 
-   							</li>
-                            
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Contacto</a>
-                            </li>
-                        </ul>
+   	  			       <!--Enlaces del navbar-->
+   	  			       <div class="collapse navbar-collapse" id="contenidoMenu">
 
-                        <!--Formulario de busqueda-->
-                        <form action="" class="d-flex">
-                            <div class="form-group">
-                                    <input type="text"
-                                    class="form-control me-2" 
-                                    aria-label="Search"
-                                    placeholder="Search"
-                            >
-                                  </div>
-                                  
-                            <button class="btn btn-warning" type="submit">Buscar</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-  <div class="contenedor head">
-  	<h1 class="titulo">Categorías</h1>
+   	  			       		<!--Enlaces-->
+   	  			       		<ul class="navbar-nav me-auto">
+   	  			       			<li class="nav-item">
+   	  			       			    <a href="index.html" class="nav-link">Inicio</a>
+   	  			       			</li>
 
+   	  			       			<!--DropDown -->
+   	  			       			<li class="nav-item dropdown">
+   	  			       				<a href="#" 
+   	  			       				class="nav-link dropdown-toggle"
+   	  			       				id="submenuProductos"
+   	  			       				role="button"
+   	  			       				data-bs-toggle="dropdown"
+   	  			       				aria-expanded="false"
+   	  			       				>
+   	  			       				   Menu
+   	  			       				</a>
+   	  			       				<!--Lista de subElementosdentro del elemento-->
+   	  			       				<ul class="dropdown-menu">
+   	  			       				  	<li><a href="index.html">Reciente</a></li>
+   	  			       				  	<li><a href="index.html">Populares</a></li>
+   	  			       				  	<li><a href="index.html">Galeria</a></li>
+   	  			       				  	<li><a href="Contacto.html">Contacto</a></li>
+   	  			       				</ul>
+   	  			       			</li>	
+
+   	  			       			 <li class="nav-item dropdown">
+   	  			       			     <a href="#" 
+   	  			       			     class="nav-link dropdown-toggle"
+   	  			       			     id="submenuProductos"
+   	  			       			     role="button"
+   	  			       			     data-bs-toggle="dropdown"
+   	  			       			     aria-expanded="false"
+   	  			       			     >
+   	  			       			         Categorías
+   	  			       			     </a>
+
+   	  			       			     <!--Lista de subElementosdentro del elemento-->
+   	  			       			     <ul class="dropdown-menu" aria-labelledby="submenuProductos">
+   	  			       			         <li><a href="Categoria.html" class="dropdown-item">Bootstrap</a></li>
+   	  			       			         <li><a href="Categoria.html" class="dropdown-item">CSS</a></li>
+   	  			       			         <li><a href="Categoria.html" class="dropdown-item">JavaScript</a></li>
+   	  			       			         <li><a href="Categoria.html" class="dropdown-item">HTML</a></li>
+   	  			       			         <li><a href="Categoria.html" class="dropdown-item">BDMM</a></li>
+   	  			       			     </ul>
+   	  			       			 </li>
+
+   	  			       			<li class="nav-item">
+   	  			       			    <a href="Contacto.html" class="nav-link">Contacto</a>
+   	  			       			</li>
+   	  			       		</ul>
+
+   	  			       		 <!--Formulario de busqueda-->
+   	  		               <form action="" class="d-flex">
+   	  		                   <input type="text"
+   	  		                           class="form-control me-2" 
+   	  		                           aria-label="Buscar"
+   	  		                           placeholder="Buscar"
+   	  		                   >
+   	  		                   <button class="btn btn-warning" type="submit">Buscar</button>
+   	  		               </form>
+
+   	  		              <ul class="nav navbar-nav navbar-right">
+   	  		                <li><a href="Registro.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+   	  		                <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+   	  		              </ul>
+   	  			       </div>
+   	       </div>
+
+   </nav> 
+
+ <!-------------------------------------------------------------------------------------------------------------------------->                   
+  
+<div class="contenedor head">
+  	<h1 class="titulo">Categoria: Css</h1>
+  </div> 
 </header>
 
 
@@ -102,11 +126,11 @@
 	     <div class="row">
                 <div class="col-12 col-sm-6 col-lg-3 mb-4">
                     <div class="card">
-                       <img class="card-img-top" src="Imagenes/cinco.jpg" alt="">
+                       <img class="card-img-top" src="Imagenes/siete.jpg" alt="">
                         <div class="card-body">
-                            <h3 class="card-title">iPhone</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.</p>
-                            <a href="#" class="btn btn-sm btn-primary">Comprar</a>
+                            <h3 class="card-title">Curso de programación básica</h3>
+                            <p class="card-text">Aprenda a programar en solo 1 hora</p>
+                            <a href="Curso.html" class="btn btn-sm btn-primary">Ir al curso</a>
                             <a href="#" class="btn btn-sm btn-secondary">Detalles</a>
                         </div>
                     </div>
@@ -116,9 +140,9 @@
                     <div class="card">
                        <img class="card-img-top" src="Imagenes/cinco.jpg" alt="">
                         <div class="card-body">
-                            <h3 class="card-title">Mac</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.</p>
-                            <a href="#" class="btn btn-sm btn-primary">Comprar</a>
+                            <h3 class="card-title">CSS</h3>
+                            <p class="card-text">Conozca lo necesario para darle estilos a su página web</p>
+                            <a href="Curso.html" class="btn btn-sm btn-primary">Ir al curso</a>
                             <a href="#" class="btn btn-sm btn-secondary">Detalles</a>
                         </div>
                     </div>
@@ -126,11 +150,11 @@
 
                 <div class="col-12 col-sm-6 col-lg-3 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="Imagenes/cinco.jpg" alt="">
+                        <img class="card-img-top" src="Imagenes/dos.jpg" alt="">
                         <div class="card-body">
-                            <h3 class="card-title">Camara</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.</p>
-                            <a href="#" class="btn btn-sm btn-primary">Comprar</a>
+                            <h3 class="card-title">HTML</h3>
+                            <p class="card-text">Aprenda a crear su propio sitio web</p>
+                            <a href="Curso.html" class="btn btn-sm btn-primary">Ir al curso</a>
                             <a href="#" class="btn btn-sm btn-secondary">Detalles</a>
                         </div>
                     </div>
@@ -138,11 +162,11 @@
 
                 <div class="col-12 col-sm-6 col-lg-3 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="Imagenes/cinco.jpg" alt="">
+                        <img class="card-img-top" src="Imagenes/tres.jpg" alt="">
                         <div class="card-body">
-                            <h3 class="card-title">Reloj</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.</p>
-                            <a href="#" class="btn btn-sm btn-primary">Comprar</a>
+                            <h3 class="card-title">Javascript</h3>
+                            <p class="card-text">Conozca el lenguaje Javascript y apliquelo a su sitio web</p>
+                            <a href="Curso.html" class="btn btn-sm btn-primary">Ir al curso</a>
                             <a href="#" class="btn btn-sm btn-secondary">Detalles</a>
                         </div>
                     </div>
