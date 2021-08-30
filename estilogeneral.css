@@ -65,9 +65,14 @@ header{
   width: 30%;
   text-align: center;
   margin-bottom: 20px;
+  
 }
 
-.cont-popular img{
+.cont-popular a{
+  font-size: 50px;
+  color:#fff;
+}
+ img{
   width: 80%;
   display: block;
   margin:0 auto;
