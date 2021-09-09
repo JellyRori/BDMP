@@ -62,6 +62,9 @@ body {
     outline: none;
 }
 
+.passAnounce{
+    font-size: 9px;
+}
 
 .login-block input#Ing{
     width: 100%;

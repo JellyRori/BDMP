@@ -20,7 +20,9 @@
         <div class="error-txt"> Mensaje de error</div>
        <input type="text" value="" placeholder="Username" id="username" />
 
-       <input type="password" minlength="8" value="" placeholder="Password" id="password" />
+       <p class="passAnounce">Procura que tu contrseña tenga un caracter especial, un numero y una mayuscula</p>
+
+       <input type="password" minlength="8" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" id="password" />
 
        <input type="email" value="" placeholder="Correo" id="correo" /> <br><br>
 
@@ -49,7 +51,7 @@
         <ul class="error" id="error"></ul>
       </div>
     
-      <input type="submit" value="Ingresar" class="btn"  id="Ing" />
+      <input type="submit" value="Ingresar" onclick="Contraseña(document.forma.password)" class="btn"  id="Ing" />
     </form>
   
 

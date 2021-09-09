@@ -5,8 +5,7 @@ var formulario = document.getElementById('forma'),
     birthday = forma.birthday,
     rol = forma.rol,
     avatar = forma.avatar,
-    error = document.getElementById('error'),
-    regex =     /^(?=.*\d)(?=-*[!@#$%&*])(?=.*[a-z])(?=.*[A-Z]).{8,64}$/;
+    error = document.getElementById('error');
     //regex =  "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})";
 
 
@@ -21,21 +20,17 @@ var formulario = document.getElementById('forma'),
   }
 
   function validarPass(e){
-    if (password.value == '' || password.value == null || regex.test(document.getElementById("password").value)==false){
+    var regex = regex =  /^(?=.*\d)(?=-*[!@#$%&*])(?=.*[a-z])(?=.*[A-Z]).{8,64}$/;
+    if (password.value == '' || password.value == null){
       error.style.display = 'block';
       alert("Por favor completa la contraseña"); //escribiendo el error poniendolo en un alert
       e.preventDefault(); //detener la ejecucion (no envia el formulario)
     }
-    /*else if()
-    {
-      error.style.display = 'block';
-      alert("La contraseña debe tener minimo 8 caracteres, un numero, una mayuscula y un character eespecial");
-      e.preventDefault(); //detener la ejecucion (no envia el formulario)
-    
-    }*/ else {
+    else {
       error.style.display = 'none'; //resetear el error (en caso de no haber error)
     }
   }
+
 
 //Y solo fui cambiando al función conforme al elemento que solicitaba
   function validarCorreo(e){
@@ -47,6 +42,7 @@ var formulario = document.getElementById('forma'),
       error.style.display = 'none';
     }
   }
+  
 
  function validarElRol(e){
     if (rol.value == '' || rol.value == null){
@@ -58,50 +54,7 @@ var formulario = document.getElementById('forma'),
     }
   }
 
-function Contraseña(password){
-    
-    var MAYUS = false;
-    var minus = false;
-    var numero = false;
-    var caracter_especial = false;
-    
-    for(var i = 0;i<password.length;i++){
-        if(password.charCodeAt(i) >= 65 && password.charCodeAt(i) <= 90){
-            MAYUS = true;
-        }
-        else{
-            
-        }
-        if(password.charCodeAt(i) >= 97 && password.charCodeAt(i) <= 122)
-        {
-            minus = true;
-           
-        }
-        else{
-           
-        }
-        if(password.charCodeAt(i) >= 48 && password.charCodeAt(i) <= 57)
-        {
-            numero = true;
-        }
-        else
-        {
-            caracter_especial = true;
-        }
-    }
-    if(MAYUS === true && minus === true && caracter_especial === true && numero === true){
-        password.style.display = 'none';
-       
-        return true;
-        
-    }
-    else{
-        password.style.display = 'block';
-        
-    }
 
-return false;
-}
 
   /*  function test(e){
     if(regex.test(document.getElementById("password").value)==false)
@@ -149,7 +102,6 @@ return false;
    }
 }
 
-   
 
 */
   //Funcion global para ejecutar todas las funciones de validacion------------------------------------
@@ -160,7 +112,6 @@ return false;
     validarPass(e);
     validarCorreo(e);
     validarElRol(e);
-   Contraseña(password);
     /*validarPass(e);
     validarCumple(e);
     validarAvatar(e);
