@@ -119,3 +119,45 @@ input {
 .punto{
       color: white;
 }
+
+.ventana{
+      background: whitesmoke;
+      width: 30%;
+      color: black;
+      font-size: 18px;
+      text-align: center;
+      padding: 30px;
+      min-height: 250px;
+      border-radius: 20px;
+      position: absolute;
+      left: 34%;
+      top: 35%;
+      display: none;
+
+}
+
+#cerrar{
+    
+      margin-left: 350px;
+}
+
+#ad{
+     margin-left: 50px;
+}
+
+.ventana input{
+      margin-top: 10px;
+      padding: 0 16px;
+  border-radius: 2px;
+  background-color: #3E3E42;
+  color: #fff;
+  height: 36px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.punto #M{
+      color: green;
+}
