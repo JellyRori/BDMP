@@ -20,7 +20,7 @@ var formulario = document.getElementById('forma'),
   }
 
   function validarPass(e){
-    var regex = regex =  /^(?=.*\d)(?=-*[!@#$%&*])(?=.*[a-z])(?=.*[A-Z]).{8,64}$/;
+    
     if (password.value == '' || password.value == null){
       error.style.display = 'block';
       alert("Por favor completa la contraseña"); //escribiendo el error poniendolo en un alert
@@ -28,6 +28,20 @@ var formulario = document.getElementById('forma'),
     }
     else {
       error.style.display = 'none'; //resetear el error (en caso de no haber error)
+    }
+  }
+
+function test(){
+  var regex = regex =  /^(?=.*\d)(?=-*[!@#$%&*])(?=.*[a-z])(?=.*[A-Z]).{8,64}$/;
+    if(regex.test(document.getElementById("password").value)==false)
+    {
+      error.style.display = 'block';
+      alert("La contraseña debe tener minimo 8 caracteres, un numero, una mayuscula y un character eespecial");
+
+    }
+    else{
+      return false;
+      alert("usuario registrado");
     }
   }
 
@@ -56,17 +70,7 @@ var formulario = document.getElementById('forma'),
 
 
 
-  /*  function test(e){
-    if(regex.test(document.getElementById("password").value)==false)
-    {
-      error.style.display = 'block';
-      alert("La contraseña debe tener minimo 8 caracteres, un numero, una mayuscula y un character eespecial");
-
-    }
-    else{
-      alert("usuario registrado");
-    }
-  }
+  /*  
 
 
   function validarFecha(e){
