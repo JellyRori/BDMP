@@ -6,6 +6,7 @@
 	<title>Registrarse</title>
 
 	<link rel="stylesheet" type="text/css" href="RegistroC.css">
+    
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -13,9 +14,11 @@
 
 <div class="login-block">
     <h1>Registro</h1>
+    <form id="forma" action="index.html">
+        <div class="error-txt"> Mensaje de error</div>
     <input type="text" value="" placeholder="Username" id="username" />
     <input type="password" value="" placeholder="Password" id="password" />
-    <input type="text" value="" placeholder="Correo" id="correo" /> <br><br>
+    <input type="email" value="" placeholder="Correo" id="correo" /> <br><br>
     <label for="birthday">Birthday:</label>
   <input type="date" id="birthday" name="birthday"> <br> <br>
 
@@ -35,14 +38,16 @@
   <label for="dewey">Maestro</label>
 </div>
 <br>
-    
-    <form action="index.html">
-    <input type="submit" value="Ingresar" id="Ing"/>
-</form>
+
+<ul class="error" id="error"></ul>
+    <input type="submit" value="Ingresar" id="Ing" />
+    </form>
+  
+
 
 </div>
 
 
-
+<script type="text/javascript" src="Javascript/validaciones.js"></script>
 </body>
 </html>

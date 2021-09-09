@@ -1,0 +1,119 @@
+
+  *{
+            margin: 0;
+            padding: 0;
+            font-family: border-box;
+            text-decoration: none;
+      }
+
+
+body {background-color: #30304c;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+      height: 100vh;
+       background: url(Imagenes/back.jpg) no-repeat center;
+       background-size: cover;
+       align-items: center;
+       justify-content: center;
+       
+      }
+
+.f{
+  position: absolute;
+  top: 25%;
+  left: 35%;
+ 
+}
+  
+  .profile-card{
+      width: 400px;
+      text-align: center;
+      border-radius: 8px;
+      overflow: hidden;
+  }
+
+.card-header{
+      background: #2c3a47;
+      padding: 60px 40px;
+}
+
+.pic{
+      display: inline-block;
+      padding: 8px;
+      background: linear-gradient(130deg, #74b9ff,#e66767);
+      margin: auto;
+      border-radius: 50%;
+      background-size: 200% 200%;
+      animation: animated-gradient 2s linear infinite;
+}
+
+@keyframes animated-gradient{
+      25%{
+            background-position: left bottom;
+      }
+      50%{
+            background-position: right bottom;
+      }
+      75%{
+            background-position: right top;
+      }
+      100%{
+            background-position: left top;
+      }
+}
+.pic img{
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+}
+
+.name{
+      font-size: 28px;
+      font-weight: 600;
+      margin: 10px 0;
+}
+
+.tipo{
+      font-size: 18px;
+       margin: 10px 0;
+
+}
+
+.naci{
+      font-size: 18px;
+
+}
+
+.sm{
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+}
+
+.sm a{
+      color: white;
+      width: 56px;
+      font-size: 22px;
+      transition: .3s linear;
+}
+
+.sm a:hover{
+      color: lightred;
+}
+
+.contact-btn{
+      display: inline-block;
+      padding:  12px 50px;
+      color: #e66767;
+      border: 2px solid #e66767;
+      border-radius: 6px;
+      margin-top: 16px;
+      transition: .3s linear;
+}
+
+.contact-btn:hover{
+ background: #e66767;
+ color: white;
+}
+

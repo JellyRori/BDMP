@@ -1,11 +1,14 @@
 body {
 
-    background: url('Imagenes/ocho.jpg') no-repeat fixed center center;
+    background: url('Imagenes/nueve.jpg') no-repeat fixed center center;
     background-size: cover;
     font-family: Montserrat;
 }
 
 .login-block {
+    position: fixed;
+  top: 25%;
+  left: 35%;
     width: 320px;
     padding: 20px;
     background: #fff;
@@ -78,14 +81,4 @@ body {
     outline: none;
     cursor: pointer;
     
-}
-
-form .error-txt{
-    color:  #721c24;
-    background: #f8d7da;
-    padding: 8px 10px;
-    text-align: center;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #f5c6cb;
 }
