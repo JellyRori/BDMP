@@ -21,7 +21,7 @@ var formulario = document.getElementById('forma'),
   }
 
   function validarPass(e){
-    if (password.value == '' || password.value == null || regex.test(password.value)==false){
+    if (password.value == '' || password.value == null || regex.test(document.getElementById("password").value)==false){
       error.style.display = 'block';
       alert("Por favor completa la contraseña"); //escribiendo el error poniendolo en un alert
       e.preventDefault(); //detener la ejecucion (no envia el formulario)
