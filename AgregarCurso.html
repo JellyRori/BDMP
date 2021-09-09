@@ -38,7 +38,16 @@
         </ul>
       </li>
 
-
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="carrito.html">Carrito</a></li>
+            <li><a href="Historial.html">Historial</a></li>
+            <li><a href="Ventas.html">Ventas</a></li>
+            <li><a href="Chat.html">Chat</a></li>
+            <li><a href="Perfil.html">Perfil</a></li>
+            <li><a href="AgregarCurso.html">Agregar-Curso</a></li>
+          </ul>
+        </li>
 
      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -80,14 +89,14 @@
 
 <div class="login-block">
     <h1>Agregar Curso</h1>
-    <form action="Curso.html"  class="forma" name="forma" id="forma">
+<form action="Curso.html"  class="forma" name="forma" id="forma">
       <div class="contenedor-inputs">
         
         
-       <input type="text" value="" placeholder="Nombre Del Curso" id="CursoN" />
+       <input type="text" value="" placeholder="Nombre Del Curso" id="CursoN" required/>
 
        
-       <textarea id="Dec" placeholder="Descripcion"></textarea>
+       <textarea id="Dec" placeholder="Descripcion" required></textarea>
 
 
 
@@ -103,58 +112,58 @@
        
         <label for="cars">Seleccione las categorias:</label>
 
-<select name="cars" id="cars">
-  <option value="volvo">Javascript</option>
-  <option value="saab">CSS</option>
-  <option value="mercedes">HTML</option>
-  <option value="audi">PHP</option>
-</select>
+      <select name="cars" id="cars">
+        <option value="volvo">Javascript</option>
+        <option value="saab">CSS</option>
+        <option value="mercedes">HTML</option>
+        <option value="audi">PHP</option>
+      </select>
 
-<br>
-<br>
-<label for="Cursos">Tipo De Curso:</p> </label>
-       <div class="rol">
-          <input type="radio" id="EstudianteID" name="rol" value="Estudiante"
-           checked>
-          <label for="huey">Costo Por Curso  &#160</label> 
-
-           <input type="radio" id="EstudianteID" name="rol" value="Estudiante"
-           checked>
-          <label for="huey">Costo Por Nivel  &#160 </label>
+      <br>
+      <br>
+      <label for="Cursos">Tipo De Curso:</p> </label>
+             <div class="rol">
+                <input type="radio" id="EstudianteID" name="rol" value="Estudiante"
+                 checked>
+                <label for="huey">Costo Por Curso  &#160</label> 
       
-          <input type="radio" id="MaestroID" name="rol" value="Maestro">
-          <label for="dewey">Gratis</label>
-        </div>
+                 <input type="radio" id="EstudianteID" name="rol" value="Estudiante"
+                 checked>
+                <label for="huey">Costo Por Nivel  &#160 </label>
+            
+                <input type="radio" id="MaestroID" name="rol" value="Maestro">
+                <label for="dewey">Gratis</label>
+              </div>
 
  
-<br><br>
- <h1>Agregar Nivel</h1>
+    <br><br>
+     <h1>Agregar Nivel</h1>
 
-<input type="text" value="" placeholder="Nombre Del Nivel" id="CursoN" required/>
-
-  <label for="contenido">Contenido:</label>
-       <input type="file"
-          id="video" 
-          accept="video/mp4" required>
-        <br>
-
-      <input type="text" value="" placeholder="Costo Del Nivel" id="CursoN" required/>
- 	  <textarea id="Dec" placeholder="Descripcion"></textarea>
-
- 	  <input type="submit" value="AGREGAR" class="btn"  id="Ag"  required />
-        <ul class="error" id="error"></ul>
-      </div>
-
-      <div class="con">
+    <input type="text" value="" placeholder="Nombre Del Nivel" id="CursoN" required/>
     
- 		<p>Nombre </p>&#160; <p>Descripcion</p> &#160; <p>Costo</p>
-
-
-</div>
-<div class="corrido">
-<input type="text" value="" placeholder="Nombre" id="Muestra" disabled="disabled" />
-<input type="text" value="" placeholder="Descripcion" id="Muestra2" disabled="disabled" />
-<input type="text" value="" placeholder="Costo" id="Muestra3" disabled="disabled" />
+      <label for="contenido">Contenido:</label>
+           <input type="file"
+              id="video" 
+              accept="video/mp4" required>
+            <br>
+    
+          <input type="text" value="" placeholder="Costo Del Nivel" id="CursoN" required/>
+     	  <textarea id="Dec" placeholder="Descripcion" required></textarea>
+    
+     	  <input type="submit" value="AGREGAR" class="btn"  id="Ag"  required />
+            <ul class="error" id="error"></ul>
+          </div>
+    
+          <div class="con">
+        
+     		<p>Nombre </p>&#160; <p>Descripcion</p> &#160; <p>Costo</p>
+    
+    
+    </div>
+    <div class="corrido">
+    <input type="text" value="" placeholder="Nombre" id="Muestra" disabled="disabled" />
+    <input type="text" value="" placeholder="Descripcion" id="Muestra2" disabled="disabled" />
+    <input type="text" value="" placeholder="Costo" id="Muestra3" disabled="disabled" />
 </div>
 
       <input type="submit" value="ACEPTAR" onclick="" class="btn"  id="Ing" />
