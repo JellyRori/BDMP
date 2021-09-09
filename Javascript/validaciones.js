@@ -21,18 +21,18 @@ var formulario = document.getElementById('forma'),
   }
 
   function validarPass(e){
-    if (password.value == '' || password.value == null){
+    if (password.value == '' || password.value == null || regex.test(password.value)==false){
       error.style.display = 'block';
       alert("Por favor completa la contraseña"); //escribiendo el error poniendolo en un alert
       e.preventDefault(); //detener la ejecucion (no envia el formulario)
     }
-    else if(regex.test(password.value)==false)
+    /*else if()
     {
       error.style.display = 'block';
       alert("La contraseña debe tener minimo 8 caracteres, un numero, una mayuscula y un character eespecial");
       e.preventDefault(); //detener la ejecucion (no envia el formulario)
     
-    } else {
+    }*/ else {
       error.style.display = 'none'; //resetear el error (en caso de no haber error)
     }
   }
