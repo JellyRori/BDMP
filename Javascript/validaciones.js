@@ -27,7 +27,7 @@ var formulario = document.getElementById('forma'),
     }
   }
 
-  function validarPass(e){
+ /* function validarPass(e){
     if (pass.value == '' || pass.value == null){
       error.style.display = 'block';
       alert("Por favor completa la contraseña");
@@ -57,17 +57,17 @@ var formulario = document.getElementById('forma'),
     }
   }
 
-
+*/
   //Funcion global para ejecutar todas las funciones de validacion------------------------------------
   function validarForm(e){
     error.innerHTML = ''; //que el error esté en blanco (para que no se acumulen los mensajes al picar el boton)
 
     validarNombre(e);
     validarCorreo(e);
-    validarPass(e);
+    /*validarPass(e);
     validarCumple(e);
     validarAvatar(e);
-    validarFecha(e);
+    validarFecha(e);*/
   }
 
   formulario.addEventListener('submit', validarForm); //ejecutando la funcion global (que a su vez ejecuta las funciones dentro de ella)
