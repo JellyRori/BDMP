@@ -16,6 +16,16 @@ var formulario = document.getElementById('forma'),
     }
   }
 
+  function validarPass(e){
+    if (pass.value == '' || pass.value == null){
+      error.style.display = 'block';
+      alert("Por favor completa la contraseña"); //escribiendo el error poniendolo en un alert
+      e.preventDefault(); //detener la ejecucion (no envia el formulario)
+    } else {
+      error.style.display = 'none'; //resetear el error (en caso de no haber error)
+    }
+  }
+
 //Y solo fui cambiando al función conforme al elemento que solicitaba
   function validarCorreo(e){
     if (correo.value == '' || correo.value == null){
