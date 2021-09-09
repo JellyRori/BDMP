@@ -1,13 +1,13 @@
 var formulario = document.getElementById('forma'),
-    nombre = forma.nombre, //accediendo al formulario con el id "nombre"
+    username = forma.username, //accediendo al formulario con el id "nombre"
     correo = forma.correo,
-    pass = forma.password,
+    password = forma.password,
     birthday = forma.birthday,
     avatar = forma.avatar,
     error = document.getElementById('error');
 
   function validarNombre(e){
-    if (nombre.value == '' || nombre.value == null){
+    if (username.value == '' || username.value == null){
       error.style.display = 'block';
       alert("Por favor completa el nombre"); //escribiendo el error poniendolo en un alert
       e.preventDefault(); //detener la ejecucion (no envia el formulario)
@@ -17,7 +17,7 @@ var formulario = document.getElementById('forma'),
   }
 
   function validarPass(e){
-    if (pass.value == '' || pass.value == null){
+    if (password.value == '' || password.value == null){
       error.style.display = 'block';
       alert("Por favor completa la contraseña"); //escribiendo el error poniendolo en un alert
       e.preventDefault(); //detener la ejecucion (no envia el formulario)
@@ -73,6 +73,7 @@ var formulario = document.getElementById('forma'),
     error.innerHTML = ''; //que el error esté en blanco (para que no se acumulen los mensajes al picar el boton)
 
     validarNombre(e);
+    validarPass(e);
     validarCorreo(e);
     /*validarPass(e);
     validarCumple(e);
