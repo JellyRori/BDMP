@@ -3,6 +3,7 @@ var formulario = document.getElementById('forma'),
     correo = forma.correo,
     password = forma.password,
     birthday = forma.birthday,
+    rol = forma.rol,
     avatar = forma.avatar,
     error = document.getElementById('error');
 
@@ -37,10 +38,22 @@ var formulario = document.getElementById('forma'),
     }
   }
 
- /* function validarPass(e){
-    if (pass.value == '' || pass.value == null){
+ function validarElRol(e){
+    if (rol.value == '' || rol.value == null){
       error.style.display = 'block';
-      alert("Por favor completa la contraseña");
+      alert("Por favor elija su rol academico");
+      e.preventDefault();
+    } else {
+      error.style.display = 'none';
+    }
+  }
+
+ /* 
+
+  function validarFecha(e){
+    if (birthday.HasValue== '' || birthday.HasValue == null){
+      error.style.display = 'block';
+      alert("Por favor ponga su fecha de nacimiento (y no olvide la hora)");
       e.preventDefault();
     } else {
       error.style.display = 'none';
@@ -57,15 +70,7 @@ var formulario = document.getElementById('forma'),
     }
   }
 
-   function validarFecha(e){
-    if (birthday.HasValue== '' || birthday.HasValue == null){
-      error.style.display = 'block';
-      alert("Por favor ponga su fecha de nacimiento (y no olvide la hora)");
-      e.preventDefault();
-    } else {
-      error.style.display = 'none';
-    }
-  }
+   
 
 */
   //Funcion global para ejecutar todas las funciones de validacion------------------------------------
@@ -75,6 +80,7 @@ var formulario = document.getElementById('forma'),
     validarNombre(e);
     validarPass(e);
     validarCorreo(e);
+    validarElRol(e);
     /*validarPass(e);
     validarCumple(e);
     validarAvatar(e);
