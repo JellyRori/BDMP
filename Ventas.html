@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Ventas</title>
-	<link rel="stylesheet" type="text/css" href="footer.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta charset="utf-8">
+  <title>Historial</title>
+  <link rel="stylesheet" type="text/css" href="footer.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
@@ -12,12 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<link rel="stylesheet" type="text/css" href="VentasC.css">
-	
+  <link rel="stylesheet" type="text/css" href="VentasC.css">
+  
+
 </head>
 <body>
-	<header>
-	<nav class="navbar navbar-inverse">
+
+
+<header>
+  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="index.html">Art & Learn</a>
@@ -59,88 +62,92 @@
   </div>
 </nav>
 
-
- 	<div class="contenedor head">
-  	<h1 class="titulo">Ventas</h1>
   </div> 
+
+  
+
+
 </header>
 
 
 
-<div class="Cursos">
-	<h3>Bootstrap Para Novatos</h3>
-	<p class="Fr">Cantidad de alumnos registrados: 5</p>
-	<li class="dropdown"><a class="dropdown-toggle Alum" data-toggle="dropdown" href="#">Alumnos <span class="caret"></span></a>
-        <ul class="dropdown-menu Alum">
-          <li><a href="#">Pedro</a></li>
-          <li><a href="#">Jose</a></li>
-          <li><a href="#">Ximena</a></li>
-          <li><a href="#">Jorge</a></li>
-        </ul>
-      </li>
-	<p class="Fr">Ingreso Total:</p>
-	<p class="Fr">Total de ventas:</p>
-
-</div>
-
-
-<div class="Cursos">
-	<h3>Diseño Web</h3>
-	<p class="Fr">Cantidad de alumnos registrados: 12</p>
-	<li class="dropdown"><a class="dropdown-toggle Alum" data-toggle="dropdown" href="#">Alumnos <span class="caret"></span></a>
-        <ul class="dropdown-menu Alum">
-          <li><a href="#">Pedro</a></li>
-          <li><a href="#">Daniel</a></li>
-          <li><a href="#">Ximena</a></li>
-          <li><a href="#">Jorge</a></li>
-          <li><a href="#">Alejandro</a></li>
-        </ul>
-      </li>
-	<p class="Fr">Ingreso Total:</p>
-	<p class="Fr">Total de ventas:</p>
-
-</div>
-
-<div class="Cursos">
-	<h3>Introduccion A HTML</h3>
-	<p class="Fr">Cantidad de alumnos registrados: 6</p>
-	<li class="dropdown"><a class="dropdown-toggle Alum" data-toggle="dropdown" href="#">Alumnos <span class="caret"></span></a>
-        <ul class="dropdown-menu Alum">
-          <li><a href="#">Pedro</a></li>
-          <li><a href="#">Jose</a></li>
-          <li><a href="#">Ximena</a></li>
-          <li><a href="#">Jorge</a></li>
-          <li><a href="#">Oscar</a></li>
-        </ul>
-      </li>
-	<p class="Fr">Ingreso Total:</p>
-	<p class="Fr">Total de ventas:</p>
-
-</div>
 <br>
 
-<footer id="contacto">
-	<div class="contenedor footer-content">
-		<div class="contact-us"> 
-			<h2 class="brand"> Art & Learn</h2>
-			<p>Aprende mas por menos</p>
-		</div>
-		<div class="social-media">
-			<a href="" class="social-media-icon">
-				<i class='bx bxl-facebook-circle'></i>
-			</a>
-
-			<a href="" class="social-media-icon">
-			<i class='bx bxl-instagram' ></i>	
-			</a>
-
-			<a href="" class="social-media-icon">
-				<i class='bx bxl-twitter' ></i>
-			</a>
-
-		</div>
-	</div>
-	
-</footer>
 </body>
+
+<div class="table-container">
+  <h1 class="heading"> Ventas</h1>
+  <table class="table">
+    <thead>
+      <tr>
+         <th>Nombre </th>
+        <th>Cantidad De Alumnos</th>
+        <th>Alumnos</th>
+        <th>Ingreso Total</th>
+        <th>Total De Ventas</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Nombre">Bootstrap Para Novatos</td>
+        <td data-label="Cantidad De Alumnos">20</td>
+        <td data-label="Alumnos"> #</td>
+        <td data-label="Ingreso Total">20,000</td>
+        <td data-label="Total De Ventas">200</td>
+        <td data-label="#"><a href="#" class="btn">Continuar</a></td>
+
+      </tr>
+
+    <tr>
+        <td data-label="Nombre"> CSS Y MAS</td>
+        <td data-label="Cantidad De Alumnos">70</td>
+        <td data-label="Alumnos"> #</td>
+        <td data-label="Ingreso Total">90,000</td>
+        <td data-label="Total De Ventas">87</td>
+        <td data-label="#"><a href="#" class="btn">Continuar</a></td>
+
+      </tr>
+
+     <tr>
+        <td data-label="Nombre">Three JS</td>
+        <td data-label="Cantidad De Alumnos">10</td>
+        <td data-label="Alumnos"> #</td>
+        <td data-label="Ingreso Total">10,000</td>
+        <td data-label="Total De Ventas">60</td>
+        <td data-label="#"><a href="#" class="btn">Continuar</a></td>
+
+      </tr>
+
+
+ 
+
+    </tbody>
+  </table>
+</div>
+
+<br>
+<footer id="contacto">
+  <div class="contenedor footer-content">
+    <div class="contact-us"> 
+      <h2 class="brand"> Art & Learn</h2>
+      <p>Aprende mas por menos</p>
+    </div>
+    <div class="social-media">
+      <a href="" class="social-media-icon">
+        <i class='bx bxl-facebook-circle'></i>
+      </a>
+
+      <a href="" class="social-media-icon">
+      <i class='bx bxl-instagram' ></i> 
+      </a>
+
+      <a href="" class="social-media-icon">
+        <i class='bx bxl-twitter' ></i>
+      </a>
+
+    </div>
+  </div>
+  
+</footer>
 </html>
