@@ -11,7 +11,7 @@ body {background-color: #30304c;
       font-family: 'Oswald', sans-serif;
       color: white;
       height: 100vh;
-       background: url(Imagenes/back.jpg) no-repeat center;
+       background: url(Imagenes/back.jpg)  center;
        background-size: cover;
        align-items: center;
        justify-content: center;
@@ -20,9 +20,8 @@ body {background-color: #30304c;
 
 .f{
   position: absolute;
-  top: 25%;
+  margin-top: 100px;
   left: 35%;
- 
 }
   
   .profile-card{
