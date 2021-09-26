@@ -111,7 +111,7 @@ box-shadow: 0 0 32px rgb(0 0 0/8%), 0 16px 16px -16px rgb(0 0 0/10%);
 }
 
 .chat-box .outgoing{
-	display: flex;
+	
 }
 
 .outgoing .details{
@@ -124,6 +124,21 @@ box-shadow: 0 0 32px rgb(0 0 0/8%), 0 16px 16px -16px rgb(0 0 0/10%);
 	border-radius: 18px 18px 0 18px;
 }
 
+.hora p{
+	margin-top: 1px;
+	margin-left: 140px;
+	font-size: 10px;
+	background-color: transparent;
+}
+
+
+.horar p{
+margin-top: 1px;
+margin-right: 30px;
+font-size: 10px;
+background-color: transparent;
+
+}
 .chat-box .incoming{
 	display: flex;
 	align-items: flex-end;

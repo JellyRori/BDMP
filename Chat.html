@@ -76,13 +76,19 @@
 					<p>Active</p>
 			</div>
 		</header>
+		<div>
 		<div class="chat-box">
 			<div class="chat outgoing">
 				<img src="" alt="">
 				<div class="details">
 					<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 				</div>
+				
 			</div>
+			<div class="hora">
+					<p> <span id='date-time'></span>.</p>
+				</div>
+				
 
 			<div class="chat incoming">
 				<img src="Imagenes/jean.jpg" alt="">
@@ -90,6 +96,9 @@
 					<p>aaaaaaaaaaaaaa</p>
 				</div>
 			</div>
+			<div class="horar">
+					<p> <span id='date-time2'></span>.</p>
+				</div>
 
 			<div class="chat outgoing">
 				<img src="" alt="">
@@ -97,6 +106,9 @@
 					<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 				</div>
 			</div>
+			<div class="hora">
+					<p> <span id='date-time3'></span>.</p>
+				</div>
 
 			<div class="chat incoming">
 				<img src="Imagenes/jean.jpg" alt="">
@@ -139,6 +151,24 @@
 		</form>
 	</section>
 </div>
+
+
+
+<script>
+var dt = new Date();
+document.getElementById('date-time').innerHTML=dt;
+</script>
+
+
+<script>
+var dt = new Date();
+document.getElementById('date-time2').innerHTML=dt;
+</script>
+
+<script>
+var dt = new Date();
+document.getElementById('date-time3').innerHTML=dt;
+</script>
 
 
 </body>
