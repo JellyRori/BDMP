@@ -22,6 +22,8 @@ class conectando{
 }
 */
 
+<?php 
+
 class BaseDeDatos{
 	private $servidor;
 	private $usuario;
@@ -52,3 +54,38 @@ class BaseDeDatos{
 		return $connection;
 	}
 }
+
+
+    public function Error(){
+         
+        return $this->conexion->error;
+       }
+
+
+
+   public function obtenerDatos($query){
+        $results = $this->conexion->query($query);
+        $resultarray = array();
+    
+        foreach($results as $key){
+          $resultarray[]= $key;
+        }
+        return $this->convertirUTF8($resultarray);
+       }
+
+
+/*
+
+$sql = "INSERT INTO tabla1 (firstname, lastname, email)
+VALUES (' " . $_POST['fname'] . " ', 'Perez', 'juanito@perez.com')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+
+*/
+
+?>
