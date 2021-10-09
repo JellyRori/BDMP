@@ -13,6 +13,8 @@ Email varchar(150) not null,
 Foto blob,
 FechaMod DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+alter table usEscuela add nomRol varchar(15);
+alter table usEscuela drop CURP;
 
 Create Table IF NOT  EXISTS usAlumno(
 idUsuario bigint unsigned auto_increment not null primary key,
@@ -25,6 +27,8 @@ Email varchar(150) not null,
 Foto blob,
 FechaMod DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+alter table usAlumno add nomRol varchar(15);
+
 
 Create Table IF NOT  EXISTS categoria(
 idCateg bigint unsigned auto_increment not null primary key,
