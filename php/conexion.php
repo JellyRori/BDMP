@@ -22,7 +22,7 @@ class conectando{
 }
 */
 
-<?php 
+
 
 class BaseDeDatos{
 	private $servidor;
@@ -47,16 +47,16 @@ class BaseDeDatos{
 		if($connection->connect_errno){
 			echo "La conexion ha fallado: (".$connection->connect_errno.") ".$connection->connect_error;
 			exit();
-		}else{
+		}/*else{
 			$connect->query("SET NOMBRES 'utf8'");
-		}
+		}*/
 
 		return $connection;
 	}
 }
 
 
-    public function Error(){
+    /*public function Error(){
          
         return $this->conexion->error;
        }
@@ -73,7 +73,7 @@ class BaseDeDatos{
         return $this->convertirUTF8($resultarray);
        }
 
-
+*/
 /*
 
 $sql = "INSERT INTO tabla1 (firstname, lastname, email)
