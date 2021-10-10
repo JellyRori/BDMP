@@ -37,7 +37,7 @@ class BaseDeDatos{
 		$this->servidor = "localhost";
 		$this->usuario = "root";
 		$this->password = "";
-		$this->dbase = "BDM_Linea";
+		$this->dbase = "bdm_linea";
 		$this->puerto = "3306";
 	}
 
@@ -47,14 +47,15 @@ class BaseDeDatos{
 		if($connection->connect_errno){
 			echo "La conexion ha fallado: (".$connection->connect_errno.") ".$connection->connect_error;
 			exit();
-		}/*else{
-			$connect->query("SET NOMBRES 'utf8'");
-		}*/
+		}else{
+			//$connect->query("SET NOMBRES 'utf8'");
+		
 
 		return $connection;
 	}
 }
 
+}
 
     /*public function Error(){
          
