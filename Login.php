@@ -40,9 +40,9 @@ if (isset($_SESSION['IdUsuario']))
  
     
     <form action="php/elLogin.php" method="POST">
-   <input type="text" value="" placeholder="Username" id="username" name="usuername" required/>
-    <input type="password" value="" placeholder="Password" id="password" name="passworld" required/>
-    <input type="submit" name="login" value="Ingresar"/ id="Ing">
+   <input type="text" value="" placeholder="Username" id="username" name="username" required/>
+    <input type="password" value="" placeholder="Password" id="password" name="password" required/>
+    <input type="submit" name="login" value="Ingresar" id="Ing"/>
 </form>
 
 </div>
