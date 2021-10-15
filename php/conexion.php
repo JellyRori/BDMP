@@ -24,69 +24,41 @@ class conectando{
 
 
 
-class BaseDeDatos{
+//INTENTO 1------------------------------------------------------------------
+class conexion{
 	private $servidor;
 	private $usuario;
 	private $password;
 	private $dbase;
 	private $puerto;
-	private $connection;
+	public $connection;
 
-	public function _construct()
+	public function __construct()
 	{
 		$this->servidor = "localhost";
 		$this->usuario = "root";
 		$this->password = "";
 		$this->dbase = "bdm_linea";
 		$this->puerto = "3306";
+
 	}
 
 	public function Conectando(){
 		$connection = new mysqli($this->servidor, $this->usuario, $this->password, $this->dbase, $this->puerto);
-
 		if($connection->connect_errno){
-			echo "La conexion ha fallado: (".$connection->connect_errno.") ".$connection->connect_error;
+			echo "La conexion ha fallado: (".$connection->connect_errno.")".$connection->connect_error;
 			exit();
 		}else{
-			//$connect->query("SET NOMBRES 'utf8'");
-		
 
-		return $connection;
+			$connection->query("SET NOMBRES 'utf8'");
+			//$connection->query("USE BDM_Linea");
 	}
+
+	return $connection;
 }
 
 }
 
-    /*public function Error(){
-         
-        return $this->conexion->error;
-       }
 
-
-
-   public function obtenerDatos($query){
-        $results = $this->conexion->query($query);
-        $resultarray = array();
-    
-        foreach($results as $key){
-          $resultarray[]= $key;
-        }
-        return $this->convertirUTF8($resultarray);
-       }
-
-*/
-/*
-
-$sql = "INSERT INTO tabla1 (firstname, lastname, email)
-VALUES (' " . $_POST['fname'] . " ', 'Perez', 'juanito@perez.com')";
-
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-
-*/
 
 ?>
