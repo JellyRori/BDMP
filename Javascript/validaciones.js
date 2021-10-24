@@ -1,4 +1,4 @@
-var formulario = document.getElementById('forma'),
+/* var formulario = document.getElementById('forma'),
     username = forma.username, //accediendo al formulario con el id "nombre"
     correo = forma.correo,
     password = forma.password,
@@ -82,6 +82,6 @@ function test(){
     validarCumple(e);
     validarAvatar(e);
     validarFecha(e);*/
-  }
+  //}
 
-  formulario.addEventListener('submit', validarForm); //ejecutando la funcion global (que a su vez ejecuta las funciones dentro de ella)
+  //formulario.addEventListener('submit', validarForm); //ejecutando la funcion global (que a su vez ejecuta las funciones dentro de ella) */
