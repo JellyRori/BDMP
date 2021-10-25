@@ -1,0 +1,9 @@
+{
+    "conexion":{
+        "server":"localhost",
+        "user":"root",
+        "password":"",
+        "database":"bdm_inter_base",
+        "port":"3306"
+    }
+}
