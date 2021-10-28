@@ -14,10 +14,10 @@ $_usuario = new Usuario;
         $funciona = $_usuario->getPerfilUsuario();
         echo json_encode($funciona);
     }
-    /*if($datos["opc"]==4){
+    if($datos["opc"]==4){
         $funciona = $_usuario->modificarUsuario($postbody);
         echo $funciona;
-    }*/
+    }
     //header('Content-Type: application/json');//le dices que devuelve un json
     
     //echo $funciona;

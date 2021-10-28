@@ -6,6 +6,9 @@
 
 	<link rel="stylesheet" type="text/css" href="footer.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="Javascript/jquery-2.1.4.min.js"></script>
+  <script src="Javascript/navBarElements.js"></script>
+  <script src="Javascript/perfilDeUsuario.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
@@ -18,47 +21,64 @@
 </head>
 <body>
 <header>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">Art & Learn</a>
-    </div>
-    <ul class="nav navbar-nav">
-     <!-- <li class="active"><a href="#">Home</a></li>-->
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="index.html">Reciente</a></li>
-          <li><a href="index.html">Populares</a></li>
-          <li><a href="index.html">Galeria</a></li>
-          <li><a href="Perfil.html">Contacto</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="Categoria.html">Bootstrap</a></li>
-          <li><a href="Categoria.html">CSS</a></li>
-          <li><a href="Categoria.html">JavaScript</a></li>
-          <li><a href="Categoria.html">HTML</a></li>
-          <li><a href="Categoria.html">PHP</a></li>
-          <li><a href="Categoria.html">BDMM</a></li>
-          
-        </ul>
-      </li>
-    </ul> 
-    <form class="navbar-form navbar-left" action="Busqueda.html">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="indexLoged.html">Art & Learn</a>
       </div>
-      <button type="submit" action="index.html" class="btn btn-default">Submit</button>
-
-
-    </form>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="Registro.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+      <ul class="nav navbar-nav">
+       <!-- <li class="active"><a href="#">Home</a></li>-->
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#recientes">Reciente</a></li>
+            <li><a href="#populares">Populares</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="Perfil.html">Contacto</a></li>
+          </ul>
+        </li>
+  
+  
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img id="imgAvatar" src="Imagenes/Erencio.jpg" alt="avatarUs" width="25"
+      height="25"><span class="caret"></span></a>
+      
+          <ul class="dropdown-menu">
+            <li><a href="Historial.html"     id="histUser">Historial</a></li>
+            <li><a href="Ventas.html"        id="ventUser">Ventas</a></li>
+            <li><a href="Chat.html"          id="chatUser">Chat</a></li>
+            <li><a href="Perfil.html"        id="perfilUser">Perfil</a></li>
+            <li><a href="AgregarCurso.html"  id="cursoUser">Agregar-Curso</a></li>
+          </ul>
+        </li>
+  
+  
+  
+       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="Categoria.html">Bootstrap</a></li>
+            <li><a href="Categoria.html">CSS</a></li>
+            <li><a href="Categoria.html">JavaScript</a></li>
+            <li><a href="Categoria.html">HTML</a></li>
+            <li><a href="Categoria.html">PHP</a></li>
+            <li><a href="Categoria.html">BDMM</a></li>
+            
+          </ul>
+        </li>
+      </ul> 
+      <form class="navbar-form navbar-left" action="Busqueda.html">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+       <button type="submit" class="btn btn-default">Submit</button>
+  
+  
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+       <!-- <li><a href="Registro.html"><span class="glyphicon glyphicon-user" id="signIn"></span> Sign Up</a></li>
+        <li><a href="Login.html"><span class="glyphicon glyphicon-log-in" id="logIn"></span> Login</a></li>-->
+      <li><a href="Login.php"><span class="glyphicon glyphicon-log-in" id="logOut"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav> 
   </div> 
 </header>
 
@@ -67,11 +87,12 @@
 <div class="profile-card">
 	<div class="card-header">
 		<div class="pic">
-			<img src="Imagenes/barbara.png" alt="">
+			<img id="avatar" src="Imagenes/barbara.png" alt="">
 		</div>
-		<div class="name">Barbara Pegg</div>
-		<div class="tipo">Estudiante</div>
-		<div class="naci">Cumpleaños:05/07/2004 </div>
+		<div class="name" id="nombre">Barbara</div>
+    <div class="name" id="apellido">Pegg</div>
+    <div class="tipo" id="email">barPeg@gmail.com</div>
+    <div>Rol: <label class="tipo" id="rol"></label></div>
 		<div class="sm">
 			<a href="#" class="fab fa-facebook-f"></a>
 			<a href="#" class="fab fa-twitter"></a>
@@ -79,7 +100,9 @@
 			<a href="#" class="fab fa-youtube"></a>
 		</div>
 
-		<a href="Historial.html" class="contact-btn">Historial</a>
+		<a href="Historial.html" class="contact-btn" id="btnHistorial">Historial</a>
+    <a href="EditarPerfil.html" class="contact-btn" id="btnEditPerfil">Editar Perfil</a>
+    <a href="Ventas.html" class="contact-btn" id="btnVentas">Ventas</a>
 	</div>
 </div>
 </div>

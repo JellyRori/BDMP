@@ -28,3 +28,23 @@ begin
 END$$
 
 call sp_iniSesion('charles@gmail.com','123456789#Q');
+
+#Procedure para editar el usuario--------------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_editarUsuario (
+in pIdUs BIGINT UNSIGNED, 
+in pNombre varchar(50),
+ in pApellidos varchar(150),
+ in pEmail varchar(150),
+ in pContra varchar(150),
+ in pImagen mediumblob)
+begin
+	update usuarios 
+    set 
+    nombre= pNombre,
+    apellidos= pApellidos,
+     email= pEmail,
+    contra= pContra, 
+    foto= pImagen where idUser= pIdUs;
+end$$
