@@ -24,6 +24,7 @@ $( document ).ready(function() {
                         document.getElementById("imgAvatar").style.display = 'inline';
                         document.getElementById("logOut").style.display = 'inline';
                         document.getElementById("ventUser").style.display = 'none';
+                        document.getElementById("categUser").style.display = 'none';
                         document.getElementById("cursoUser").style.display = 'none';
                         document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
                     }

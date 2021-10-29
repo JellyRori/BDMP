@@ -24,6 +24,12 @@ create Table IF NOT  EXISTS cate_Curso(
     activa bool DEFAULT NULL,
 	CONSTRAINT `FK_Us_Categ` FOREIGN KEY (idUsCat) REFERENCES usuarios(idUser)
 );
+alter table cate_Curso add fechaCreat DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+alter table cate_curso drop column fechaCreat;
+ALTER TABLE cate_Curso
+  DROP COLUMN column_name;
+
+
 
 #Creando tabla de cursos------------------------------------------------------------------------------------------------------------------------------
 create Table IF NOT  EXISTS curso(
@@ -121,7 +127,7 @@ create table IF NOT  EXISTS tablaAsociativaCursoCategoria(
 );
 #Selects para revisar que las tablas tengan contenido-------------------------------------------------------------------------------------------------
 select * from Usuarios;
-select * from categorias;
+select * from cate_Curso;
 select*from curso;
 select*from nivel;
 select*from comentario;

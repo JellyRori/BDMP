@@ -1,5 +1,5 @@
 #Procedures de la base de datos------------------------------------------------------------------------------------------------------------
-DROP PROCEDURE sp_registrarUsuario;
+DROP PROCEDURE sp_crearCategoria;
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_registrarUsuario (
@@ -48,3 +48,24 @@ begin
     contra= pContra, 
     foto= pImagen where idUser= pIdUs;
 end$$
+#Procedure para registrar categoria----------------------------------------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_crearCategoria (
+	in  pNombre varchar(100),
+    in  pDesc varchar(200),
+    in pUser int
+    )
+begin
+    insert into cate_Curso(nomCateg, descCateg, idUsCat, fechaCreat, activa)
+    values(pNombre, pDesc,  pUser, Now(),1);
+end $$
+
+#Procedure para seleccionar categoria----------------------------------------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_obtenCategoria()
+begin
+	select idCateg, nomCateg
+    from cate_Curso;
+end $$

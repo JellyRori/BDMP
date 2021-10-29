@@ -36,8 +36,8 @@ $_usuario = new Usuario; //Instanciando la clase usuario------------------------
         $funciona = $_usuario->iniciarSesion($postbody);
     if($_POST['opc']==3)
         $funciona = $_usuario->getPerfilUsuario();
-    /*if($_POST['opc']==4)
-        $funciona = $_usuario->modificarUsuario($postbody);*/
+    if($_POST['opc']==4)
+        $funciona = $_usuario->modificarUsuario($postbody);
    
     echo $funciona;
 ?>
