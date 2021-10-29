@@ -21,6 +21,24 @@
                 return  parent::Error();
             }
         }
+
+        public function getAllCategorias(){
+            header('Content-Type: application/json');
+            
+            //son los datos del json
+            $query = "call sp_obtenCategoria();";
+            
+            $categorias = parent::obtenerDatos($query);
+        
+            if(isset($categorias[0]["nomCateg"])){           
+                return json_encode($categorias);
+            }
+            else{
+                $success="NoHayCategorias";
+                return $success;
+            }
+        }
+
     }
 
 

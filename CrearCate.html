@@ -8,6 +8,7 @@
 	<title>Crear Categoria</title>
   <script src="Javascript/jquery-2.1.4.min.js"></script>
   <script src="Javascript/creaCategoria.js"></script>
+  <script src="Javascript/verCategorias.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="CrearCateC.css">
@@ -49,13 +50,13 @@
   
   
        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="Categoria.html">Bootstrap</a></li>
+          <ul class="dropdown-menu" id="menuCateg">
+            <!--<li><a href="Categoria.html">Bootstrap</a></li>
             <li><a href="Categoria.html">CSS</a></li>
             <li><a href="Categoria.html">JavaScript</a></li>
             <li><a href="Categoria.html">HTML</a></li>
             <li><a href="Categoria.html">PHP</a></li>
-            <li><a href="Categoria.html">BDMM</a></li>
+            <li><a href="Categoria.html">BDMM</a></li>-->
             
           </ul>
         </li>
@@ -85,17 +86,15 @@
        <input type="text" value="" placeholder="Introduzca una categoria" id="nameCat" />
        <label for="Descripcion del curso">Descripcion de la categoría:</label>
        <input type="text" value="" placeholder="Escriba una descripcion" id="Desc" /> <br>
-       <label for="birthday">Birthday:</label>
-       <input type="date" id="fechaCat" name="birthCat" required> <br> <br>
+
 
        <label for="Categorias">Categorias creadas:</label> <br>
+       <ul id="Creadas">
+
+      </ul>
        <input type="button" value="Crear categoria" onclick="crearCat();" id="boton"/>
        <input type="button" value="Regresar" onclick="window.location.href = 'indexLoged.html'" id="boton" />
 
-      
-  
-
- 
         <br>
         <ul class="error" id="error"></ul>
       </div>

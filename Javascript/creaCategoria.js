@@ -1,6 +1,6 @@
 $(document).ready(function () {
     ocultarElNav();
-  
+    /*mostrarCategoriasExistentes();*/
     function ocultarElNav() {
         var opc = 3;
         let Body = { opc }
@@ -24,6 +24,31 @@ $(document).ready(function () {
                 } 
             })
     }
+
+   /* function mostrarCategoriasExistentes() {
+        var opc = 2;
+        let Body = { opc }
+        let jsonBody = JSON.stringify(Body)
+        console.log(jsonBody);
+        fetch('php/categorias.php', { method: "POST", header: { 'Content-Type': 'application/json' }, body: jsonBody })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                
+                var Jason = data;
+                //var obj = JSON.parse(Jason);
+                console.log(data);
+                if(data=="NoHayCategorias"){
+                    $("#Creadas").append("<p >No hay categorias disponibles</p>");
+                    //<p class="Categoria">Categoria 1</p>
+                }else{
+                    for (var i in Jason) {
+                        $("#Creadas").append("<li id='" + Jason[i]['idCateg'] + "'class='Categoria'>" + Jason[i]['nomCateg'] + "</li>");
+                    }
+                }
+            })
+    }*/
 });
     function crearCat(){
         var nombre = document.getElementById("nameCat").value;
