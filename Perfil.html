@@ -9,6 +9,7 @@
   <script src="Javascript/jquery-2.1.4.min.js"></script>
   <script src="Javascript/navBarElements.js"></script>
   <script src="Javascript/perfilDeUsuario.js"></script>
+  <script src="Javascript/verCategorias.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
@@ -46,6 +47,7 @@
             <li><a href="Ventas.html"        id="ventUser">Ventas</a></li>
             <li><a href="Chat.html"          id="chatUser">Chat</a></li>
             <li><a href="Perfil.html"        id="perfilUser">Perfil</a></li>
+        <li><a href="CrearCate.html"      id="categUser">Agregar Categoria</a></li>
             <li><a href="AgregarCurso.html"  id="cursoUser">Agregar-Curso</a></li>
           </ul>
         </li>
@@ -53,13 +55,13 @@
   
   
        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="Categoria.html">Bootstrap</a></li>
+          <ul class="dropdown-menu" id="menuCateg">
+            <!--<li><a href="Categoria.html">Bootstrap</a></li>
             <li><a href="Categoria.html">CSS</a></li>
             <li><a href="Categoria.html">JavaScript</a></li>
             <li><a href="Categoria.html">HTML</a></li>
             <li><a href="Categoria.html">PHP</a></li>
-            <li><a href="Categoria.html">BDMM</a></li>
+            <li><a href="Categoria.html">BDMM</a></li>-->
             
           </ul>
         </li>
@@ -78,7 +80,7 @@
       <li><a href="Login.php"><span class="glyphicon glyphicon-log-in" id="logOut"></span> Logout</a></li>
       </ul>
     </div>
-  </nav> 
+  </nav>
   </div> 
 </header>
 
@@ -92,7 +94,10 @@
 		<div class="name" id="nombre">Barbara</div>
     <div class="name" id="apellido">Pegg</div>
     <div class="tipo" id="email">barPeg@gmail.com</div>
-    <div>Rol: <label class="tipo" id="rol"></label></div>
+    <div>Rol: <label class="tipo" id="rol"></label> 
+      <label class="tipo" id="rolEst">Estudiante</label>
+      <label class="tipo" id="rolMaestro">Maestro</label>
+    </div>
 		<div class="sm">
 			<a href="#" class="fab fa-facebook-f"></a>
 			<a href="#" class="fab fa-twitter"></a>

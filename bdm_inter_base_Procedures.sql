@@ -69,3 +69,115 @@ begin
 	select idCateg, nomCateg
     from cate_Curso;
 end $$
+
+#Procedure para registrar cursos------------------------------------------------------------------------------------------------------------------
+DROP PROCEDURE sp_subirrCurso;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_subirrCurso(
+ in pNomCurso varchar(70),
+ in pDescCurso varchar(100),
+ in pImagCurso mediumblob,
+ in pVideoMuestra varchar(900),
+ in pCosto float,
+ in pCantNivel int,
+ in pIdUsEsc int,
+ in pIdCatego1 int,
+ in pIdCatego2 int
+ )
+begin
+   declare idDelCurso int;    
+    insert into Curso(nomCurso, descCurso, imagCurso, videoMuestra, 
+    costo, cantNivel, idUsEsc, activo)
+    values(pNomCurso, pDescCurso, pImagCurso, pVideoMuestra, 
+    pCosto, pCantNivel, pIdUsEsc, 1);
+	set idDelCurso = RegistroCateCurso(pIdCatego1, pIdCatego2, pNomCurso, pDescCurso, pCantNivel, pIdUsEsc);     
+end$$
+
+CALL `bdm_inter_base`.`sp_subirrCurso`('Aprende con Javascript', 'Aqui aprenderas a usar llavascript', 'cosaX', 'videoMuestra.mp4', 350, 2, 1, 1, 2);
+
+#Procedure para registrar la categoria en el curso----------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_regCursoCategoria(
+	in  pIdCatego int,
+    in pIdCurso int
+    )
+begin
+    insert into tablaAsociativaCursoCategoria(idCateg, idCurso)
+    values(pIdCatego, pIdCurso);
+end $$
+
+#Procedure para registrar el nivel individualmente----------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_registrarNivel (
+ in pIdCurso int,
+ in pNomNivel varchar(200),
+ in pVideo varchar(900),
+ in pContenido varchar(900),
+ in pNumNivel int)
+begin
+    insert into nivel(idCurso,nomNivel, video, contenido, numNivel, estado)
+    values(pIdCurso,pNomNivel,pVideo, pContenido, pNumNivel,1);
+end$$
+CALL `bdm_inter_base`.`sp_registrarNivel`(1,'Introduccio a Javascript', 'muestra.mp4', 'muestra.txt', 1);
+
+#Procedure para registrar el nivel en el curso------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_registroNivelAlCurso( 
+in pNomNivel varchar(200),
+in pVideoNivel varchar(900),
+in pContenido varchar(900),
+in pNumNivel int,
+in pNomCurso varchar(70),
+in pDesCurso varchar(200),
+in pCantNivel int,
+in pIdUsEsc int
+ )
+begin
+   declare idDelCurso int;    /*mandamos a llamar la funcion para registro del nivel en el curso----------------------------------*/
+	set idDelCurso = RegistroNivCurso(pNomNivel,pVideoNivel,pContenido,pNumNivel,pNomCurso,pDesCurso,pCantNivel,pIdUsEsc);     
+end$$
+
+#obtener datos de los cursos dependiendo del maestro----------------------------------------------------------------------------
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_cursosDeMaestros(
+in pIdMaestro int)
+begin
+	select *
+    from CursoCompleto 
+    where CursoCompleto.Clave_Profesor = pIdMaestro;
+end $$
+CALL `bdm_inter_base`.`sp_cursosDeMaestros`(3);
+
+#Procedure para obtener la imagen del curso---------------------------------------------------------------------------------------
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_fotoCursos(
+in pIdCursoPic int
+)
+begin
+	select imagCurso
+    from curso where idCurso=pIdCursoPic;
+end $$
+CALL `bdm_inter_base`.`sp_fotoCursos`(3);
+
+#Procedure para obtener los datos del curso---------------------------------------------------------------------------------------
+DROP PROCEDURE sp_DatosCurso;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_DatosCurso(
+in pIdCurso int
+)
+begin
+	select *,
+	ROUND( avg(cursoCalificacion.resultado), 2) as "Media" 
+    from CursoCompleto left join cursoCalificacion on CursoCompleto.idCurso=cursoCalificacion.idCursoCalif
+    where CursoCompleto.idCurso = pIdCurso;
+end $$
+CALL `bdm_inter_base`.`sp_DatosCurso`(2);

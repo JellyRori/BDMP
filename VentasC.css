@@ -119,3 +119,12 @@ header{
             text-align: left;
       }
 }
+
+#cursosCreados{
+      color: #f1f1f1;
+  
+}
+
+.cursos{
+      display: inline;
+}

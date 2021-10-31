@@ -21,6 +21,7 @@ create Table IF NOT  EXISTS cate_Curso(
     nomCateg varchar(100) UNIQUE, 
     descCateg varchar(200),
     idUsCat BIGINT UNSIGNED,
+    fechaCreat DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     activa bool DEFAULT NULL,
 	CONSTRAINT `FK_Us_Categ` FOREIGN KEY (idUsCat) REFERENCES usuarios(idUser)
 );
@@ -49,13 +50,15 @@ create Table IF NOT  EXISTS curso(
 create Table IF NOT  EXISTS nivel(
 	idNivel BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     idCurso BIGINT UNSIGNED,
-    descNivel varchar(150) NOT NULL UNIQUE,
+    nomNivel varchar(200) not null,
+    descNivel varchar(150) NOT NULL,
     video varchar(900) NOT NULL,
     contenido varchar(900),
 	numNivel int NOT NULL,
     estado bool DEFAULT NULL,
     CONSTRAINT `FK_Niv_Cursos` FOREIGN KEY (idCurso) REFERENCES curso(idCurso)
 );
+alter table nivel drop column descNivel;
 ALTER TABLE nivel DROP COLUMN idCateg;
 #Creando tabla de comentarios------------------------------------------------------------------------------------------------------------------------------
 create Table IF NOT EXISTS comentario(
