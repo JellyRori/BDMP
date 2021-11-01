@@ -54,6 +54,47 @@ require_once "conection.php";
            //;
         }
 
+//Visualizar un curso-----------------------------------------------------------------------------------------------------------------
+public function datosDelCurso($json){
+    
+    header('Content-Type: application/json');
+    $datos = json_decode($json,true);
+    //son los datos del json
+    $id=$datos["_postID"];
+    $query = "Call sp_DatosCurso('$id');";
+    
+    $post = parent::obtenerDatos($query);
+    if(isset($post[0]["idCurso"])){
+        $idCurso =$post[0]["idCurso"];
+        $name = $post[0]["nomCurso"];
+        $descripcion = $post[0]["descCurso"];
+        $cantNvls = $post[0]["cantNivel"];
+        $trailerCur = $post[0]["videoMuestra"];
+        $categorias = $post[0]["Categorias"];
+        $costo = $post[0]["costo"];
+        $NombreProfesor = $post[0]["Profesor"];
+        $Media = $post[0]["Media"];
+      
+        $json = [
+            "idCurso" => $idCurso,
+            "nombre" => $name,
+            "descripcion"=> $descripcion,
+            "cantidadNiveles"=> $cantNvls,
+            "trailerCurso"=> $trailerCur,
+            "categorias"=> $categorias,
+            "costo"=> $costo,
+            "profesor"=> $NombreProfesor,
+            "Media" => $Media
+        ];
+             
+        return $json;
+    }
+    else{
+        $success="CursoNoEncontrado";
+        return parent::Error();
+    }
+}
+//Traer los cursos creados por un profesor--------------------------------------------------------------------------------------------
         public function traerTodosLosCursos1Prof(){
             header('Content-Type: application/json');
             $usuarioEscuela=$_SESSION["idUser"];

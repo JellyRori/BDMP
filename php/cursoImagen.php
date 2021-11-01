@@ -19,8 +19,8 @@ $_curso = new Cursos();
         $blob =mysqli_real_escape_string($_curso->conexion,$file);
  
         $videoTrailer= $_FILES['videoPromo']['tmp_name'];
-        $idCreador=$_SESSION["idUser"];
-        $nuevoNombreTrailer="../videos/".$nombre.$idCreador.".mp4";
+        $idCreador=$_SESSION["id"];
+        $nuevoNombreTrailer="videos/".$nombre.$idCreador.".mp4";
         move_uploaded_file($videoTrailer,$nuevoNombreTrailer);
 
         $json = [

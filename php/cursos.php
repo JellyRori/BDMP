@@ -8,7 +8,7 @@ $_curso = new Cursos;
 
     if($datos["opc"]==2){
         header('Content-Type: application/json');
-        $jala = $_curso->getCurso($postbody);
+        $jala = $_curso->datosDelCurso($postbody);
         echo json_encode($jala);
     }
     if($datos["opc"]==3){

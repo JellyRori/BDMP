@@ -1,7 +1,8 @@
 $(document).ready(function () {
+   
 
     $("#cursosCreados").on("click", ".titCursos", function () {
-        //cursoEsp(this.id);
+        cursoEsp(this.id);
     });
 
     function ocultarMisCursos() {
@@ -31,11 +32,12 @@ $(document).ready(function () {
                         //mostrarCursosAlumno();
                     }
                 }
-              
+                mostrarUnCurso();
 
             })
     }
     ocultarMisCursos();
+    
     function mostrarCursosProf() {
         var opc = 3;
         let Body = { opc }
@@ -69,7 +71,9 @@ $(document).ready(function () {
           
     }
 
-
+    function cursoEsp(_postID) {
+        window.location.href = "Curso.html?id="+_postID;
+    }
 
 
 });

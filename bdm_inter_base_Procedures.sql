@@ -181,3 +181,14 @@ begin
     where CursoCompleto.idCurso = pIdCurso;
 end $$
 CALL `bdm_inter_base`.`sp_DatosCurso`(2);
+
+DROP PROCEDURE sp_DatosCurso;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_obtenerNiveles(
+in pIdCurso int)
+begin
+	select idNivel, nomNivel , video, numNivel,contenido
+    from nivel where idCurso=pIdCurso;
+end $$
+CALL `bdm_inter_base`.`sp_obtenerNiveles`(3);
