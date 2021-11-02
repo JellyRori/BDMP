@@ -119,3 +119,10 @@ background-position: center;
           text-align: left;
     }
 }
+.cursos{
+    margin: 5px;
+    padding: 10px;
+    background-color:rgba(73, 68, 87, 0.788);
+    border-radius: 4px;
+    padding-bottom: 7px;
+}

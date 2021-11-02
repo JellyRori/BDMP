@@ -22,5 +22,12 @@ $_curso = new Cursos;
         echo $jala;
     }*/
 
+    if($datos["opc"]==8){
+        header('Content-Type: application/json');
+        $jala = $_curso->buscarCurso($postbody);
+ 
+        echo $jala;
+    }
+
 
 ?>

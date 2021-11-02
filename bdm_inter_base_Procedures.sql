@@ -180,8 +180,9 @@ begin
     from CursoCompleto left join cursoCalificacion on CursoCompleto.idCurso=cursoCalificacion.idCursoCalif
     where CursoCompleto.idCurso = pIdCurso;
 end $$
-CALL `bdm_inter_base`.`sp_DatosCurso`(2);
+CALL `bdm_inter_base`.`sp_DatosCurso`(5);
 
+#Procedure para traer los datos del curso-------------------------------------------------------------------------------
 DROP PROCEDURE sp_DatosCurso;
 DELIMITER $$
 USE `bdm_inter_base`$$
@@ -192,3 +193,17 @@ begin
     from nivel where idCurso=pIdCurso;
 end $$
 CALL `bdm_inter_base`.`sp_obtenerNiveles`(3);
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_buscarCurso (
+in cursoAbuscar varchar(200)
+)
+begin
+    select * from CursoCompleto where nomCurso like cursoAbuscar or 
+    Profesor like cursoAbuscar or
+    Categorias like cursoAbuscar limit 4;  -- concat(%, _NombreUsuario, %)
+end $$
+
+CALL `bdm_inter_base`.`sp_buscarCurso`("Curso de JQuery");
+

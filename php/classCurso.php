@@ -111,6 +111,27 @@ public function datosDelCurso($json){
                 return $success;
             }
         }
+//Buscar un curso---------------------------------------------------------------------------------------------------
+public function buscarCurso($json){
+    $datos = json_decode($json,true);
+    //son los datos del json
+    $buscado = $datos["buscando"];
+   
+    $query = "Call sp_buscarCurso('%$buscado%');";
+    $cursos = parent::obtenerDatos($query);
+    
+  //  if(isset($cursos[0]["id_curso"])){
+       
+        return json_encode($cursos);
+        //return $query;
+        
+   // }else{
+      //  $success="No se encontro";
+    //return $query;
+   //     return json_encode($success);
+  //  }
+  
+}
 
 
 

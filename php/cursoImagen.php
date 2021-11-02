@@ -40,13 +40,13 @@ $_curso = new Cursos();
         
             $videoTrailerNvl= $_FILES['videoNvl'.$contador]['tmp_name'];
             $nombreNvl=$_POST["nomNivel".$contador];
-            $nuevoNombreTrailerNvl="../videos/".$nombre.$nombreNvl.$contador.".mp4";
+            $nuevoNombreTrailerNvl="videos/".$nombre.$nombreNvl.$contador.".mp4";
             move_uploaded_file($videoTrailerNvl,$nuevoNombreTrailerNvl);
             
             $tipo=$_FILES['otroArchNvl'.$contador]['name'];
             $otroArchNvl= $_FILES['otroArchNvl'.$contador]['tmp_name'];
             $nombreNvl=$_POST["nomNivel".$contador];
-            $nuevoNombreArchNvl="../archivos/".$nombre.$nombreNvl.$contador.$tipo;
+            $nuevoNombreArchNvl="archivos/".$nombre.$nombreNvl.$contador.$tipo;
             move_uploaded_file($otroArchNvl,$nuevoNombreArchNvl);
 
             $json2[$contador2]=$nombreNvl;
