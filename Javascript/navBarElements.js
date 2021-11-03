@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     navUsuario();
-    //buscar();
+    buscar();
     $("body").on("click", "#btnBuscar", function () {
         buscar();
     });
@@ -66,25 +66,25 @@ $( document ).ready(function() {
                       th1.setAttribute("id","cursos");
                       var div1 =document.createElement('div');
                       div1.setAttribute("class","cursos");
-                      var img1 = document.createElement("img");
-                      img1.setAttribute("src","Javascript/fotosDelCursoP.php?id="+Jason[i]['idCurso']);
-                      img1.setAttribute("alt","fotoCurso");
-                      img1.setAttribute("class","IMG");
-                      var br1 = document.createElement("br");
-                      var a1 = document.createElement("a");
-                      a1.setAttribute("class","titCursos");
-                      a1.setAttribute("href","Curso.html?id="+Jason[i]['idCurso']);//aqui pones la direccion html donde lo colocas
-                      a1.setAttribute("onclick","Curso.html");
-                      a1.innerHTML =Jason[i]["nomCurso"];
-                      var br2 = document.createElement("br");
-                      var p1 = document.createElement("p");
-                      p1.setAttribute("class","niveles");
-                      p1.innerHTML ="Lvls:"+ Jason[i]["cantNivel"];
-                      div1.appendChild(img1);
-                      div1.appendChild(br1);
-                      div1.appendChild(a1);
-                      div1.appendChild(br2);
-                      div1.appendChild(p1);
+                      var imgagen = document.createElement("img");
+                      imgagen .setAttribute("src","Javascript/fotosDelCursoP.php?id="+Jason[i]['idCurso']);
+                      imgagen .setAttribute("alt","fotoCurso");
+                      imgagen .setAttribute("class","IMG");
+                      var saltoDeLinea = document.createElement("br");
+                      var etiqueta = document.createElement("a");
+                      etiqueta.setAttribute("class","titCursos");
+                      etiqueta.setAttribute("href","Curso.html?id="+Jason[i]['idCurso']);//aqui pones la direccion html donde lo colocas
+                      etiqueta.setAttribute("onclick","Curso.html");
+                      etiqueta.innerHTML =Jason[i]["nomCurso"];
+                      var saltoDeLinea2 = document.createElement("br");
+                      var parrafo = document.createElement("p");
+                      parrafo.setAttribute("class","niveles");
+                      parrafo.innerHTML ="Lvls:"+ Jason[i]["cantNivel"];
+                      div1.appendChild(imgagen );
+                      div1.appendChild(saltoDeLinea);
+                      div1.appendChild(etiqueta);
+                      div1.appendChild(saltoDeLinea2);
+                      div1.appendChild(parrafo);
                       th1.appendChild(div1);
                       listacompleta.appendChild(th1);
                       
