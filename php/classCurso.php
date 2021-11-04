@@ -111,6 +111,25 @@ public function datosDelCurso($json){
                 return $success;
             }
         }
+
+//Inscribirse a un curso--------------------------------------------------------------------------------------------------------------
+public function pagarCurso($json){
+    $datos = json_decode($json,true);
+    //son los datos del json
+    $idUserAlumno = $_SESSION["idUser"];
+    $idCurso = $datos["idCurso"];
+    $query = "Call sp_compraCurso($idUserAlumno,$idCurso);";
+
+    $verificacion = parent::rowsAfectados($query);
+    if($verificacion == 1){
+        $success="success";
+        return $success;    
+    }else{
+        $success="fail";
+        return parent::Error(); 
+    }
+
+}
 //Buscar un curso---------------------------------------------------------------------------------------------------
 public function buscarCurso($json){
     $datos = json_decode($json,true);

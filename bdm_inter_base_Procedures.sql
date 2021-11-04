@@ -207,3 +207,31 @@ end $$
 
 CALL `bdm_inter_base`.`sp_buscarCurso`("Curso de JQuery");
 
+#Procedure para registrar el historial de alumnos---------------------------------------------------------------------------------
+DROP PROCEDURE sp_compraCurso;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_Historial (
+	in  pIdEstado BIGINT,
+    in pIdCurso BIGINT
+    )
+begin
+    insert into historial(idEstado, idCurso, progreso)
+    values(pIdEstado, pIdCurso, 0);
+end $$
+#Procedure para inscribir curso----------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_compraCurso(
+	in  pIdAlumno BIGINT,
+    in pIdCurso BIGINT
+    )
+begin
+    insert into pagoCurso(idUsuario, idCurso)
+    values(pIdAlumno, pIdCurso);
+    call sp_Historial(pIdAlumno, pIdCurso);
+end $$
+
+CALL `bdm_inter_base`.`sp_compraCurso`(1, 2);
+
+

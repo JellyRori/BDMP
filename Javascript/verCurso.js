@@ -11,6 +11,9 @@ $(document).ready(function () {
         }
         return false;
     }
+    $("#opciones").on("click", "#btnTarjeta", function () {
+        comprarCurso();
+    });
 function ocultarVerCursos(){
     var opc = 3;
     let Body = { opc }
@@ -22,7 +25,7 @@ function ocultarVerCursos(){
         .then(data => {
             var Jason = data;
             var obj = JSON.parse( Jason);
-            if(obj['esMaestro']==true){
+            if(obj['rol']==true){
                 document.getElementById("imgAvatar").style.display = 'inline';
                 document.getElementById("logOut").style.display = 'inline';
                 document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
@@ -31,8 +34,8 @@ function ocultarVerCursos(){
                // document.getElementById("datosForAlumno").style.display = 'none';
                 
             }else{
-                if(obj['esMaestro']==false){
-                    document.getElementById("imgAvata").style.display = 'inline';
+                if(obj['rol']==false){
+                    document.getElementById("imgAvatar").style.display = 'inline';
                     document.getElementById("logOut").style.display = 'inline';
                     document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
                     //document.getElementById("iniciaSes").style.display = 'none';  
@@ -41,10 +44,10 @@ function ocultarVerCursos(){
                     //aqui se manda a llamar la confirmacion de si tiene el curso
                     //cursoComprado();
                 }else{
-                   // document.getElementById("comprarCurso").style.display = 'inline';
-                   // document.getElementById("califCurso").style.display = 'none';
-                   // document.getElementById("nivelesCurso").style.display = 'none';
-                   // document.getElementById("progresoCur").style.display = 'none';
+                  // document.getElementById("Compra").style.display = 'inline';
+                  // document.getElementById("Promedio").style.display = 'none';
+                  // document.getElementById("nivelesCurso").style.display = 'none';
+                  // document.getElementById("progresoCur").style.display = 'none';
                 }
             }
             mostrarUnCurso();       
@@ -103,6 +106,32 @@ function ocultarVerCursos(){
                //id_niveles, nombreNvl , videoLvl, numeroNivel, otrosArchivo
                
             })
+    }
+
+    function comprarCurso(){
+        var idCurso = getQueryVariable("id")
+        var opc=6;
+        let Body = { idCurso,opc }
+        let jsonBody = JSON.stringify(Body);
+    
+        fetch('php/cursos.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+        .then(response => {
+             return response.text();
+        })
+        .then(data => {
+            var Jason =data;
+            console.log(Jason);
+            if(Jason==="success"){
+                alert("Curso comprado con éxito");
+                document.getElementById("Compra").style.display = 'none';
+                document.getElementById("listaNiveles").style.display = 'inline';
+                //document.getElementById("btnComentar").disabled=false; boton de comentario
+            }
+            else{
+    
+                alert(Jason.result)
+            }
+        })  
     }
    /* function ocultarVerCurso() {
         var opc = 3;

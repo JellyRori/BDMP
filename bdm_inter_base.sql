@@ -136,3 +136,4 @@ select*from nivel;
 select*from comentario;
 select*from historial;
 select*from mensajes;
+select * from pagoCurso;

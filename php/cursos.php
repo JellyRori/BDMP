@@ -2,7 +2,7 @@
 require_once 'classCurso.php';
 $_curso = new Cursos;
 
-//recibe el json y lo tranforma a un arreglo
+//recibe el json y lo transforma a un arreglo
     $postbody = file_get_contents("php://input");
     $datos = json_decode($postbody,true);
 
@@ -21,6 +21,13 @@ $_curso = new Cursos;
         $jala = $_curso->traerTodosLosCursosInsAl();
         echo $jala;
     }*/
+    if($datos["opc"]==6){
+        header('Content-Type: application/json');
+        $jala = $_curso->pagarCurso($postbody);
+        header('Content-Type: application/json');// devuelve un json
+        echo $jala;
+        json_encode($jala);
+    }
 
     if($datos["opc"]==8){
         header('Content-Type: application/json');
