@@ -38,9 +38,13 @@ function ocultarVerCursos(){
                     document.getElementById("imgAvatar").style.display = 'inline';
                     document.getElementById("logOut").style.display = 'inline';
                     document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
+                    document.getElementById("categUser").style.display = 'none';
                     //document.getElementById("iniciaSes").style.display = 'none';  
                     document.getElementById("ventUser").style.display = 'none';
+                    document.getElementById("nivelLista").style.display = 'none';
                     document.getElementById("listaNiveles").style.display = 'none';
+                     document.getElementById("misCursos").style.display = 'none';
+                        document.getElementById("cursoUser").style.display = 'none';
                     //aqui se manda a llamar la confirmacion de si tiene el curso
                     //cursoComprado();
                 }else{

@@ -208,7 +208,7 @@ end $$
 CALL `bdm_inter_base`.`sp_buscarCurso`("Curso de JQuery");
 
 #Procedure para registrar el historial de alumnos---------------------------------------------------------------------------------
-DROP PROCEDURE sp_compraCurso;
+
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_Historial (
@@ -234,4 +234,21 @@ end $$
 
 CALL `bdm_inter_base`.`sp_compraCurso`(1, 2);
 
-
+#Procedure para el historial------------------------------------------------------------------------------------------------
+DROP PROCEDURE sp_MostrarHistorialAlumno;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_MostrarHistorialAlumno(
+in pIdAlumno BIGINT UNSIGNED)
+begin
+select curso.idCurso, curso.nomCurso,curso.descCurso, cantNivel, group_concat(cate_Curso.nomCateg) as "Categorias",
+curso.cantNivel, historial.progreso
+from usuarios join  historial on usuarios.idUser = historial.idEstado
+join Curso on historial.idCurso = curso.idCurso
+left join  tablaAsociativaCursoCategoria on  
+Curso.idCurso = tablaAsociativaCursoCategoria.idCurso left join cate_Curso 
+on tablaAsociativaCursoCategoria.idCateg = cate_Curso.idCateg
+where Usuarios.idUser = pIdAlumno
+group by curso.idCurso order by curso.idCurso desc;
+end $$
+CALL `bdm_inter_base`.`sp_MostrarHistorialAlumno`(2);
