@@ -83,16 +83,17 @@ function Registrar(form) {
                             window.location.href="Login.php";
                         }
                         else
-                            alert(Jason.result)
+                            alert(Jason.result);
+                            window.location.href="Login.php";
                         //"status" => "ok",
                         //"result" => array()
                         })
                     }else {
-                        window.alert("La contraseña debe tener al menos un numero y un caracter especial")
+                        window.alert("La contraseña debe tener al menos un numero y un caracter especial");
                     }
                 }
                 else{
-                    window.alert("La contraseña debe tener 8 caracteres")
+                    window.alert("La contraseña debe tener 8 caracteres");
                 }
             }
             else{

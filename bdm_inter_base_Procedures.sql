@@ -46,7 +46,7 @@ begin
     apellidos= pApellidos,
      email= pEmail,
     contra= pContra, 
-    foto= pImagen where idUser= pIdUs;
+    foto = pImagen where idUser= pIdUs;
 end$$
 #Procedure para registrar categoria----------------------------------------------------------------------------------------------------------------------------------
 DELIMITER $$
@@ -182,8 +182,7 @@ begin
 end $$
 CALL `bdm_inter_base`.`sp_DatosCurso`(5);
 
-#Procedure para traer los datos del curso-------------------------------------------------------------------------------
-DROP PROCEDURE sp_DatosCurso;
+#Procedure para obetner la lista de niveles-------------------------------------------------------------------------------
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_obtenerNiveles(
@@ -194,6 +193,18 @@ begin
 end $$
 CALL `bdm_inter_base`.`sp_obtenerNiveles`(3);
 
+#Procedure para ver un nivel---------------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_getNivel(
+in pIdNvl BIGINT UNSIGNED 
+)
+begin
+	select idCurso, nomNivel , video, numNivel, contenido
+    from nivel where idNivel=pIdNvl;
+end $$
+
+#Procedure para busqueda de curso----------------------------------------------------------------------------------------------
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_buscarCurso (
@@ -208,7 +219,6 @@ end $$
 CALL `bdm_inter_base`.`sp_buscarCurso`("Curso de JQuery");
 
 #Procedure para registrar el historial de alumnos---------------------------------------------------------------------------------
-
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_Historial (
@@ -219,6 +229,27 @@ begin
     insert into historial(idEstado, idCurso, progreso)
     values(pIdEstado, pIdCurso, 0);
 end $$
+delimiter $$
+create procedure sp_revisarFinalizacion (
+	in  pIdEstado BIGINT UNSIGNED,
+    in pIdNivel BIGINT UNSIGNED
+    )
+begin
+    declare pNumNivel int;
+    declare pIdCurso int;    
+    declare pNumTotalCurso int;     
+    set pIdCurso = obtNumCurso(pIdNivel);    
+	set pNumNivel = obtNumNivel(pIdNivel);
+    set pNumTotalCurso = obNivTotalCurso(pIdCurso);
+    
+    if pNumNivel = pNumTotalCurso THEN
+    update pagoCurso
+    set
+	terminado = true
+    where idUsuario = pIdEstado AND idCurso = pIdCurso;
+    END IF;
+end $$
+
 #Procedure para inscribir curso----------------------------------------------------------------------------------------------------
 DELIMITER $$
 USE `bdm_inter_base`$$
@@ -231,8 +262,19 @@ begin
     values(pIdAlumno, pIdCurso);
     call sp_Historial(pIdAlumno, pIdCurso);
 end $$
-
 CALL `bdm_inter_base`.`sp_compraCurso`(1, 2);
+
+#Procedure para cuando estés inscrito en un curso----------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_alumnoInscrito(
+	in  pIdAlumno BIGINT UNSIGNED,
+    in pIdurso BIGINT UNSIGNED
+    )
+begin
+    select terminado from pagoCurso 
+    where idUsuario=pIdAlumno and idCurso=pIdurso;
+end $$
 
 #Procedure para el historial------------------------------------------------------------------------------------------------
 DROP PROCEDURE sp_MostrarHistorialAlumno;

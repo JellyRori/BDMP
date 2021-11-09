@@ -14,10 +14,30 @@ $_usuario = new Usuario;
         $funciona = $_usuario->getPerfilUsuario();
         echo json_encode($funciona);
     }
-    if($datos["opc"]==4){
-        $funciona = $_usuario->modificarUsuario($postbody);
-        echo $funciona;
-    }
+    //if($datos["opc"]==4){
+       /* $name= $_POST['nombre'];
+        $apellido= $_POST['apellido'];
+        $fechaNac = $_POST["fechaNac"];
+        $email= $_POST['correo'];
+        $contra= $_POST['contra'];
+        
+        $file_tmpi = $_FILES['foto']['tmp_name'];
+        $file = file_get_contents( $file_tmpi);
+        $blob =mysqli_real_escape_string($_usuario->conexion,$file);
+
+        $json = [
+            "nombre" => $name,
+            "apellidos"=> $apellido,
+            "fechaNac"=> $fechaNac,
+            "email"=> $email,
+            "contra"=> $contra
+        ];
+
+        $coso = json_encode($json);
+        $funciona = $_usuario->modificarUsuario($coso,$blob);*/
+      //$funciona = $_usuario->modificarUsuario($postbody);
+      //echo $funciona;
+    //}
     //header('Content-Type: application/json');//le dices que devuelve un json
     
     //echo $funciona;

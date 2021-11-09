@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#historialCur").on("click", ".titCursos", function () {
+    $("#tablaCursos").on("click", ".titCursos", function () {
         cursoEsp(this.id);
     });
     ocultarVerCursos();

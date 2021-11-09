@@ -11,9 +11,13 @@ $(document).ready(function () {
         }
         return false;
     }
+    $("#nivelesDeCurso").on("click", ".btnVerClase", function () {
+        nivelEsp(this.id);
+    });
     $("#opciones").on("click", "#btnTarjeta", function () {
         comprarCurso();
     });
+    
 function ocultarVerCursos(){
     var opc = 3;
     let Body = { opc }
@@ -46,12 +50,12 @@ function ocultarVerCursos(){
                      document.getElementById("misCursos").style.display = 'none';
                         document.getElementById("cursoUser").style.display = 'none';
                     //aqui se manda a llamar la confirmacion de si tiene el curso
-                    //cursoComprado();
+                   cursoComprado();
                 }else{
-                  // document.getElementById("Compra").style.display = 'inline';
-                  // document.getElementById("Promedio").style.display = 'none';
-                  // document.getElementById("nivelesCurso").style.display = 'none';
-                  // document.getElementById("progresoCur").style.display = 'none';
+                  document.getElementById("Compra").style.display = 'inline';
+                  document.getElementById("Promedio").style.display = 'none';
+                  document.getElementById("nivelesCurso").style.display = 'none';
+                  document.getElementById("progresoCur").style.display = 'none';
                 }
             }
             mostrarUnCurso();       
@@ -105,7 +109,7 @@ function ocultarVerCursos(){
                console.log(Jason);
                //var obj = JSON.parse(Jason);
                 for (var i in Jason) {
-                    $("#listaNiveles").append("<li><h3 id="+Jason[i]['idNivel']+" >"+" </p><a id="+Jason[i]['idNivel']+" class='btnVerClase' href='Nivel.html'>"+Jason[i]['nomNivel']+"</a> </div></li>");
+                    $("#nivelesDeCurso").append("<li><h3 id="+Jason[i]['idNivel']+" >"+" </p><a id="+Jason[i]['idNivel']+" class='btnVerClase'>"+Jason[i]['nomNivel']+"</a> </div></li>");
                 }
                //id_niveles, nombreNvl , videoLvl, numeroNivel, otrosArchivo
                
@@ -127,7 +131,7 @@ function ocultarVerCursos(){
             console.log(Jason);
             if(Jason==="success"){
                 alert("Curso comprado con éxito");
-                document.getElementById("Compra").style.display = 'none';
+                document.getElementById("btnCompras").style.display = 'none';
                 document.getElementById("listaNiveles").style.display = 'inline';
                 //document.getElementById("btnComentar").disabled=false; boton de comentario
             }
@@ -136,6 +140,51 @@ function ocultarVerCursos(){
                 alert(Jason.result)
             }
         })  
+    }
+
+    function cursoComprado(){
+        var idCurso = getQueryVariable("id")
+        var opc=7;
+        let Body = { idCurso,opc }
+        let jsonBody = JSON.stringify(Body);
+    
+        fetch('php/cursos.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+        .then(response => {
+             return response.json();
+        })
+        .then(data => {
+            var Jason =data;
+            console.log(Jason);
+            
+            if(Jason=="CursoNoReg"){
+                document.getElementById("Compra").style.display = 'inline';
+                document.getElementById("listaNiveles").style.display = 'none';
+                //document.getElementById("califCurso").style.display = 'none';
+                document.getElementById("progresoCur").style.display = 'none';
+                document.getElementById("abrir").style.display = 'none';
+                
+            }else{
+                if(Jason['terminado']!=""){
+                    document.getElementById("Compra").style.display = 'none';
+                    document.getElementById("listaNiveles").style.display = 'inline';
+                    document.getElementById("abrir").style.display = 'none';
+                    document.getElementById("btn").disabled=false;
+                    if(Jason['terminado']==true){
+                        document.getElementById("califCurso").style.display = 'inline';
+                        document.getElementById("abrir").style.display = 'inline';
+                    }else{
+                        if(Jason['terminado']==false){
+                            //document.getElementById("btnDiploma").style.display = 'none';
+                            //document.getElementById("califCurso").style.display = 'none';
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    function nivelEsp(idNivel) {
+        window.location.href = "Nivel.html?id="+idNivel;
     }
    /* function ocultarVerCurso() {
         var opc = 3;

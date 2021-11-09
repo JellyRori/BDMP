@@ -10,11 +10,11 @@ $_nivel = new Nivel;
         $jala = $_nivel->listaNivelesCurso($datos);
         echo $jala;
     }
-    /*if($datos["opc"]==2){
+    if($datos["opc"]==2){
         header('Content-Type: application/json');
-        $jala = $_nivel->getNivel($postbody);
+        $jala = $_nivel->verNivel($postbody);
         echo json_encode($jala);
-    }*/
+    }
     
     
     //echo $jala;

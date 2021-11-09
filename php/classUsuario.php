@@ -72,16 +72,16 @@
             }
         }
 
-        public function modificarUsuario($json){
+        public function modificarUsuario($json,$foto){
             $datos = json_decode($json,true);
             //son los datos del json
             $nombre = $datos["nombre"];
             $apellidos = $datos["apellidos"];
-            $email = $datos["correo"];
+            $email = $datos["email"];
             $contra = $datos["contra"];
-            $foto = $datos["foto"];
+            //$foto = $datos["foto"];
             $idUser= $_SESSION["idUser"];
-            $query = "Call sp_editarUsuario($idUser,'$nombre','$apellidos','$email','$contra',' $foto');";
+            $query = "Call sp_editarUsuario($idUser,'$nombre','$apellidos','$email','$contra','$foto');";
             $verificacion = parent::rowsAfectados($query);
             
             if($verificacion){
@@ -89,6 +89,7 @@
                 $_SESSION["apellidos"]=$apellidos;
                 $_SESSION["email"]=$email;
                 $_SESSION["contra"]=$contra;
+               // $_SESSION["foto"]=$foto;
                 $success="CambiosHechos";
                 return $success;
                 

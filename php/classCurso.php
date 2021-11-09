@@ -152,9 +152,30 @@ public function buscarCurso($json){
   
 }
 
+public function cursoComprado($json){
+    $datos = json_decode($json,true);
+    //son los datos del json
+    $idAl = $_SESSION["idUser"];
+    $idCurso = $datos["idCurso"];
+    $query = "Call sp_alumnoInscrito($idAl,$idCurso);";
 
-
+    $post = parent::obtenerDatos($query);
+    if(isset($post[0]["terminado"])){
+        $terminado = $post[0]["terminado"];
+        $json = [
+            "terminado"=> $terminado
+        ];
+        return $json;
     }
+    else{
+        $success="CursoNoReg";
+        return $success;
+    }
+
+}
+
+
+}
 
 
 ?>

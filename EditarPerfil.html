@@ -8,7 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="EditarPerfilC.css">
     <link rel="text/javascript" type="js" href="validaciones.js">
     <script src="Javascript/jquery-2.1.4.min.js"></script>
-    <script src="Javascript/navBarElements.js"></script>
     <script src="Javascript/editarPerfil.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -42,15 +41,19 @@
     <input type="text" value="" placeholder="Apellidos" id="apellidos"/>
     <input type="email" value="" placeholder="Email" id="email"/>
     <input type="password" value="" placeholder="Contraseña" id="contra" /> <br>
+    <label for="image">Imagen de perfil:</label>
+            <input class="controls" class="form-error" type="file" name="image" id="image"
+                placeholder="Seleccione una imagen" required>
 
     <!--<label for="avatar">Choose a profile picture:</label>
         <input type="file"
        id="avatar" name="avatar"
        accept="image/png, image/jpeg">-->
     <br> <br>
-    <form action="Perfil.html">
-    <input type="submit" value="Editar" id="Ing" onclick="editarDatos();" />
-</form>
+   <!--<form action="Perfil.html"enctype="multipart/form-data" >-->
+    <!--<input type="submit" value="Editar" id="Ing" onclick="editarDatos();" />-->
+    <button id="Ing" onclick="editar()">Guardar</button>
+   <!--</form>-->
 
 
 

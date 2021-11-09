@@ -16,7 +16,7 @@
 
 <div class="login-block">
     <h1>Registro</h1>
-   <!-- <form action="php/elRegistro.php" method="POST" class="forma" name="forma" id="forma" enctype="multipart/form-data">-->
+    <form action="Login.php" method="POST" class="forma" name="forma" id="forma" enctype="multipart/form-data">
    <div class="formR">
       <div class="contenedor-inputs">
         
@@ -63,7 +63,7 @@
       </div>
     
       <input type="submit" value="Ingresar" onclick="Registrar()" class="btn"  id="Ing" />
-    <!--</form>-->
+    </form>
     </div>
 
 

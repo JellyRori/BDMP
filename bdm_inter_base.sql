@@ -1,6 +1,6 @@
 CREATE DATABASE bdm_inter_base;
 use bdm_inter_base;
-DROP DATABASE bdm_inter_base; #CUDADO CON ESTA LINEA, solo usar cuando tengas que recrear tablas si no quieres alterar campo X campo-----------------
+ #CUDADO CON ESTA LINEA, solo usar cuando tengas que recrear tablas si no quieres alterar campo X campo-----------------
 
 #Creando tabla de usuarios (decidimos juntarlas por la redundancia de datos)--------------------------------------------------------------------------
 create table IF NOT  EXISTS usuarios(
@@ -129,6 +129,7 @@ create table IF NOT  EXISTS tablaAsociativaCursoCategoria(
    CONSTRAINT `FK_Aso_Curso` FOREIGN KEY(idCurso) REFERENCES curso(idCurso)
 );
 #Selects para revisar que las tablas tengan contenido-------------------------------------------------------------------------------------------------
+
 select * from Usuarios;
 select * from cate_Curso;
 select*from curso;
@@ -137,3 +138,6 @@ select*from comentario;
 select*from historial;
 select*from mensajes;
 select * from pagoCurso;
+
+truncate table nivel;
+

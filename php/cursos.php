@@ -28,6 +28,12 @@ $_curso = new Cursos;
         echo $jala;
         json_encode($jala);
     }
+    
+    if($datos["opc"]==7){
+        header('Content-Type: application/json');
+        $jala = $_curso->cursoComprado($postbody);
+        echo json_encode($jala);
+    }
 
     if($datos["opc"]==8){
         header('Content-Type: application/json');

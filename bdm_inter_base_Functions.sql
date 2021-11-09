@@ -48,3 +48,48 @@ declare idDelCurso int;
 CALL sp_registrarNivel(idDelCurso,pNomNivel,pVideoNivel, pContenidoNivel,pNumNivel);
 RETURN 1;
 END$$
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE FUNCTION `obtNumNivel` (pIdNivel BIGINT UNSIGNED)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+	declare numeNivel BIGINT UNSIGNED;        
+    select numNivel
+    into numeNivel
+    from Nivel
+    where idNivel = pIdNivel;
+RETURN numeNivel;
+END$$
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE FUNCTION `obtNumCurso` (pIdNivel BIGINT UNSIGNED)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+-- Manda el ID curso, es solo que la programadora es muy floja para cambiar 
+-- el nombre de las variables y no le importa confundirse
+	declare numNivel BIGINT UNSIGNED;        
+    select idCurso
+    into numNivel
+    from Nivel
+    where idNivel = pIdNivel ;
+RETURN numNivel;
+END$$
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE FUNCTION `obNivTotalCurso` (pIdCurso BIGINT UNSIGNED)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+	declare numTotal int;
+    
+    select cantNivel
+    into numTotal
+    from Curso
+    where idCurso = pIdCurso;
+RETURN numTotal;
+END$$

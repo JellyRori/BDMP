@@ -6,7 +6,6 @@ $_curso = new Cursos();
     $datos = json_decode($postbody,true);
     
     if($_POST['opc']==1){
-
         $nombre = $_POST["nombreCurso"];
         $descripcion= $_POST["descripcionCurso"];
         $costo= $_POST["costoCurso"];
@@ -19,7 +18,7 @@ $_curso = new Cursos();
         $blob =mysqli_real_escape_string($_curso->conexion,$file);
  
         $videoTrailer= $_FILES['videoPromo']['tmp_name'];
-        $idCreador=$_SESSION["id"];
+        $idCreador=$_SESSION["idUser"];
         $nuevoNombreTrailer="videos/".$nombre.$idCreador.".mp4";
         move_uploaded_file($videoTrailer,$nuevoNombreTrailer);
 

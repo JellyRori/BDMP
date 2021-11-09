@@ -20,6 +20,7 @@ $(document).ready(function () {
                         document.getElementById("ventUser").style.display = 'none';
                         document.getElementById("categUser").style.display = 'none';
                         document.getElementById("cursoUser").style.display = 'none';
+                        document.getElementById("histUser").style.display = 'none';
                         document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
                 } 
             })

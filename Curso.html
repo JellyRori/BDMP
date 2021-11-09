@@ -131,7 +131,7 @@
     </div>
   </div>
 </div>
-<div class="column">
+<div class="column" id="nivelesDeCurso">
   <h1 id="nivelLista">Lista de niveles por curso:</h1>
   <ul class="lista" id="listaNiveles">
    <!-- <li class="punto"><a class="punto" href="Nivel.html">Nivel 1</a></li>
@@ -139,25 +139,38 @@
     <li class="punto"><a class="punto" href="Nivel.html">Nivel 3</a></li>-->
   </ul>
 </div>
+
+<div id="nivelesCurso" class="opciones"></div>
 <div class="column">
 <p class="Puntos" id="Promedio">Valoracion: 5 estrellas<p>
-
+</div>
+<div id="abrir"> 
+  <a href="javascript:abrir2()"><img id="dip" src="Imagenes/Certificado.png"></a>
 </div>
 </div>
 
 <br>
 
  <form class="espacio" action="Javascript:abrir()">
-   <div class="compraCursos">
+   <div class="compraCursos" id="btnCompras">
     <input class="botones"  type="submit" value="Comprar Ahora" id="Compra"/>
    </div>
+  
 </form> 
+
+ <div class="ventina" id="vent2"> 
+
+    <div id="cerrar2"> <a href="javascript:cerrar2()"><img src="Imagenes/error.png"></a></div>
+      <div id="ad">
+        <img id="mom" src="Imagenes/Diploma.png">
+      </div>
+    </div>
 <!--<form class="espacio2" action="Carrito.html">
     <input  class="botones" type="submit" value="Agregar Al Carrito" id="Compra"/>
 </form>-->
-<form class="espacio2" action="Chat.html">
+<!--<form class="espacio2" action="Chat.html">
     <input  class="botones" type="submit" value="Mensaje" id="Mensaje"/>
-</form>
+</form>-->
 
 
 <h2>Comentarios De Estudiantes</h2>
@@ -207,8 +220,16 @@
     document.getElementById("vent").style.display="block";
   }
 
+  function abrir2(){
+    document.getElementById("vent2").style.display="block";
+  }
+
    function cerrar(){
     document.getElementById("vent").style.display="none";
+  }
+
+  function cerrar2(){
+    document.getElementById("vent2").style.display="none";
   }
 
 
