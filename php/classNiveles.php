@@ -40,7 +40,7 @@
                     "nombreNvl" => $name,
                     "trailerNivel"=> $trailerNvl,
                     "numeroNivel"=> $numLvl,
-                    "otrosArchivo"=> $otrosArch
+                    "contenido"=> $otrosArch
                 ];    
                 return $json;
             }

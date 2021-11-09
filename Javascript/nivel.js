@@ -15,12 +15,14 @@ $(document).ready(function () {
         var opc = 3;
         let Body = { opc }
         let jsonBody = JSON.stringify(Body)
+        
         fetch('php/usuario.php', { method: "POST", header: { 'Content-Type': 'application/json' }, body: jsonBody })
             .then(response => {
                 return response.text();
             })
             .then(data => {
                 var Jason = data;
+                console.log(data);
                 var obj = JSON.parse( Jason);
                 if(obj['rol']==true){
                     document.getElementById("imgAvatar").style.display = 'inline';
@@ -63,11 +65,11 @@ $(document).ready(function () {
             })
             .then(data => {
                var obj = data;
-               
+               //document.getElementById("nivelNombres").src = obj['nombreNvl'];
                document.getElementById("videoNivel").src = obj['trailerNivel'];
-              document.getElementById("imgCurso").src ="Javascript/fotosDelCursoP.php?id='"+obj['idCurso']+"'";
+             // document.getElementById("imgCurso").src ="Javascript/fotosDelCursoP.php?id='"+obj['idCurso']+"'";
                
-               $("#nomNivel").append("<div class='num_nivel'>"+obj['nomNivel']+"<div class='vid_nivel'><button id='btnDescargar' class='btnArchivo'>Descargar archivo</button> </div></div>");
+               $("#nomNivel").append("<div class='num_nivel'>"+obj['nombreNvl']+"<div class='vid_nivel'><button id='btnDescargar' class='btnArchivo'>Descargar archivo</button> </div></div>");
  
             })
     }

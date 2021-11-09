@@ -1,0 +1,23 @@
+.elBotonArch {
+    font-size: 2vh;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 3%;
+    margin-left: 60%;
+    color:#fff;
+    display: inline-block;
+    position: absolute;
+  }
+  
+  #btnDescargar {
+    background-color: rgb(238, 235, 245);
+    border-radius: 6px;
+    padding: 2%;
+    color: rgb(44, 38, 59);
+  }
+
+  .video{
+      display: inline-block;
+      margin-top: 10px;
+
+  }
