@@ -203,6 +203,7 @@ begin
 	select idCurso, nomNivel , video, numNivel, contenido
     from nivel where idNivel=pIdNvl;
 end $$
+CALL `bdm_inter_base`.`sp_getNivel`(3);
 
 #Procedure para busqueda de curso----------------------------------------------------------------------------------------------
 DELIMITER $$
@@ -294,3 +295,51 @@ where Usuarios.idUser = pIdAlumno
 group by curso.idCurso order by curso.idCurso desc;
 end $$
 CALL `bdm_inter_base`.`sp_MostrarHistorialAlumno`(2);
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_actualizaElHistorial (
+	in  pIdEstado BIGINT UNSIGNED,
+    in  pIdNivel BIGINT UNSIGNED
+    )
+begin
+	declare numNivelRegistrado BIGINT UNSIGNED;
+    declare NumeroNivel int;
+    declare NumeroCurso BIGINT UNSIGNED;
+    
+    set NumeroCurso = obtNumCurso(pIdNivel);
+    
+    set numNivelRegistrado = avance(pIdEstado, pIdNivel);
+	set NumeroNivel = obtNumNivel(pIdNivel);
+    
+    if NumeroNivel > numNivelRegistrado THEN
+        update historial
+        set       
+        progreso = NumeroNivel
+		WHERE  idEstado = pIdEstado and idCurso = NumeroCurso;
+    END IF;
+end $$
+
+CALL `bdm_inter_base`.`sp_actualizaElHistorial`(2, 3);
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_RevisarCursoFinal (
+	in  pIdEstado BIGINT UNSIGNED,
+    in pIdNivel BIGINT UNSIGNED
+    )
+begin
+    declare NumeroNivel BIGINT UNSIGNED;
+    declare IdCurso BIGINT UNSIGNED;    
+    declare NumeroTotalCurso BIGINT UNSIGNED;     
+    set IdCurso = obtNumCurso(pIdNivel);    
+	set NumeroNivel = obtNumNivel(pIdNivel);
+    set NumeroTotalCurso = obNivTotalCurso(IdCurso);
+    
+    if NumeroNivel = NumeroTotalCurso THEN
+    update pagoCurso
+    set
+	terminado = true
+    where idUsuario = pIdEstado AND idCurso = IdCurso;
+    END IF;
+end $$

@@ -78,18 +78,42 @@ BEGIN
     where idNivel = pIdNivel ;
 RETURN numNivel;
 END$$
-
+drop function obNivTotalCurso;
 DELIMITER $$
 USE `bdm_inter_base`$$
 CREATE FUNCTION `obNivTotalCurso` (pIdCurso BIGINT UNSIGNED)
 RETURNS INTEGER
 DETERMINISTIC
 BEGIN
-	declare numTotal int;
+	declare numTotal BIGINT UNSIGNED;
     
     select cantNivel
     into numTotal
-    from Curso
+    from curso
     where idCurso = pIdCurso;
 RETURN numTotal;
+END$$
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE FUNCTION `avance` (
+pIdEstado BIGINT UNSIGNED, 
+pIdNivel BIGINT UNSIGNED)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+	declare numeroNivel BIGINT UNSIGNED;
+    declare numeroCurso BIGINT UNSIGNED;
+    
+    select idCurso
+    into numeroCurso
+    from nivel
+    where idNivel = pIdnivel;
+    
+    
+    select progreso
+    into numeroNivel
+    from historial
+    where idEstado = pIdEstado and idCurso = numeroCurso;
+RETURN numeroNivel;
 END$$

@@ -6,7 +6,7 @@ $_Historial = new Historial;
     $postbody = file_get_contents("php://input");
     $datos = json_decode($postbody,true);
     
-    /*if($datos["opc"]==1){
+    if($datos["opc"]==1){
         header('Content-Type: application/json');
         $jala = $_Historial->ActHistorial($postbody);
         header('Content-Type: application/json');//le dices que devuelve un json
@@ -19,7 +19,7 @@ $_Historial = new Historial;
         header('Content-Type: application/json');//le dices que devuelve un json
         echo $jala;
         json_encode($jala);
-    }*/
+    }
     if($datos["opc"]==3){
         header('Content-Type: application/json');
         $jala = $_Historial->verHistorialDeCursos($postbody);

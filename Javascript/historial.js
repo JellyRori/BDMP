@@ -28,6 +28,7 @@ $(document).ready(function () {
                         document.getElementById("logOut").style.display = 'inline';
                         document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
                         document.getElementById("categUser").style.display = 'none';
+                        document.getElementById("histUser").style.display = 'inline';
                         //document.getElementById("iniciaSes").style.display = 'none';  
                         document.getElementById("ventUser").style.display = 'none';
                        // document.getElementById("nivelLista").style.display = 'none';
