@@ -30,13 +30,14 @@ $(document).ready(function () {
                     document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
                     //document.getElementById("iniciaSes").style.display = 'none';  
                     document.getElementById("histUser").style.display = 'none';
-                    document.getElementById("showCategs").style.display = 'none';
+                   
                    // document.getElementById("datosForAlumno").style.display = 'none';
                     
                 }else{
                     if(obj['rol']==false){
                             document.getElementById("imgAvatar").style.display = 'inline';
                             document.getElementById("logOut").style.display = 'inline';
+                            document.getElementById("histUser").style.display = 'inline';
                              document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
                             document.getElementById("categUser").style.display = 'none';
                         //document.getElementById("iniciaSes").style.display = 'none';  
@@ -45,7 +46,7 @@ $(document).ready(function () {
                              //document.getElementById("nivelListas").style.display = 'none';
                              document.getElementById("misCursos").style.display = 'none';
                             document.getElementById("cursoUser").style.display = 'none';
-                            document.getElementById("showCategs").style.display = 'none';
+                           
                         
                     }
                 }
@@ -79,7 +80,31 @@ $(document).ready(function () {
         var opc = 1;
         let Body = { idNivel, opc  }
         let jsonBody = JSON.stringify(Body);
-        fetch('php/Historial.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+        fetch('php/historial.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+        .then(response => {
+             return response.json();
+        })
+        .then(data => {
+            var Jason =data;
+            debugger;
+            console.log(Jason);
+            if(Jason==="success"){
+                alert("Se ha actualizado su historial");
+            }
+            else{
+    
+                alert(Jason.result)
+            }
+        })
+    }
+
+    verificacionFinal();
+    function verificacionFinal(){
+        var idNivel = getQueryVariable("id");
+        var opc = 2;
+        let Body = { idNivel, opc  }
+        let jsonBody = JSON.stringify(Body);
+        fetch('php/historial.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
         .then(response => {
              return response.json();
         })

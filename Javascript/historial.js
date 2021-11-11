@@ -76,9 +76,9 @@ $(document).ready(function () {
                     $("#tablaCursos").append("<tr id='Tarjeta'><th id='thIm'><img id='Imagen' width='60' height='60' src='Javascript/fotosDelCursoP.php?id="
                                              +Jason[i]['idCurso']+"' alt='fotoCurso'></th><th id='titulos'><p id="
                                              +Jason[i]['idCurso']+" class='titCursos' >"+Jason[i]['nomCurso']
-                                             +"</p></th><th id='descCursillo'><p id='Descripcion'>Descripcion: "+Jason[i]['descCurso']
-                                             +"</p></th><th id='cateCursillo'><p id='Categorias'>Categorias: "+Jason[i]['Categorias']
-                                             +"</p></th><th><p id='Avance'>Avance: "+prom+"</p></th></tr>");
+                                             +"</p></th><th id='descCursillo'><p id='Descripcion'> "+Jason[i]['descCurso']
+                                             +"</p></th><th id='cateCursillo'><p id='Categorias'>"+Jason[i]['Categorias']
+                                             +"</p></th><th><p id='Avance'>  "+prom+" %</p></th></tr>");
                    
                    // $("#titulos").append("<div class='cursos'><img src ='../JAVA/fotos.php?id="+Jason[i]['id_curso']+"' alt='fotoCurso' height='165' width='240'><br><p id="+Jason[i]['id_curso']+" class='titCursos' >"+Jason[i]['nombre']+"</p><br><p class='niveles'>Lvls:"+Jason[i]['cantidadNivelesCurso']+" </p></div>");
                 }
@@ -86,6 +86,7 @@ $(document).ready(function () {
         })
           
     }
+    
 
     function cursoEsp(_postID) {
         window.location.href = "Curso.html?id="+_postID;

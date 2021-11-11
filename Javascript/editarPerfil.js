@@ -203,7 +203,7 @@
                             console.log(Jason);
                             if(Jason==="success"){
                                 alert("Registro exitoso");
-                                window.location.href="Perfil.html";
+                                window.location.href="Login.php"
                             }
                             else
                                 alert(Jason.result);

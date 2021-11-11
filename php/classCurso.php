@@ -130,6 +130,28 @@ public function pagarCurso($json){
     }
 
 }
+
+public function cursoComprado($json){
+    $datos = json_decode($json,true);
+    //son los datos del json
+    $idAl = $_SESSION["idUser"];
+    $idCurso = $datos["idCurso"];
+    $query = "Call sp_alumnoInscrito($idAl,$idCurso);";
+
+    $post = parent::obtenerDatos($query);
+    if(isset($post[0]["terminado"])){
+        $terminado = $post[0]["terminado"];
+        $json = [
+            "terminado"=> $terminado
+        ];
+        return $json;
+    }
+    else{
+        $success="CursoNoReg";
+        return $success;
+    }
+
+}
 //Buscar un curso---------------------------------------------------------------------------------------------------
 public function buscarCurso($json){
     $datos = json_decode($json,true);
@@ -152,26 +174,21 @@ public function buscarCurso($json){
   
 }
 
-public function cursoComprado($json){
-    $datos = json_decode($json,true);
+public function traerTodosLosCursosAlumno(){
+    header('Content-Type: application/json');
+    $idAlumn=$_SESSION["idUser"];
+    
     //son los datos del json
-    $idAl = $_SESSION["idUser"];
-    $idCurso = $datos["idCurso"];
-    $query = "Call sp_alumnoInscrito($idAl,$idCurso);";
-
-    $post = parent::obtenerDatos($query);
-    if(isset($post[0]["terminado"])){
-        $terminado = $post[0]["terminado"];
-        $json = [
-            "terminado"=> $terminado
-        ];
-        return $json;
+    $query = "Call sp_obtenerCursosAlumno('$idAlumn');";
+    
+    $cursos = parent::obtenerDatos($query);
+    if(isset($cursos[0]["idCurso"])){           
+        return json_encode($cursos);
     }
     else{
-        $success="CursoNoReg";
+        $success="NoHayCursos";
         return $success;
     }
-
 }
 
 

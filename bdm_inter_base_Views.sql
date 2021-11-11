@@ -13,6 +13,12 @@ concat(usuarios.nombre, " ", usuarios.apellidos) as "Profesor", usuarios.idUser 
      curso.idCurso = tablaAsociativaCursoCategoria.idCurso left join cate_Curso 
     on tablaAsociativaCursoCategoria.idCateg = cate_Curso.idCateg
     group by curso.idCurso order by curso.idCurso desc;
+    
+create view losComentarios as
+select comentario.idComent,comentario.idCurso,usuarios.idUser,
+	usuarios.nombre, comentario.contenido, comentario.fechaPub
+	from usuarios join comentario on usuarios.idUser=comentario.idEstado
+    order by comentario.fechaPub;
 
 /*create view cursosCompletosVentas as
 select CursoCompleto.id_curso, CursoCompleto.Id_Prof, CursoCompleto.nombre, 

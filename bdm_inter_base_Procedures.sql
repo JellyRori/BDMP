@@ -219,6 +219,16 @@ end $$
 
 CALL `bdm_inter_base`.`sp_buscarCurso`("Curso de JQuery");
 
+drop procedure sp_obtenerCursosAlumno;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_obtenerCursosAlumno(in pIdAlumno int)
+begin
+select *
+from historial join CursoCompleto n on n.idCurso = historial.idCurso and historial.idEstado = pIdAlumno;
+end $$
+CALL `bdm_inter_base`.`sp_obtenerCursosAlumno`(2);
+
 #Procedure para registrar el historial de alumnos---------------------------------------------------------------------------------
 DELIMITER $$
 USE `bdm_inter_base`$$
@@ -276,6 +286,9 @@ begin
     select terminado from pagoCurso 
     where idUsuario=pIdAlumno and idCurso=pIdurso;
 end $$
+
+CALL `bdm_inter_base`.`sp_alumnoInscrito`(2, 2);
+
 
 #Procedure para el historial------------------------------------------------------------------------------------------------
 DROP PROCEDURE sp_MostrarHistorialAlumno;
@@ -342,4 +355,29 @@ begin
 	terminado = true
     where idUsuario = pIdEstado AND idCurso = IdCurso;
     END IF;
+end $$
+
+#Procedure para comentarios---------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_Comentario (
+	in pIdEstudiante int,
+    in pIdCurso int,  
+	in pMensaje varchar(250)
+    )
+begin
+    insert into comentario(idEstado, idCurso, contenido)
+    values(pIdEstudiante, pIdCurso, pMensaje);
+end $$
+
+ 
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_obtenerComentarios (
+	in pIdCurso int
+    )
+begin
+	select idUser,nombre, comentario,fechaPub 
+    from losComentarios  
+    where idCurso = pIdCurso order by fechaPub desc;
 end $$

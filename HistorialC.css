@@ -87,7 +87,9 @@ header{
       font-size: 14px;
       opacity: 1;
 }
-
+#tablaCursos{
+      color:#fff;
+    }
 @media (max-width: 768px){
       .table thead{
             display: none;

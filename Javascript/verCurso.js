@@ -17,7 +17,10 @@ $(document).ready(function () {
     $("#opciones").on("click", "#btnTarjeta", function () {
         comprarCurso();
     });
-    
+    $("#btnDiploma").on("click", "#btnDip", function () {
+        var idCurso = getQueryVariable("id");
+        CursoTerm(idCurso);
+    });
 function ocultarVerCursos(){
     var opc = 3;
     let Body = { opc }
@@ -42,8 +45,7 @@ function ocultarVerCursos(){
                     document.getElementById("imgAvatar").style.display = 'inline';
                     document.getElementById("logOut").style.display = 'inline';
                     document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
-                    document.getElementById("categUser").style.display = 'none';
-                    //document.getElementById("iniciaSes").style.display = 'none';  
+                    document.getElementById("categUser").style.display = 'none';  
                     document.getElementById("ventUser").style.display = 'none';
                     document.getElementById("nivelLista").style.display = 'none';
                     document.getElementById("listaNiveles").style.display = 'none';
@@ -83,12 +85,12 @@ function ocultarVerCursos(){
                document.getElementById("costoC").innerHTML = "Costo del curso: $"+obj['costo']+"<br> Cantidad de niveles: "+obj['cantidadNiveles'];
                document.getElementById("videoTrailer").src = obj['trailerCurso'];
                costo = obj['costo'];
-               if(obj['Media'] != null){
-                document.getElementById("Media").innerHTML = "Media del curso: " + obj['Media'];
-               }
-               else{
-               document.getElementById("Media").innerHTML = "Este curso no ha sido calificado";
-               }
+             //  if(obj['Media'] != null){
+             //   document.getElementById("Media").innerHTML = "Media del curso: " + obj['Media'];
+             //  }
+             //  else{
+             //  document.getElementById("Media").innerHTML = "Este curso no ha sido calificado";
+             //  }
 
                 mostrarNiveles();
             })
@@ -159,9 +161,9 @@ function ocultarVerCursos(){
             if(Jason=="CursoNoReg"){
                 document.getElementById("Compra").style.display = 'inline';
                 document.getElementById("listaNiveles").style.display = 'none';
-                //document.getElementById("califCurso").style.display = 'none';
+               /* document.getElementById("califCurso").style.display = 'none';*/
                 document.getElementById("progresoCur").style.display = 'none';
-                document.getElementById("abrir").style.display = 'none';
+                document.getElementById("btnDiploma").style.display = 'none';
                 
             }else{
                 if(Jason['terminado']!=""){
@@ -170,11 +172,12 @@ function ocultarVerCursos(){
                     document.getElementById("abrir").style.display = 'none';
                     document.getElementById("btn").disabled=false;
                     if(Jason['terminado']==true){
-                        document.getElementById("califCurso").style.display = 'inline';
-                        document.getElementById("abrir").style.display = 'inline';
+                       // document.getElementById("califCurso").style.display = 'inline';
+                        document.getElementById("btnDiploma").style.display = 'inline';
+                        
                     }else{
                         if(Jason['terminado']==false){
-                            //document.getElementById("btnDiploma").style.display = 'none';
+                            document.getElementById("btnDiploma").style.display = 'none';
                             //document.getElementById("califCurso").style.display = 'none';
                         }
                     }
@@ -184,6 +187,9 @@ function ocultarVerCursos(){
     }
 
     function nivelEsp(idNivel) {
+        window.location.href = "Nivel.html?id="+idNivel;
+    }
+    function CursoTerm(idNivel) {
         window.location.href = "Nivel.html?id="+idNivel;
     }
    /* function ocultarVerCurso() {
