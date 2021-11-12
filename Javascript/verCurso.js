@@ -21,6 +21,10 @@ $(document).ready(function () {
         var idCurso = getQueryVariable("id");
         CursoTerm(idCurso);
     });
+    $("#btnComentario").on("click", "#btn", function () {
+        debugger;
+        escribirComentario();
+    });
 function ocultarVerCursos(){
     var opc = 3;
     let Body = { opc }
@@ -186,83 +190,128 @@ function ocultarVerCursos(){
         })
     }
 
+    verLosComentarios();
+    function verLosComentarios(){
+        
+        var idCurso = getQueryVariable("id");
+        var opc=2;
+        let Body = { idCurso,opc }
+            
+        let jsonBody = JSON.stringify(Body);
+
+        fetch('php/elComentario.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            
+            var Jason =data;
+            console.log(Jason);
+            debugger;
+            $("#comentariosEchos").empty();
+            var comentariosEchos = document.getElementById("comentariosEchos");
+            if(data=="NoHayComentarios"){
+                alert("no hay comentarios disponibles");
+            }else{
+                for (var i in Jason){
+                    var div1 =document.createElement('div');
+                    div1.setAttribute("class","media");
+                    var img1 = document.createElement("img");
+                    img1.setAttribute("src","Javascript/fotosDeComentarios.php?id="+Jason[i]["idUser"]);
+                    img1.setAttribute("class","ImagenPerfil");
+                    img1.setAttribute("alt","...");
+                    var div2 =document.createElement('div');
+                    div2.setAttribute("class","media-body");
+                    
+                    var h5 = document.createElement("h5");
+                    h5.setAttribute("class","Comentario");
+                    h5.innerHTML =Jason[i]["nombre"];
+    
+                    var p1 = document.createElement("p");
+                    p1.setAttribute("class","text-com");
+                    p1.innerHTML =Jason[i]["contenido"];
+    
+                    div2.appendChild(h5);
+                    div2.appendChild(p1);
+                    div1.appendChild(img1);
+                    div1.appendChild(div2);
+                   
+                    comentariosEchos.appendChild(div1);
+                }
+            }  
+ 
+        })
+       
+    }
+
+    function escribirComentario(){
+        var comentario = document.getElementById("ComentarioID").value;
+        var idCurso = getQueryVariable("id");
+        var opc=1;
+        $('#ComentarioID').val('');
+
+        if(comentario != ""){
+            let Body = { comentario,idCurso,opc }
+            
+            let jsonBody = JSON.stringify(Body);
+    
+            fetch('php/elComentario.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                
+                var Jason =data;
+                console.log(Jason);
+                debugger;
+                    
+                $("#comentariosEchos").empty();
+                var comentariosEchos = document.getElementById("comentariosEchos");
+                if(data=="NoHayComentarios"){
+                    alert("no hay comentarios disponibles");
+                }else{
+                    for (var i in Jason){
+                        var div1 =document.createElement('div');
+                        div1.setAttribute("class","media");
+                        var img1 = document.createElement("img");
+                        img1.setAttribute("src","Javascript/fotosDeComentarios.php?id="+Jason[i]["idUser"]);
+                        img1.setAttribute("class","ImagenPerfil");
+                        img1.setAttribute("alt","...");
+                        var div2 =document.createElement('div');
+                        div2.setAttribute("class","media-body");
+                        
+                        var h5 = document.createElement("h5");
+                        h5.setAttribute("class","Comentario");
+                        h5.innerHTML =Jason[i]["nombre"];
+        
+                        var p1 = document.createElement("p");
+                        p1.setAttribute("class","text-com");
+                        p1.innerHTML =Jason[i]["contenido"];
+        
+                        div2.appendChild(h5);
+                        div2.appendChild(p1);
+                        div1.appendChild(img1);
+                        div1.appendChild(div2);
+                       
+                        comentariosEchos.appendChild(div1);
+                    }
+                }  
+     
+            })
+        }
+       else{
+        window.alert("Escriba algo antes de comentar")
+       }
+
+    }
+
     function nivelEsp(idNivel) {
         window.location.href = "Nivel.html?id="+idNivel;
     }
     function CursoTerm(idNivel) {
         window.location.href = "Nivel.html?id="+idNivel;
     }
-   /* function ocultarVerCurso() {
-        var opc = 3;
-        let Body = { opc }
-        let jsonBody = JSON.stringify(Body)
-        fetch('../php/usuario.php', { method: "POST", header: { 'Content-Type': 'application/json' }, body: jsonBody })
-            .then(response => {
-                return response.text();
-            })
-            .then(data => {
-                var Jason = data;
-                var obj = JSON.parse( Jason);
-                  
-                if(obj['esMaestro']==true){
-                    document.getElementById("imgAvatarUsuario").style.display = 'inline';
-                    document.getElementById("cerrarSes").style.display = 'inline';
-                    document.getElementById("imgAvatarUsuario").src = "../php/profilePicture.php";
-                    document.getElementById("iniciaSes").style.display = 'none';  
-                    document.getElementById("navHistorial").style.display = 'none';
-                    document.getElementById("datosForAlumno").style.display = 'none';
-                    
-                }else{
-                    if(obj['esMaestro']==false){
-                        document.getElementById("imgAvatarUsuario").style.display = 'inline';
-                        document.getElementById("cerrarSes").style.display = 'inline';
-                        document.getElementById("imgAvatarUsuario").src = "../php/profilePicture.php";
-                        document.getElementById("iniciaSes").style.display = 'none';  
-                        document.getElementById("navVentas").style.display = 'none';
-                        //aqui se manda a llamar la confirmacion de si tiene el curso
-                        cursoComprado();
-                    }else{
-                        document.getElementById("comprarCurso").style.display = 'inline';
-                        document.getElementById("califCurso").style.display = 'none';
-                        document.getElementById("nivelesCurso").style.display = 'none';
-                        document.getElementById("progresoCur").style.display = 'none';
-                    }
-                }
-                mostrarUnCurso();       
-            })
-    }
-    ocultarVerCurso();
-    function mostrarUnCurso() {
-        debugger;
-        var _postID = getQueryVariable("id");
-        var opc = 2;
-        let Body = { opc, _postID}
-        console.log(_postID);
-        let jsonBody = JSON.stringify(Body)
-        fetch('../php/cursos.php', { method: "POST", header: { 'Content-Type': 'application/json' }, body: jsonBody })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                debugger;
-               var obj = data;
-               document.getElementById("titulo").innerHTML = obj['nombre'];
-               document.getElementById("titulo2").innerHTML = obj['profeCurso'];
-               document.getElementById("titulo3").innerHTML = obj['categorias'];
-               document.getElementById("verdaderaDescripcion").innerHTML = obj['descripcion'];
-               document.getElementById("costoCantlvls").innerHTML = "Costo del curso: $"+obj['costo']+"<br> Cantidad de niveles: "+obj['cantidadNiveles'];
-               document.getElementById("videoCursoAct").src = obj['trailerCurso'];
-               costo = obj['costo'];
-               if(obj['Media'] != null){
-                document.getElementById("Media").innerHTML = "Media del curso: " + obj['Media'];
-               }
-               else{
-               document.getElementById("Media").innerHTML = "Este curso no ha sido calificado";
-               }
-
-                mostrarNiveles();
-            })
-    }*/
+   
 
     
 });

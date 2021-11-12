@@ -370,14 +370,26 @@ begin
     values(pIdEstudiante, pIdCurso, pMensaje);
 end $$
 
- 
+ drop procedure sp_obtenerComentarios;
 DELIMITER $$
 USE `bdm_inter_base`$$
-create procedure sp_obtenerComentarios (
+create procedure sp_obtenerComentarios(
 	in pIdCurso int
     )
 begin
-	select idUser,nombre, comentario,fechaPub 
+	select idUser,nombre,contenido,fechaPub 
     from losComentarios  
     where idCurso = pIdCurso order by fechaPub desc;
 end $$
+CALL `bdm_inter_base`.`sp_obtenerComentarios`(4);
+
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_FotoComents(
+in pIdImgUser int)
+begin
+	select foto
+    from usuarios where idUser=pIdImgUser;
+end $$
+CALL `bdm_inter_base`.`sp_FotoComents`(2);

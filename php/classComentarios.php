@@ -30,6 +30,22 @@ require_once "conection.php";
             }
         }
 
+        public function obtenerLosComentarios($json){
+            header('Content-Type: application/json');
+            $datos = json_decode($json,true);
+            $curso = $datos["idCurso"];
+            //son los datos del json
+            $query2 = "Call sp_obtenerComentarios($curso);";
+            $comentarios = parent::obtenerDatos($query2);
+                
+            if(isset($comentarios[0]["idUser"])){           
+                return json_encode($comentarios);
+            }else{
+                $success="NoHayComentarios";
+                return $success;
+            }
+        }
+
         /*
            public function getAllComentarios($json){
             header('Content-Type: application/json');
