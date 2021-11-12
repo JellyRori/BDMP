@@ -25,6 +25,23 @@ $(document).ready(function () {
         debugger;
         escribirComentario();
     });
+
+    $("#califCurso").on("click", ".C", function () {
+        calificarCurso(1);
+    });
+    $("#califCurso").on("click", ".C1", function () {
+        calificarCurso(2);
+    });
+    $("#califCurso").on("click", ".C2", function () {
+        calificarCurso(3);
+    });
+    $("#califCurso").on("click", ".C3", function () {
+        calificarCurso(4);
+    });
+    $("#califCurso").on("click", ".C4", function () {
+        calificarCurso(5);
+    });
+    
 function ocultarVerCursos(){
     var opc = 3;
     let Body = { opc }
@@ -310,6 +327,32 @@ function ocultarVerCursos(){
     }
     function CursoTerm(idNivel) {
         window.location.href = "Nivel.html?id="+idNivel;
+    }
+
+    function calificarCurso(numero){
+        var idCurso = getQueryVariable("id");
+        var opc=12;
+        var cal = numero;
+        let Body = { idCurso,opc,cal }
+        let jsonBody = JSON.stringify(Body);
+    
+        fetch('php/cursos.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
+        .then(response => {
+             return response.text();
+        })
+        .then(data => {
+            var Jason =data;
+            console.log(Jason);
+            if(Jason==="success"){
+                alert("Curso caliicado con éxito");
+                ocultarVerCurso();
+            }
+            else{
+    
+                alert(Jason.result)
+            }
+        })
+        
     }
    
 

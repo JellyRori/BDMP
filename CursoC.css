@@ -227,3 +227,9 @@ h2{
 }
 
 
+.C,.C1,.C2,.C3,.C4 {
+      margin-left: 5%;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+  }

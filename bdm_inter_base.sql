@@ -138,6 +138,7 @@ select*from comentario;
 select*from historial;
 select*from mensajes;
 select * from pagoCurso;
+select * from cursoCalificacion;
 
 truncate table nivel;
 

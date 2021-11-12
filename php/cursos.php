@@ -24,7 +24,7 @@ $_curso = new Cursos;
     if($datos["opc"]==6){
         header('Content-Type: application/json');
         $jala = $_curso->pagarCurso($postbody);
-        header('Content-Type: application/json');// devuelve un json
+        header('Content-Type: application/json');
         echo $jala;
         json_encode($jala);
     }
@@ -49,6 +49,18 @@ $_curso = new Cursos;
     if($datos["opc"]==10){
         header('Content-Type: application/json');
         $jala = $_curso->traerTodosLosCursosAlumno();
+        echo $jala;
+    }
+    if($datos["opc"]==12){
+        header('Content-Type: application/json');
+        $jala = $_curso->calificarCurso($postbody);
+        header('Content-Type: application/json');
+        echo $jala;
+        json_encode($jala);
+    }
+    if($datos["opc"]==13){
+        header('Content-Type: application/json');
+        $jala = $_curso->Destacados();
         echo $jala;
     }
 

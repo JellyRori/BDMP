@@ -191,6 +191,39 @@ public function traerTodosLosCursosAlumno(){
     }
 }
 
+public function calificarCurso($json){
+    $datos = json_decode($json,true);
+    //son los datos del json
+    $idAl = $_SESSION["idUser"];
+    $idCurso = $datos["idCurso"];
+    $calCurso = $datos["cal"];
+
+    $query = "Call sp_CalificarCurso($idAl,$idCurso, $calCurso);";
+
+    $verificacion = parent::rowsAfectados($query);
+    if($verificacion == 1){
+        $success="success";
+        return $success;    
+    }else{
+        $success="fail";
+        return parent::Error(); 
+    }
+
+}
+
+public function Destacados(){
+    header('Content-Type: application/json');
+    $query = "Call sp_CursosMejorCalificacion();";            
+    $cursos = parent::obtenerDatos($query);
+    if(isset($cursos[0]["idCurso"])){           
+        return json_encode($cursos);
+    }
+    else{
+        $success="NoHayCursos";
+        return $success;
+    }
+
+}
 
 }
 

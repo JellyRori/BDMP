@@ -180,7 +180,7 @@ begin
     from CursoCompleto left join cursoCalificacion on CursoCompleto.idCurso=cursoCalificacion.idCursoCalif
     where CursoCompleto.idCurso = pIdCurso;
 end $$
-CALL `bdm_inter_base`.`sp_DatosCurso`(5);
+CALL `bdm_inter_base`.`sp_DatosCurso`(4);
 
 #Procedure para obetner la lista de niveles-------------------------------------------------------------------------------
 DELIMITER $$
@@ -393,3 +393,30 @@ begin
     from usuarios where idUser=pIdImgUser;
 end $$
 CALL `bdm_inter_base`.`sp_FotoComents`(2);
+
+#Procedure para calificar curso------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_CalificarCurso(
+in pIdAlumno BIGINT UNSIGNED,
+ in pIdCurso BIGINT UNSIGNED,
+ in pCalif int)
+begin
+insert into cursoCalificacion
+set idUsAlumnoCalif = pIdAlumno, idCursoCalif = pIdCurso, resultado = pCalif;
+end $$
+
+drop procedure sp_CursosMejorCalificacion;
+ DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE PROCEDURE sp_CursosMejorCalificacion()
+BEGIN
+SELECT idCurso, Clave_Profesor, nomCurso, 
+	descCurso, videoMuestra,costo,
+   cantNivel, cursosComprados,calificacion FROM cursosCompletosVentas
+ORDER BY calificacion DESC 
+LIMIT 4;
+END$$
+CALL `bdm_inter_base`.`sp_CursosMejorCalificacion`();
+
+
