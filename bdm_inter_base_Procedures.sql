@@ -251,6 +251,7 @@ begin
     values(pIdEstado, pIdCurso, 0);
 end $$
 delimiter $$
+USE `bdm_inter_base`$$
 create procedure sp_revisarFinalizacion (
 	in  pIdEstado BIGINT UNSIGNED,
     in pIdNivel BIGINT UNSIGNED
