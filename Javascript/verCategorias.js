@@ -19,15 +19,15 @@ $(document).ready(function () {
                     $("#Creadas").append("<p >Ninguna categoría ha sido creada</p>");
                 }else{
                     for (var i in Jason) {
-                        $("#Creadas").append("<li id='" + Jason[i]['idCateg'] + "'class='Categoria'>" + Jason[i]['nomCateg'] + "</li>");
+                        $("#Creadas").append("<li id='" + Jason[i]['ClaveCategoria'] + "'class='Categoria'>" + Jason[i]['nombreCategoria'] + "</li>");
                     }
                     for (var i in Jason) {
                         //$("#menuCateg").append("<li id='" + Jason[i]['idCateg'] + "'class='Categoria'>" + Jason[i]['nomCateg'] + "</li>");
-                        $("#menuCateg").append("<li id='" + Jason[i]['idCateg'] + "'class='Categoria'> <a href='Categoria.html'>" + Jason[i]['nomCateg'] + "</a></li>");
+                        $("#menuCateg").append("<li id='" + Jason[i]['ClaveCategoria'] + "'class='Categoria'> <a href='Categoria.html'>" + Jason[i]['nombreCategoria'] + "</a></li>");
                     }
                     for (var i in Jason) {
                         //$("#menuCateg").append("<li id='" + Jason[i]['idCateg'] + "'class='Categoria'>" + Jason[i]['nomCateg'] + "</li>");
-                        $("#menuCategIndex").append("<li id='" + Jason[i]['idCateg'] + "'class='Categoria'> <a href='Categoria.html'>" + Jason[i]['nomCateg'] + "</a></li>");
+                        $("#menuCategIndex").append("<li id='" + Jason[i]['ClaveCategoria'] + "'class='Categoria'> <a href='Categoria.html'>" + Jason[i]['nombreCategoria'] + "</a></li>");
                     }
                 }
             })

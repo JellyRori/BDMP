@@ -60,6 +60,10 @@ function ocultarVerCursos(){
                 //document.getElementById("iniciaSes").style.display = 'none';  
                 document.getElementById("histUser").style.display = 'none';
                // document.getElementById("datosForAlumno").style.display = 'none';
+               document.getElementById("Compra").style.display = 'none';
+               document.getElementById("btnDiploma").style.display = 'none';
+               document.getElementById("dip").style.display = 'none';
+               document.getElementById("califCurso").disabled=true;
                 
             }else{
                 if(obj['rol']==false){
@@ -183,8 +187,11 @@ function ocultarVerCursos(){
                 document.getElementById("Compra").style.display = 'inline';
                 document.getElementById("listaNiveles").style.display = 'none';
                /* document.getElementById("califCurso").style.display = 'none';*/
-                document.getElementById("progresoCur").style.display = 'none';
+                //document.getElementById("progresoCur").style.display = 'none';
                 document.getElementById("btnDiploma").style.display = 'none';
+                document.getElementById("dip").style.display = 'none';
+                document.getElementById("califCurso").disabled=true;
+                document.getElementById("califCurso").style.display = 'none';
                 
             }else{
                 if(Jason['terminado']!=""){
@@ -192,6 +199,10 @@ function ocultarVerCursos(){
                     document.getElementById("listaNiveles").style.display = 'inline';
                     document.getElementById("abrir").style.display = 'none';
                     document.getElementById("btn").disabled=false;
+                    document.getElementById("btnDiploma").style.display = 'none';
+                    document.getElementById("dip").style.display = 'none';
+                    document.getElementById("califCurso").disabled=true;
+                    
                     if(Jason['terminado']==true){
                        // document.getElementById("califCurso").style.display = 'inline';
                         document.getElementById("btnDiploma").style.display = 'inline';
@@ -326,7 +337,7 @@ function ocultarVerCursos(){
         window.location.href = "Nivel.html?id="+idNivel;
     }
     function CursoTerm(idNivel) {
-        window.location.href = "Nivel.html?id="+idNivel;
+        window.location.href = "certificado.html?id="+idNivel;
     }
 
     function calificarCurso(numero){
@@ -355,6 +366,5 @@ function ocultarVerCursos(){
         
     }
    
-
     
 });

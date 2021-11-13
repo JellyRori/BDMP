@@ -19,17 +19,22 @@ select comentario.idComent,comentario.idCurso,usuarios.idUser,
 	usuarios.nombre, comentario.contenido, comentario.fechaPub
 	from usuarios join comentario on usuarios.idUser=comentario.idEstado
     order by comentario.fechaPub;
-    
-    
-    
+
+drop view cursosCompletosVentas;
 create view cursosCompletosVentas as
 select CursoCompleto.idCurso, CursoCompleto.Clave_Profesor, CursoCompleto.nomCurso, 
 	CursoCompleto.descCurso, CursoCompleto.videoMuestra, CursoCompleto.costo,
-    CursoCompleto.cantNivel, count(pagoCurso.idCurso) as "cursosComprados", 
+    CursoCompleto.cantNivel, count(pagoCurso.idCurso) as "cursosComprados", coalesce(CursoCompleto.costo * (count(pagoCurso.idCurso) )) as "TotalVentas",
     avg(cursoCalificacion.resultado) as "calificacion" 
 	from CursoCompleto join pagoCurso on CursoCompleto.idCurso=pagoCurso.idCurso
 	left join cursoCalificacion on CursoCompleto.idCurso=cursoCalificacion.idCursoCalif
     group by CursoCompleto.idCurso;
+    
+    
+create view lasCategorias as
+select cate_Curso.idCateg as "ClaveCategoria",cate_Curso.nomCateg as "nombreCategoria",cate_Curso.descCateg as "descripion",
+		cate_Curso.idUsCat as "ClaveDeUsuario", cate_Curso.fechaCreat as "FechaDeCreacion",cate_Curso.activa from cate_Curso
+        order by nomCateg;
 
 /*create view cursosCompletosVentas as
 select CursoCompleto.id_curso, CursoCompleto.Id_Prof, CursoCompleto.nombre, 

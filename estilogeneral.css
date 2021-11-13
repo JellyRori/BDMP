@@ -153,8 +153,19 @@ header{
   width: 18vw;
 }
 
-.tabla{
-  margin-left: 15px;
+#Destacados{
+  margin: 10px;
+}
+
+.titCursos{
+  color: #00A1FF;
+}
+
+.Puntaje,.niveles,.Catcur{
+  color:#FFFFFF;
 }
 
 
+#cursos2{
+  margin-right: 30px;
+}

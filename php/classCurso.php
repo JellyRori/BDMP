@@ -225,6 +225,20 @@ public function Destacados(){
 
 }
 
+public function Vendidos(){
+    header('Content-Type: application/json');
+    $query = "Call sp_CursosMasVendidos();";            
+    $cursos = parent::obtenerDatos($query);
+    if(isset($cursos[0]["idCurso"])){           
+        return json_encode($cursos);
+    }
+    else{
+        $success="NoHayCursos";
+        return $success;
+    }
+
+}
+
 }
 
 

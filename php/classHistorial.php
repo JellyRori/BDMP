@@ -52,6 +52,22 @@ class Historial extends conexion{
         }
     }
 
+    public function verVentasUsuario(){
+        header('Content-Type: application/json');
+        $ventaMaestro=$_SESSION["idUser"];
+        //son los datos del json
+        $query = "Call sp_VentasMaestro('$ventaMaestro');";
+        
+        $cursos = parent::obtenerDatos($query);
+        if(isset($cursos[0]["idCurso"])){           
+            return json_encode($cursos);
+        }
+        else{
+            $success="NoHayCursos";
+            return $success;
+        }
+    }
+
 }
 
 ?>

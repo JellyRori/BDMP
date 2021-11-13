@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     navUsuario();
     MostrarDestacados();
+    MostrarMasVendidos();
     buscar();
     $("body").on("click", "#btnBuscar", function () {
         buscar();
@@ -112,8 +113,36 @@ $( document ).ready(function() {
                 $("#hayCursos").append("<p>No hay cursos destacados</p>");
             }else{
                 for (var i in Jason) { 
-                    $("#Destacados").append("<th id='cursos'><div class='cursos'><img class='IMG' src='Javascript/fotosDelCursoP.php?id="+Jason[i]['idCurso']+"' alt='fotoCurso'><p id="+Jason[i]['idCurso']+" class='titCursos' >"+Jason[i]['nomCurso']+"</p><p class='niveles'>Lvls: "+Jason[i]['cantNivel']+"</p></div></th>");
+                    $("#Destacados").append("<th id='cursos2'><div class='cursos'><img class='IMG' src='Javascript/fotosDelCursoP.php?id="
+                    +Jason[i]['idCurso']+"' alt='fotoCurso'><p id="+Jason[i]['idCurso']+
+                    " class='titCursos'>"+Jason[i]['nomCurso']+"</p><p class='Puntaje'>puntaje: "+Jason[i]['calificacion']+
+                    "</p></div></th>");
  
+                }
+            }
+        })
+          
+    }
+
+    function MostrarMasVendidos() {
+        var opc = 14;
+        let Body = { opc }
+        let jsonBody = JSON.stringify(Body)
+        console.log(jsonBody);
+        fetch('php/cursos.php', { method: "POST", header: { 'Content-Type': 'application/json' }, body: jsonBody })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {                
+            var Jason = data;
+            console.log(data);
+            
+            if(data=="NoHayCursos"){
+                $("#hayCursos").append("<p>No hay cursos destacados</p>");
+            }else{
+                for (var i in Jason) { 
+                    $("#Vendidos").append("<th id='cursos'><div class='cursos'><img class='IMG' src='Javascript/fotosDelCursoP.php?id="+Jason[i]['idCurso']+"' alt='fotoCurso' height='130' width='215'><p id="+Jason[i]['idCurso']+" class='titCursos' >"+Jason[i]['nomCurso']+"</p><p class='niveles'>Lvls: "+Jason[i]['cantNivel']+"</p></div></th>");
+
                 }
             }
         })

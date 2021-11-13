@@ -63,5 +63,10 @@ $_curso = new Cursos;
         $jala = $_curso->Destacados();
         echo $jala;
     }
+    if($datos["opc"]==14){
+        header('Content-Type: application/json');
+        $jala = $_curso->Vendidos();
+        echo $jala;
+    }
 
 ?>

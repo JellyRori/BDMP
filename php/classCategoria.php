@@ -26,11 +26,11 @@
             header('Content-Type: application/json');
             
             //son los datos del json
-            $query = "call sp_obtenCategoria();";
+            $query = "call sp_verCategorias();";
             
             $categorias = parent::obtenerDatos($query);
         
-            if(isset($categorias[0]["nomCateg"])){           
+            if(isset($categorias[0]["nombreCategoria"])){           
                 return json_encode($categorias);
             }
             else{

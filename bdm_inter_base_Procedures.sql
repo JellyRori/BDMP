@@ -70,6 +70,16 @@ begin
     from cate_Curso;
 end $$
 
+drop procedure sp_verCategorias;
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_verCategorias()
+begin
+	select ClaveCategoria,nombreCategoria
+    from lasCategorias;
+end $$
+CALL `bdm_inter_base`.`sp_verCategorias`();
+
 #Procedure para registrar cursos------------------------------------------------------------------------------------------------------------------
 DROP PROCEDURE sp_subirrCurso;
 DELIMITER $$
@@ -418,5 +428,28 @@ ORDER BY calificacion DESC
 LIMIT 4;
 END$$
 CALL `bdm_inter_base`.`sp_CursosMejorCalificacion`();
+
+drop procedure sp_CursosMasVendidos;
+ DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE PROCEDURE sp_CursosMasVendidos()
+BEGIN
+SELECT idCurso,Clave_Profesor,nomCurso,descCurso,videoMuestra,costo,cantNivel,cursosComprados,TotalVentas,calificacion FROM cursosCompletosVentas
+ORDER BY cursosComprados DESC 
+LIMIT 4;
+END$$
+CALL `bdm_inter_base`.`sp_CursosMasVendidos`();
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+CREATE PROCEDURE sp_VentasMaestro(
+in pIdUser bigint unsigned)
+BEGIN
+SELECT idCurso,Clave_Profesor,nomCurso,descCurso,videoMuestra,costo,cantNivel,cursosComprados,TotalVentas,calificacion FROM cursosCompletosVentas
+where Clave_Profesor = pIdUser
+ORDER BY cursosComprados DESC;
+END$$
+
+CALL `bdm_inter_base`.`sp_VentasMaestro`(1);
 
 

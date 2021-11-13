@@ -1,0 +1,40 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+body{
+    width: 100%;
+    height:auto;
+    overflow: hidden;
+    background-color: #c4a1a2;
+
+}
+
+.content-wrapper{
+    width: 90%;
+    margin: 4% 10% 5% 10%;
+    margin-left: 25%;
+}
+
+.content-wrapper img{
+    width:100%;
+}
+
+.text-wrapper{
+    width: 100%;
+    position: relative;
+    margin-top: -40%;
+}
+
+.text-wrapper h1{
+    text-align: center;
+    color: #ffffff;
+    font-size: 20vw;
+}
+
+a{
+    margin-left: 45%;
+    color:rgb(121, 39, 39);
+    font-size: 25px;
+}

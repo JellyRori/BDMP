@@ -27,5 +27,12 @@ $_Historial = new Historial;
         echo $jala;
         json_encode($jala); 
     }
+    if($datos["opc"]==4){
+        header('Content-Type: application/json');
+        $jala = $_Historial->verVentasUsuario($postbody);
+        header('Content-Type: application/json');//le dices que devuelve un json
+        echo $jala;
+        json_encode($jala); 
+    }
 
 ?>

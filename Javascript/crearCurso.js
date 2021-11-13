@@ -88,8 +88,8 @@ $(document).ready(function () {
                     //<p class="Categoria">Categoria 1</p>
                 }else{
                     for (var i in Jason) {
-                        $("#cate1").append("<option value='"+ Jason[i]['idCateg'] +"' >"+ Jason[i]['nomCateg'] +"</option>");
-                        $("#cate2").append("<option value='"+ Jason[i]['idCateg'] +"' >"+ Jason[i]['nomCateg'] +"</option>");
+                        $("#cate1").append("<option value='"+ Jason[i]['ClaveCategoria'] +"' >"+ Jason[i]['nombreCategoria'] +"</option>");
+                        $("#cate2").append("<option value='"+ Jason[i]['ClaveCategoria'] +"' >"+ Jason[i]['nombreCategoria'] +"</option>");
                        
                     }
                 }
