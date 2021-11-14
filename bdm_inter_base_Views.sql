@@ -4,16 +4,28 @@ select usuarios.idUser as "Clave", usuarios.nombre, usuarios.apellidos, usuarios
 from usuarios where rol = 1 group by usuarios.idUser order by usuarios.apellidos desc;
 
 #Procedure para traer los datos de los cursos-----------------------------------------------------------------------------------------
+drop view CursoCompleto;
 create view CursoCompleto as
 select curso.idCurso, curso.nomCurso,curso.descCurso,curso.videoMuestra,curso.costo,
 cantNivel, group_concat(cate_Curso.nomCateg) as "Categorias",
-concat(usuarios.nombre, " ", usuarios.apellidos) as "Profesor", usuarios.idUser as "Clave_Profesor"
+concat(usuarios.nombre, " ", usuarios.apellidos) as "Profesor", now() as "FechaConcluido", usuarios.idUser as "Clave_Profesor"
     from usuarios join curso on usuarios.idUser = curso.idUsEsc
     left join  tablaAsociativaCursoCategoria on  
      curso.idCurso = tablaAsociativaCursoCategoria.idCurso left join cate_Curso 
     on tablaAsociativaCursoCategoria.idCateg = cate_Curso.idCateg
     group by curso.idCurso order by curso.idCurso desc;
-    
+   SELECT `cursocompleto`.`idCurso`,
+    `cursocompleto`.`nomCurso`,
+    `cursocompleto`.`descCurso`,
+    `cursocompleto`.`videoMuestra`,
+    `cursocompleto`.`costo`,
+    `cursocompleto`.`cantNivel`,
+    `cursocompleto`.`Categorias`,
+    `cursocompleto`.`Profesor`,
+    `cursocompleto`.`FechaConcluido`,
+    `cursocompleto`.`Clave_Profesor`
+FROM `bdm_inter_base`.`cursocompleto`;
+ 
 create view losComentarios as
 select comentario.idComent,comentario.idCurso,usuarios.idUser,
 	usuarios.nombre, comentario.contenido, comentario.fechaPub

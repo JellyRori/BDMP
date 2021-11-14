@@ -152,6 +152,36 @@ public function cursoComprado($json){
     }
 
 }
+
+//para el diploma---------------------------------------------------------------------------------------------------
+public function diploCurso($json){
+    $datos = json_decode($json,true);           
+    $idCurso = $datos["idCurso"];
+    $query = "Call sp_diploCurso($idCurso);";            
+    $post = parent::obtenerDatos($query);
+    if(isset($post[0]["nomCurso"])){
+        $NomAl = $_SESSION["nombre"];
+        $NomAl .= " ";
+        $NomAl .= $_SESSION["apellidos"];
+        $name = $post[0]["nomCurso"];
+        $NomProf = $post[0]["Profesor"];
+        $fechaConclusion = $post[0]["FechaConcluido"];
+      
+        $json = [
+            "nombreAlumno" => $NomAl,
+            "nombre" => $name,   
+            "nombreProfesor" => $NomProf,
+            "fechaConclusiones"=>$fechaConclusion
+
+        ];
+             
+        return $json;
+    }
+    else{
+        $success="CursoNoEncontrado";
+        return parent::Error();
+    }
+}
 //Buscar un curso---------------------------------------------------------------------------------------------------
 public function buscarCurso($json){
     $datos = json_decode($json,true);

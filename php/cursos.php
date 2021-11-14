@@ -41,11 +41,11 @@ $_curso = new Cursos;
  
         echo $jala;
     }
-    /*if($datos["opc"]==9){
+    if($datos["opc"]==9){
         header('Content-Type: application/json');
-        $jala = $_curso->ObtNomsCurso($postbody); 
+        $jala = $_curso->diploCurso($postbody); 
         echo json_encode($jala);
-    }*/
+    }
     if($datos["opc"]==10){
         header('Content-Type: application/json');
         $jala = $_curso->traerTodosLosCursosAlumno();

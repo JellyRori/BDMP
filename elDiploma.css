@@ -1,0 +1,53 @@
+#contenidoCentral {
+    margin: 8%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-top: 15%;
+   
+}
+
+#textoGracias {
+    color: rgb(214, 203, 240);
+    text-align: center;
+    background-image: linear-gradient(#00008b, #000433);
+    border-color: #6495ed;
+}
+
+.agradecimiento,.agradecimiento2 {
+    font-size: xx-large;
+}
+
+.nombreCursoMaestro {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#desDiploma {
+    display: flex;
+    text-align: right;
+    margin-top: 10%;
+    margin-left: 58%;
+    color: rgb(92, 84, 112);
+}
+
+#dip {
+    margin-top: 2%;
+}
+
+#descargarbtn {
+    margin-top:10px;
+    margin-left:10px;
+    background-color: rgb(238, 235, 245);
+    border-radius: 6px;
+    padding: 2%;
+    color: rgb(44, 38, 59);
+    height: 44px;
+    width: 115px;
+}
+
+body{
+
+    background: url('Imagenes/Head.jpg') no-repeat fixed center center;
+    background-size: cover;
+}
+
