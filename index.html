@@ -10,8 +10,8 @@
   <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="Javascript/jquery-2.1.4.min.js"></script>
-  <script src="Javascript/verCategorias.js"></script>
+<script src="Javascript/navBarElements.js"></script>
+	<script src="Javascript/verCategorias.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="estilogeneral.css">
@@ -73,12 +73,23 @@
   </header>
 
   <main>
-  	<section class="services contenedor" id="recientes">
-  		<h1 class="subtitulo"> Cursos Recientes </h1>
-  		<div class="contenedor-servicio"> 
+	<section class="services contenedor" id="recientes">
+		
+	
+		
+		<h1 class="subtitulo"> Cursos Destacados </h1>
+		<table class="tabla">
+		  <tr> <th class="Catcur">Mejores calificados</th></tr>
+		  <tr id="Destacados"></tr>
+		</table>
 
-  		</div>
-  	</section>
+		<h1 class="subtitulo"> Cursos Mas Vendidos </h1>
+		<table class="tabla">
+		  <tr> <th class="Catcur">Mas vendidos</th></tr>
+		  <tr id="Vendidos"></tr>
+		</table>
+
+	</section>
 
 <section class="gallery" id="galeria"> 
 	<div class="contenedor"> 

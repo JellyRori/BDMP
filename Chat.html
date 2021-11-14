@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie-edge">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="footer.css">
+	<script src="Javascript/jquery-2.1.4.min.js"></script>
+	<script src="Javascript/mensajes.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,46 +25,65 @@
 <body>
 
 	<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">Art & Learn</a>
-    </div>
-     <ul class="nav navbar-nav">
-     <!-- <li class="active"><a href="#">Home</a></li>-->
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="index.html">Reciente</a></li>
-          <li><a href="index.html">Populares</a></li>
-          <li><a href="index.html">Galeria</a></li>
-          <li><a href="Perfil.html">Contacto</a></li>
-        </ul>
-      </li>
-     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="Categoria.html">Bootstrap</a></li>
-          <li><a href="Categoria.html">CSS</a></li>
-          <li><a href="Categoria.html">JavaScript</a></li>
-          <li><a href="Categoria.html">HTML</a></li>
-          <li><a href="Categoria.html">PHP</a></li>
-          <li><a href="Categoria.html">BDMM</a></li>
-          
-        </ul>
-      </li>
-    </ul>
-    <form class="navbar-form navbar-left" action="Busqueda.html">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-     <button type="submit" class="btn btn-default">Submit</button>
-
-
-    </form>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="Registro.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="indexLoged.html">Art & Learn</a>
+		  </div>
+		  <ul class="nav navbar-nav">
+		   <!-- <li class="active"><a href="#">Home</a></li>-->
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+			  <ul class="dropdown-menu">
+				<li><a href="#recientes">Reciente</a></li>
+				<li><a href="#populares">Populares</a></li>
+				<li><a href="#galeria">Galeria</a></li>
+				<li><a href="Perfil.html">Contacto</a></li>
+			  </ul>
+			</li>
+	  
+	  
+		  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img id="imgAvatar" src="Imagenes/Erencio.jpg" alt="avatarUs" width="25"
+			  height="25"><span class="caret"></span></a>
+			  
+			  <ul class="dropdown-menu">
+				<li><a href="Historial.html"     id="histUser">Historial</a></li>
+				<li><a href="misCursos.html"  id="misCursos">Mis Cursos</a></li>
+				<li><a href="Ventas.html"        id="ventUser">Ventas</a></li>
+				<li><a href="Chat.html"          id="chatUser">Chat</a></li>
+				<li><a href="Perfil.html"        id="perfilUser">Perfil</a></li>
+				<li><a href="CrearCate.html"      id="categUser">Agregar Categoria</a></li>
+				<li><a href="AgregarCurso.html"  id="cursoUser">Agregar-Curso</a></li>
+			  </ul>
+			</li>
+	  
+	  
+	  
+		   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
+			  <ul class="dropdown-menu" id="menuCateg">
+				<!--<li><a href="Categoria.html">Bootstrap</a></li>
+				<li><a href="Categoria.html">CSS</a></li>
+				<li><a href="Categoria.html">JavaScript</a></li>
+				<li><a href="Categoria.html">HTML</a></li>
+				<li><a href="Categoria.html">PHP</a></li>
+				<li><a href="Categoria.html">BDMM</a></li>-->
+				
+			  </ul>
+			</li>
+		  </ul> 
+		  <div class="navbar-form navbar-left" >
+			  <div class="form-group" id="barraDeBusqueda">
+				<input type="text" id="buscar" class="form-control" placeholder="Buscar...">
+			  </div>
+			 <button type="submit" id="btnBuscar"class="btn btn-default" onclick="buscar();">Buscar</button>
+		
+		
+		  </div>
+		  <ul class="nav navbar-nav navbar-right">
+		   <!-- <li><a href="Registro.html"><span class="glyphicon glyphicon-user" id="signIn"></span> Sign Up</a></li>
+			<li><a href="Login.html"><span class="glyphicon glyphicon-log-in" id="logIn"></span> Login</a></li>-->
+			<li><a href="Login.php"><span class="glyphicon glyphicon-log-in" id="logOut"></span> Logout</a></li>
+		  </ul>
+		</div>
+	  </nav>
 
 
 

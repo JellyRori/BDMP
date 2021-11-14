@@ -1,6 +1,8 @@
 <?php
+
  $nombreAlumno = $_POST['IDC1'];
  $nombreCurso = $_POST['IDC2'];
+ $fechaCurso = $_POST['IDC3'];
 
     include_once('tbs_class.php'); 
     include_once('plugins/tbs_plugin_opentbs.php'); 
@@ -9,20 +11,23 @@
     $TBS->Plugin(TBS_INSTALL, OPENTBS_PLUGIN); 
     //Parametros
     $nomprofesor = $nombreCurso;
-    $fechaprofesor = '07/06/2021';
+    $fechaprofesor = getdate();
+    $laFecha = $fechaprofesor;
+    $fechaObtenida=$laFecha;
     //Cambia el nombre por el png de tu firma, no metas la firma
     //en ninguna carpeta
-     $firmadecano = '5.png';
-    $firma = 'FirmaFS.png';
+     $firmaDeInstructor = '5.png';
+    $firmaDeCoInstructor = 'FirmaFS.png';
     //Cargando template
     $template = 'Art&LearnDoc.docx';
     $TBS->LoadTemplate($template, OPENTBS_ALREADY_UTF8);
     //Escribir Nuevos campos
     $TBS->MergeField('pro.nomCurso', $nomprofesor);
     $TBS->MergeField('pro.nomAlumn', $nombreAlumno);
+    $TBS->MergeField('pro.fechaCurso', $fechaObtenida);
     //$TBS->MergeField('pro.fechaprofesor', $fechaprofesor);
-    $TBS->VarRef['x'] = $firmadecano;
-    $TBS->VarRef['y'] = $firma;
+    $TBS->VarRef['x'] = $firmaDeInstructor;
+    $TBS->VarRef['y'] = $firmaDeCoInstructor;
 
     $TBS->PlugIn(OPENTBS_DELETE_COMMENTS);
 
