@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="footer.css">
+        <script src="Javascript/jquery-2.1.4.min.js"></script>
+        <script src="Javascript/mensajes.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="elchat.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    </head>
+<body>
+    <nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="indexLoged.html">Art & Learn</a>
+		  </div>
+		  <ul class="nav navbar-nav">
+		   <!-- <li class="active"><a href="#">Home</a></li>-->
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+			  <ul class="dropdown-menu">
+				<li><a href="#recientes">Reciente</a></li>
+				<li><a href="#populares">Populares</a></li>
+				<li><a href="#galeria">Galeria</a></li>
+				<li><a href="Perfil.html">Contacto</a></li>
+			  </ul>
+			</li>
+	  
+	  
+		  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img id="imgAvatar" src="Imagenes/Erencio.jpg" alt="avatarUs" width="25"
+			  height="25"><span class="caret"></span></a>
+			  
+			  <ul class="dropdown-menu">
+				<li><a href="Historial.html"     id="histUser">Historial</a></li>
+				<li><a href="misCursos.html"  id="misCursos">Mis Cursos</a></li>
+				<li><a href="Ventas.html"        id="ventUser">Ventas</a></li>
+				<li><a href="Chat.html"          id="chatUser">Chat</a></li>
+				<li><a href="Perfil.html"        id="perfilUser">Perfil</a></li>
+				<li><a href="CrearCate.html"      id="categUser">Agregar Categoria</a></li>
+				<li><a href="AgregarCurso.html"  id="cursoUser">Agregar-Curso</a></li>
+			  </ul>
+			</li>
+	  
+	  
+	  
+		   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorias <span class="caret"></span></a>
+			  <ul class="dropdown-menu" id="menuCateg">
+				<!--<li><a href="Categoria.html">Bootstrap</a></li>
+				<li><a href="Categoria.html">CSS</a></li>
+				<li><a href="Categoria.html">JavaScript</a></li>
+				<li><a href="Categoria.html">HTML</a></li>
+				<li><a href="Categoria.html">PHP</a></li>
+				<li><a href="Categoria.html">BDMM</a></li>-->
+				
+			  </ul>
+			</li>
+		  </ul> 
+		  <div class="navbar-form navbar-left" >
+			  <div class="form-group" id="barraDeBusqueda">
+				<input type="text" id="buscar" class="form-control" placeholder="Buscar...">
+			  </div>
+			 <button type="submit" id="btnBuscar"class="btn btn-default" onclick="buscar();">Buscar</button>
+		
+		
+		  </div>
+		  <ul class="nav navbar-nav navbar-right">
+		   <!-- <li><a href="Registro.html"><span class="glyphicon glyphicon-user" id="signIn"></span> Sign Up</a></li>
+			<li><a href="Login.html"><span class="glyphicon glyphicon-log-in" id="logIn"></span> Login</a></li>-->
+			<li><a href="Login.php"><span class="glyphicon glyphicon-log-in" id="logOut"></span> Logout</a></li>
+		  </ul>
+		</div>
+	  </nav>
+
+      <div id="mensajesGen">
+        <div id="tablaPersonas">
+            
+        </div>
+        <div id="chatAct">
+            <div id="habloCon">
+                
+            </div>
+            <div id="mensajesActuales" >
+              
+            </div>
+
+            <div id="barraAbajo">
+                <input type="text" id="barraMensaje" placeholder="Escribe algo...">
+                <button id="btnEnviar"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

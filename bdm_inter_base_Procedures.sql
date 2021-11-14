@@ -1,5 +1,5 @@
 #Procedures de la base de datos------------------------------------------------------------------------------------------------------------
-DROP PROCEDURE sp_crearCategoria;
+
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_registrarUsuario (
@@ -70,7 +70,6 @@ begin
     from cate_Curso;
 end $$
 
-drop procedure sp_verCategorias;
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_verCategorias()
@@ -81,7 +80,6 @@ end $$
 CALL `bdm_inter_base`.`sp_verCategorias`();
 
 #Procedure para registrar cursos------------------------------------------------------------------------------------------------------------------
-DROP PROCEDURE sp_subirrCurso;
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_subirrCurso(
@@ -178,7 +176,6 @@ end $$
 CALL `bdm_inter_base`.`sp_fotoCursos`(3);
 
 #Procedure para obtener los datos del curso---------------------------------------------------------------------------------------
-DROP PROCEDURE sp_DatosCurso;
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_DatosCurso(
@@ -229,7 +226,7 @@ end $$
 
 CALL `bdm_inter_base`.`sp_buscarCurso`("Curso de JQuery");
 
-drop procedure sp_obtenerCursosAlumno;
+
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_obtenerCursosAlumno(in pIdAlumno int)
@@ -301,7 +298,7 @@ CALL `bdm_inter_base`.`sp_alumnoInscrito`(2, 2);
 
 
 #Procedure para el historial------------------------------------------------------------------------------------------------
-DROP PROCEDURE sp_MostrarHistorialAlumno;
+
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_MostrarHistorialAlumno(
@@ -380,7 +377,6 @@ begin
     values(pIdEstudiante, pIdCurso, pMensaje);
 end $$
 
- drop procedure sp_obtenerComentarios;
 DELIMITER $$
 USE `bdm_inter_base`$$
 create procedure sp_obtenerComentarios(
@@ -416,7 +412,6 @@ insert into cursoCalificacion
 set idUsAlumnoCalif = pIdAlumno, idCursoCalif = pIdCurso, resultado = pCalif;
 end $$
 
-drop procedure sp_CursosMejorCalificacion;
  DELIMITER $$
 USE `bdm_inter_base`$$
 CREATE PROCEDURE sp_CursosMejorCalificacion()
@@ -429,7 +424,6 @@ LIMIT 4;
 END$$
 CALL `bdm_inter_base`.`sp_CursosMejorCalificacion`();
 
-drop procedure sp_CursosMasVendidos;
  DELIMITER $$
 USE `bdm_inter_base`$$
 CREATE PROCEDURE sp_CursosMasVendidos()
@@ -452,4 +446,68 @@ END$$
 
 CALL `bdm_inter_base`.`sp_VentasMaestro`(1);
 
+#procedures para los mensajes---------------------------------------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_escribirMensaje(
+in pEnvia  bigint unsigned, 
+in pRecibe  bigint unsigned,
+in pMensaje varchar(500))
+begin
+	insert into Mensajes(idEnvia, idRecive,contenido)
+    values(pEnvia, pRecibe,pMensaje);
+end $$
+CALL `bdm_inter_base`.`sp_escribirMensaje`(2, 1, 'este si llega?');
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_verMensajes (
+in pEnvia  bigint unsigned, 
+in pRecibe bigint unsigned)
+begin
+	select Usuarios.idUser, Usuarios.nombre,Usuarios.apellidos, 
+    Mensajes.idEnvia, Mensajes.idRecive, Mensajes.contenido,
+    Mensajes.fecha
+    from Usuarios join Mensajes on Usuarios.idUser=Mensajes.idEnvia
+    where (Mensajes.idEnvia=pEnvia and Mensajes.idRecive=pRecibe) or
+    (Mensajes.idEnvia=pRecibe and Mensajes.idRecive=pEnvia)
+    order by Mensajes.fecha; 
+end $$
+CALL `bdm_inter_base`.`sp_verMensajes`(2,1);
+
+#Procedures para identificar a quien mensajeas----------------------------------------------------------------
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_MensajearAMaestro(
+in pAlumno bigint unsigned)
+begin
+	select distinct Usuarios.idUser as "ClaveProfesor", Usuarios.nombre as "nombreDelMaestro"
+    from pagoCurso join Curso on 
+    pagoCurso.idCurso=Curso.idCurso 
+    join Usuarios on Curso.idUsEsc=Usuarios.idUser
+    where pagoCurso.idUsuario=pAlumno ; 
+end $$
+CALL `bdm_inter_base`.`sp_MensajearAMaestro`(2);
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_MensajearAAlumno(
+in pMaestroDelCurso bigint unsigned)
+begin
+	select distinct Usuarios.idUser as "ClaveAlumno", Usuarios.nombre as "nombreDelAlumno"
+    from pagoCurso join Curso on 
+    pagoCurso.idCurso=Curso.idCurso 
+    join Usuarios on pagoCurso.idUsuario=Usuarios.idUser
+    where Curso.idUsEsc=pMaestroDelCurso; 
+end $$
+CALL `bdm_inter_base`.`sp_MensajearAAlumno`(1);
+
+DELIMITER $$
+USE `bdm_inter_base`$$
+create procedure sp_profeDeCurso(
+in pIdProfesor bigint unsigned)
+begin
+	select idUser, nombre, apellidos
+    from Usuarios where idUser=pIdProfesor;
+end $$
 

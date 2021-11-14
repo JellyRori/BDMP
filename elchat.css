@@ -1,0 +1,100 @@
+body{
+	
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: #12026d;
+}
+
+#chatAct {
+    background: url(Imagenes/ocho.jpg);
+    width: 74.9%;
+    height: 100%;
+}
+
+@media screen and (min-width: 1280px) {
+    #chatAct {
+        background: url(Imagenes/Head.jpg) no-repeat center top;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#mensajesActuales {
+    margin-top: 332px;
+}
+
+#mensajesGen {
+    background-color: darkolivegreen;
+    display: flex;
+}
+
+#habloCon {
+    background-color: rgb(15, 1, 49);
+    padding: 1%;
+    padding-left: 3%;
+    color: rgb(238, 235, 245)
+}
+
+.conMenP2 {
+    width: 100%;
+    margin-left: 50%;
+    text-align: right;
+}
+
+#mensajesP2 {
+    margin: 2%;
+    padding-right: 2%;
+    background-color: rgb(186, 176, 207);
+    text-align: right;
+    color: rgb(44, 38, 59);
+    border-radius: 5px;
+    width: 40%;
+}
+
+#mensajesP1 {
+    margin: 2%;
+    margin-left: 3%;
+    padding-left: 2%;
+    background-color: rgb(167, 221, 247);
+    text-align: left;
+    color: rgb(44, 38, 59);
+    border-radius: 5px;
+    width: 40%;
+}
+
+#tablaPersonas {
+    background: url(Imagenes/ocho.jpg);
+    width: 15%;
+    color: rgb(44, 38, 59);
+}
+
+.personas {
+    width: 100%;
+    height: 10%;
+    background-color: rgb(85, 102, 255);
+    border: none;
+}
+
+.personas:hover {
+    background-color: rgb(161, 162, 235);
+}
+
+#btnEnviar {
+    background-image: url(Imagenes/smartphone.png);
+    background-size: 33px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#barraMensaje {
+    width: 100%;
+    background-color: rgb(174, 236, 255);
+}
+
+#barraAbajo {
+    display: flex;
+    padding-left: 3%;
+}
