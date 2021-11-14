@@ -12,7 +12,7 @@
     $fechaprofesor = '07/06/2021';
     //Cambia el nombre por el png de tu firma, no metas la firma
     //en ninguna carpeta
-     $firmadecano = 'ES5.png';
+     $firmadecano = '5.png';
     $firma = 'FirmaFS.png';
     //Cargando template
     $template = 'Art&LearnDoc.docx';
