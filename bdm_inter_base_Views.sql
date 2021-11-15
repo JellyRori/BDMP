@@ -1,38 +1,27 @@
 #BETA Ver usuarios que son maestros--------------------------------------------------------------------------------------------------
 CREATE VIEW usuariosMaestros as
-select usuarios.idUser as "Clave", usuarios.nombre, usuarios.apellidos, usuarios.email as "correo"
-from usuarios where rol = 1 group by usuarios.idUser order by usuarios.apellidos desc;
+select usuarios.idUsuario as "Clave", usuarios.nombre, usuarios.apellidos, usuarios.email as "correo"
+from usuarios where rol = 1 group by usuarios.idUsuario order by usuarios.apellidos desc;
 
 #Procedure para traer los datos de los cursos-----------------------------------------------------------------------------------------
-drop view CursoCompleto;
 create view CursoCompleto as
 select curso.idCurso, curso.nomCurso,curso.descCurso,curso.videoMuestra,curso.costo,
 cantNivel, group_concat(cate_Curso.nomCateg) as "Categorias",
-concat(usuarios.nombre, " ", usuarios.apellidos) as "Profesor", now() as "FechaConcluido", usuarios.idUser as "Clave_Profesor"
-    from usuarios join curso on usuarios.idUser = curso.idUsEsc
+concat(usuarios.nombre, " ", usuarios.apellidos) as "Profesor", usuarios.idUsuario as "Clave_Profesor"
+    from usuarios join curso on usuarios.idUsuario = curso.idUsEsc
     left join  tablaAsociativaCursoCategoria on  
      curso.idCurso = tablaAsociativaCursoCategoria.idCurso left join cate_Curso 
     on tablaAsociativaCursoCategoria.idCateg = cate_Curso.idCateg
     group by curso.idCurso order by curso.idCurso desc;
-   SELECT `cursocompleto`.`idCurso`,
-    `cursocompleto`.`nomCurso`,
-    `cursocompleto`.`descCurso`,
-    `cursocompleto`.`videoMuestra`,
-    `cursocompleto`.`costo`,
-    `cursocompleto`.`cantNivel`,
-    `cursocompleto`.`Categorias`,
-    `cursocompleto`.`Profesor`,
-    `cursocompleto`.`FechaConcluido`,
-    `cursocompleto`.`Clave_Profesor`
-FROM `bdm_inter_base`.`cursocompleto`;
+   
  
-create view losComentarios as
-select comentario.idComent,comentario.idCurso,usuarios.idUser,
+create view traerLosComentarios as
+select comentario.idComent,comentario.idCurso,usuarios.idUsuario,
 	usuarios.nombre, comentario.contenido, comentario.fechaPub
-	from usuarios join comentario on usuarios.idUser=comentario.idEstado
+	from usuarios join comentario on usuarios.idUsuario=comentario.idEstado
     order by comentario.fechaPub;
 
-drop view cursosCompletosVentas;
+
 create view cursosCompletosVentas as
 select CursoCompleto.idCurso, CursoCompleto.Clave_Profesor, CursoCompleto.nomCurso, 
 	CursoCompleto.descCurso, CursoCompleto.videoMuestra, CursoCompleto.costo,

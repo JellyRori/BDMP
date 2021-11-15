@@ -165,14 +165,11 @@ public function diploCurso($json){
         $NomAl .= $_SESSION["apellidos"];
         $name = $post[0]["nomCurso"];
         $NomProf = $post[0]["Profesor"];
-        $fechaConclusion = $post[0]["FechaConcluido"];
       
         $json = [
             "nombreAlumno" => $NomAl,
             "nombre" => $name,   
-            "nombreProfesor" => $NomProf,
-            "fechaConclusiones"=>$fechaConclusion
-
+            "nombreProfesor" => $NomProf
         ];
              
         return $json;

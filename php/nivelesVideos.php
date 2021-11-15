@@ -12,7 +12,7 @@ $_nivel = new Nivel;
         
         $videoTrailer= $_FILES['videoNivel']['tmp_name'];
         $idCreador=$_SESSION["idUser"];
-        $nuevoNombreTrailer="videos/".$nombre.$idCreador.".mp4";
+        $nuevoNombreTrailer="../videos/".$nombre.$idCreador.".mp4";
         move_uploaded_file($videoTrailer,$nuevoNombreTrailer);
 
         $json = [

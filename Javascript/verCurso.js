@@ -245,7 +245,7 @@ function ocultarVerCursos(){
                     var div1 =document.createElement('div');
                     div1.setAttribute("class","media");
                     var img1 = document.createElement("img");
-                    img1.setAttribute("src","Javascript/fotosDeComentarios.php?id="+Jason[i]["idUser"]);
+                    img1.setAttribute("src","Javascript/fotosDeComentarios.php?id="+Jason[i]["idUsuario"]);
                     img1.setAttribute("class","ImagenPerfil");
                     img1.setAttribute("alt","...");
                     var div2 =document.createElement('div');

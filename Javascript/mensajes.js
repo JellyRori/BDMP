@@ -1,8 +1,8 @@
 var idHabloCon;
 var soy;
 var profe;
-$( document ).ready(function() {
-
+$(document).ready(function () {
+    
     $("#tablaPersonas").on("click", ".personas", function () {
         idHabloCon=this.id;
         mostrarUnProfe();
@@ -14,12 +14,12 @@ $( document ).ready(function() {
     $("#barraAbajo").on("click", "#btnEnviar", function () {
         mandarMensaje();
     });
-    navbarUsuario();
-    function navbarUsuario() {
+    
+    ocultarMensajes();
+    function ocultarMensajes() {
         var opc = 3;
         let Body = { opc }
         let jsonBody = JSON.stringify(Body)
-        console.log(jsonBody);
         fetch('php/usuario.php', { method: "POST", header: { 'Content-Type': 'application/json' }, body: jsonBody })
             .then(response => {
                 return response.text();
@@ -27,17 +27,19 @@ $( document ).ready(function() {
             .then(data => {
                 var Jason = data;
                 var obj = JSON.parse( Jason);
-                console.log(data);
-                //Condicional que identifica si el usuario es maestro o alumno-----------------------------------------------------------------
+                  
                 if(obj['rol']==true){
+                    soy=obj['idUser'];
                     document.getElementById("imgAvatar").style.display = 'inline';
                     document.getElementById("logOut").style.display = 'inline';
                     document.getElementById("histUser").style.display = 'none';
                     document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
+                   
                     profe=true;
                     traerAlumnos();
                 }else{
                     if(obj['rol']==false){
+                        soy=obj['idUser'];
                         document.getElementById("imgAvatar").style.display = 'inline';
                         document.getElementById("logOut").style.display = 'inline';
                         document.getElementById("ventUser").style.display = 'none';
@@ -50,7 +52,7 @@ $( document ).ready(function() {
                         traerProfesores();
                     }
                 }
-                
+                    
             })
     }
 
@@ -119,8 +121,8 @@ $( document ).ready(function() {
 
                     var botn1 =document.createElement('button');
                     botn1.setAttribute("class","personas");
-                    botn1.setAttribute("id",Jason[i]["ClaveProfesor"]);
-                    botn1.innerHTML =Jason[i]["nombreDelMaestro"];
+                    botn1.setAttribute("id",Jason[i]["ClaveProfesor"]); //con esto traemos el id del maestro
+                    botn1.innerHTML =Jason[i]["nombreDelMaestro"]; //aqui concatenamos su nombre
                     
                     personasMensajes.appendChild(botn1);
                 }
@@ -157,7 +159,6 @@ $( document ).ready(function() {
             })
     }
 
-    
     function mandarMensaje(){
         
         console.log(idHabloCon);
@@ -179,7 +180,7 @@ $( document ).ready(function() {
                 debugger;
 
                 /*Usuarios.id_usuario, Usuarios.nombre,Usuarios.apellidos, 
-                Usuarios.nickname, Mensajes.idEnvia, Mensajes.idRecibe, Mensajes.mensaje,
+                Usuarios.nickname, Mensajes.id_de, Mensajes.id_para, Mensajes.mensaje,
                 Mensajes.fechaEnvio*/
                 var mensajesAct = document.getElementById("mensajesActuales");
                 if(Jason==="NoHayMensajes"){
@@ -202,7 +203,8 @@ $( document ).ready(function() {
                             var p1 = document.createElement("p");
 
                             var span1= document.createElement("span");
-                            span1.innerHTML =Jason[i]["mensaje"];
+                            span1.innerHTML =Jason[i]["contenido"];
+                            
 
                             p1.appendChild(span1);
                             div2.appendChild(p1);
@@ -222,6 +224,7 @@ $( document ).ready(function() {
 
                                 var span1= document.createElement("span");
                                 span1.innerHTML =Jason[i]["contenido"];
+                                
 
                                 p1.appendChild(span1);
                                 div2.appendChild(p1);
@@ -261,14 +264,15 @@ $( document ).ready(function() {
             debugger;
 
             /*Usuarios.id_usuario, Usuarios.nombre,Usuarios.apellidos, 
-            Usuarios.nickname, Mensajes.idEnvia, Mensajes.idRecibe, Mensajes.mensaje,
+            Usuarios.nickname, Mensajes.id_de, Mensajes.id_para, Mensajes.mensaje,
             Mensajes.fechaEnvio*/
             var mensajesAct = document.getElementById("mensajesActuales");
             if(Jason==="NoHayMensajes"){
                 alert("no hay mensajes");
             }else{
                 $("#barraMensaje").value="";
-                for (var i in Jason){           
+                for (var i in Jason){      
+                    debugger;     
                     //var idHabloCon; var soy;
                     if(soy==Jason[i]["idEnvia"]){
                         //para el de la persona en sesion
@@ -282,6 +286,7 @@ $( document ).ready(function() {
 
                         var span1= document.createElement("span");
                         span1.innerHTML =Jason[i]["contenido"];
+                       
 
                         p1.appendChild(span1);
                         div2.appendChild(p1);
@@ -301,6 +306,7 @@ $( document ).ready(function() {
 
                             var span1= document.createElement("span");
                             span1.innerHTML =Jason[i]["contenido"];
+                            
 
                             p1.appendChild(span1);
                             div2.appendChild(p1);
@@ -320,6 +326,10 @@ $( document ).ready(function() {
         
 
     }
+   
+    
+    
 
+    
 
-});
+})

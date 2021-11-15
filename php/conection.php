@@ -58,7 +58,7 @@
         $row = mysqli_fetch_array($resultado); 
         if(isset($row["nombre"]) ){
           //session_start();
-          $_SESSION["idUser"]=$row["idUser"];
+          $_SESSION["idUser"]=$row["idUsuario"];
           $_SESSION["nombre"]=$row["nombre"];
           $_SESSION["apellidos"]=$row["apellidos"];
           $_SESSION["rol"]=$row["rol"];

@@ -1,10 +1,11 @@
 CREATE DATABASE bdm_inter_base;
 use bdm_inter_base;
+
  #CUDADO CON ESTA LINEA, solo usar cuando tengas que recrear tablas si no quieres alterar campo X campo-----------------
 
 #Creando tabla de usuarios (decidimos juntarlas por la redundancia de datos)--------------------------------------------------------------------------
 create table IF NOT  EXISTS usuarios(
-	idUser BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+	idUsuario BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     nombre varchar(50) NOT NULL,
     apellidos varchar (150) NOT NULL,
     FechaNac date,
@@ -23,14 +24,8 @@ create Table IF NOT  EXISTS cate_Curso(
     idUsCat BIGINT UNSIGNED,
     fechaCreat DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     activa bool DEFAULT NULL,
-	CONSTRAINT `FK_Us_Categ` FOREIGN KEY (idUsCat) REFERENCES usuarios(idUser)
+	CONSTRAINT `FK_Us_Categ` FOREIGN KEY (idUsCat) REFERENCES usuarios(idUsuario)
 );
-alter table cate_Curso add fechaCreat DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-alter table cate_curso drop column fechaCreat;
-ALTER TABLE cate_Curso
-  DROP COLUMN column_name;
-
-
 
 #Creando tabla de cursos------------------------------------------------------------------------------------------------------------------------------
 create Table IF NOT  EXISTS curso(
@@ -43,7 +38,7 @@ create Table IF NOT  EXISTS curso(
     cantNivel INT NOT NULL,
     idUsEsc BIGINT UNSIGNED,
     activo BOOL DEFAULT NULL,
-    CONSTRAINT `FK_Us_Curso` FOREIGN KEY (idUsEsc) REFERENCES Usuarios(idUser)
+    CONSTRAINT `FK_Us_Curso` FOREIGN KEY (idUsEsc) REFERENCES Usuarios(idUsuario)
 );
 
 #Creando tabla de niveles------------------------------------------------------------------------------------------------------------------------------
@@ -51,15 +46,13 @@ create Table IF NOT  EXISTS nivel(
 	idNivel BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     idCurso BIGINT UNSIGNED,
     nomNivel varchar(200) not null,
-    descNivel varchar(150) NOT NULL,
     video varchar(900) NOT NULL,
     contenido varchar(900),
 	numNivel int NOT NULL,
     estado bool DEFAULT NULL,
     CONSTRAINT `FK_Niv_Cursos` FOREIGN KEY (idCurso) REFERENCES curso(idCurso)
 );
-alter table nivel drop column descNivel;
-ALTER TABLE nivel DROP COLUMN idCateg;
+
 #Creando tabla de comentarios------------------------------------------------------------------------------------------------------------------------------
 create Table IF NOT EXISTS comentario(
 	idComent BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
@@ -67,7 +60,7 @@ create Table IF NOT EXISTS comentario(
     idCurso BIGINT UNSIGNED,
     contenido varchar(250) NOT NULL,
     fechaPub TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   CONSTRAINT `FK_Com_Estado` FOREIGN KEY (idEstado) REFERENCES usuarios(idUser),
+   CONSTRAINT `FK_Com_Estado` FOREIGN KEY (idEstado) REFERENCES usuarios(idUsuario),
    CONSTRAINT `FK_Com_Curso` FOREIGN KEY (idCurso) REFERENCES curso(idCurso)
 );
 
@@ -77,10 +70,9 @@ create Table IF NOT  EXISTS historial(
     idEstado BIGINT UNSIGNED,
     idCurso BIGINT UNSIGNED,
     progreso int,
-	CONSTRAINT `FK_hist_User` FOREIGN KEY (idEstado) references Usuarios(idUser),
+	CONSTRAINT `FK_hist_User` FOREIGN KEY (idEstado) references Usuarios(idUsuario),
 	CONSTRAINT `FK_hist_Curso` FOREIGN KEY (idCurso) references Curso(idCurso)
 );
-ALTER TABLE historial DROP COLUMN cursoTerm;
 
 #Creando tabla de mensajes------------------------------------------------------------------------------------------------------------------------------
 create table IF NOT  EXISTS Mensajes(
@@ -89,15 +81,9 @@ create table IF NOT  EXISTS Mensajes(
     idRecive BIGINT UNSIGNED,
     contenido varchar(500) NOT NULL,
 	fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-    CONSTRAINT `FK_Mens_Envia` FOREIGN KEY (idEnvia) REFERENCES usuarios(idUser),
-	CONSTRAINT `FK_Mens_Recibe` FOREIGN KEY(idRecive) REFERENCES usuarios(idUser)
+    CONSTRAINT `FK_Mens_Envia` FOREIGN KEY (idEnvia) REFERENCES usuarios(idUsuario),
+	CONSTRAINT `FK_Mens_Recibe` FOREIGN KEY(idRecive) REFERENCES usuarios(idUsuario)
 );
-ALTER TABLE historial DROP COLUMN idUsuario;
-ALTER TABLE historial DROP COLUMN idUsEsc;
-ALTER TABLE historial DROP COLUMN contenido;
-ALTER TABLE Mensajes ADD COLUMN idEnvia BIGINT UNSIGNED;
-ALTER TABLE Mensajes ADD COLUMN idRecive BIGINT UNSIGNED;
-ALTER TABLE Mensajes ADD COLUMN contenido varchar(500) NOT NULL;
 
 #Creando tabla de calificar curso------------------------------------------------------------------------------------------------------------------------------
 create table IF NOT  EXISTS cursoCalificacion(
@@ -105,7 +91,7 @@ create table IF NOT  EXISTS cursoCalificacion(
     idUsAlumnoCalif BIGINT UNSIGNED,
     idCursoCalif BIGINT UNSIGNED,
     resultado INT DEFAULT 0,
-    CONSTRAINT `FK_Calif_Alumno` FOREIGN KEY(idUsAlumnoCalif) REFERENCES Usuarios(idUser),
+    CONSTRAINT `FK_Calif_Alumno` FOREIGN KEY(idUsAlumnoCalif) REFERENCES Usuarios(idUsuario),
 	CONSTRAINT `FK_Calif_Curso` FOREIGN KEY (idCursoCalif) REFERENCES Curso(idCurso)
 );
 #Tabla para la inscripcion del curso-------------------------------------------------------------------------------------------------------------------------
@@ -114,12 +100,10 @@ create table IF NOT  EXISTS pagoCurso(
     idUsuario BIGINT UNSIGNED,
     idCurso BIGINT UNSIGNED,
     terminado bool DEFAULT 0,
-    CONSTRAINT `FK_pago_User` FOREIGN KEY(idUsuario) REFERENCES Usuarios(idUser),
+    CONSTRAINT `FK_pago_User` FOREIGN KEY(idUsuario) REFERENCES Usuarios(idUsuario),
 	CONSTRAINT `FK_pago_Curso` FOREIGN KEY (idCurso) REFERENCES Curso(idCurso)
 );
-ALTER TABLE pagoCurso DROP COLUMN monto;
-ALTER TABLE pagoCurso DROP COLUMN metodo;
-DROP TABLE pagoCurso;
+
 #Creando una tabla asociativa entre el curso y la categoría-------------------------------------------------------------------------------------------------
 create table IF NOT  EXISTS tablaAsociativaCursoCategoria(
 	idTablaAsoursCat int NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
@@ -139,6 +123,7 @@ select*from historial;
 select*from mensajes;
 select * from pagoCurso;
 select * from cursoCalificacion;
-
-truncate table nivel;
+select * from tablaAsociativaCursoCategoria;
+select * from pagoCurso;
+truncate table curso;
 

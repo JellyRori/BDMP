@@ -18,7 +18,7 @@ require_once "conection.php";
                 $query2 = "Call sp_obtenerComentarios($curso);";
                 $comentarios = parent::obtenerDatos($query2);
                 
-                if(isset($comentarios[0]["idUser"])){           
+                if(isset($comentarios[0]["idUsuario"])){           
                    return json_encode($comentarios);
                 }else{
                     $success="NoHayComentarios";
@@ -38,7 +38,7 @@ require_once "conection.php";
             $query2 = "Call sp_obtenerComentarios($curso);";
             $comentarios = parent::obtenerDatos($query2);
                 
-            if(isset($comentarios[0]["idUser"])){           
+            if(isset($comentarios[0]["idUsuario"])){           
                 return json_encode($comentarios);
             }else{
                 $success="NoHayComentarios";

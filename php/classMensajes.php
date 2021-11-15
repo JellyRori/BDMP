@@ -1,25 +1,23 @@
 <?php
 require_once "conection.php";
 session_start();
-
-class Mensajes extends conexion{
-
+class mensajes extends conexion{
     public function mandarMensaje($json){
         $datos = json_decode($json,true);
         //son los datos del json
         //idHabloCon,comentario
-        $idEnvia = $_SESSION["idUser"];
-        $idRecibe = $datos["idHabloCon"];
+        $idDeQuien = $_SESSION["idUser"];
+        $idParaQuien = $datos["idHabloCon"];
         $mensaje = $datos["mensaje"];
-        $query = "Call sp_escribirMensaje($idEnvia,$idRecibe,'$mensaje');";
+        $query = "Call sp_escribirMensaje($idDeQuien,$idParaQuien,'$mensaje');";
         
         $verificacion = parent::rowsAfectados($query);
         
         if($verificacion == 1){
-            $query2 = "Call sp_verMensajes($idEnvia,$idRecibe);";
+            $query2 = "Call sp_verMensajes($idDeQuien,$idParaQuien);";
             $mensajes = parent::obtenerDatos($query2);
             
-            if(isset($mensajes[0]["idUser"])){           
+            if(isset($mensajes[0]["idUsuario"])){           
                return json_encode($mensajes);
             }else{
                 $success="NoHayMensajes";
@@ -27,17 +25,15 @@ class Mensajes extends conexion{
             }
            
         }else{
-            $success="mensajeNoEnviado";
+            $success="noSeEnvio";
             return  parent::Error();
         }
     }
-
-
-    public function mensajearAProfes(){
+    public function traerProfes(){
         header('Content-Type: application/json');
-        $enviarMensaje = $_SESSION["idUser"];
+        $enviaMensaje = $_SESSION["idUser"];
         //son los datos del json
-        $query = "call sp_MensajearAMaestro($enviarMensaje);";
+        $query = "call sp_MensajearAMaestro($enviaMensaje);";
         
         $profes = parent::obtenerDatos($query);
     
@@ -45,12 +41,12 @@ class Mensajes extends conexion{
             return json_encode($profes);
         }
         else{
-            $success="NoHayMaestros";
+            $success="NoHayProfes";
             return $success;
         }
     }
 
-    public function profesDeCurso($json){
+    public function traerProfe($json){
         header('Content-Type: application/json');
         $datos = json_decode($json,true);
         //son los datos del json
@@ -60,9 +56,9 @@ class Mensajes extends conexion{
         
         $profe = parent::obtenerDatos($query);
       
-        if(isset($profe[0]["idUser"])){
+        if(isset($profe[0]["idUsuario"])){
             //id_usuario, nombre, apellidos
-            $profeId = $profe[0]["idUser"];
+            $profeId = $profe[0]["idUsuario"];
             $nameP = $profe[0]["nombre"];
             $apellidos = $profe[0]["apellidos"];
            
@@ -79,11 +75,11 @@ class Mensajes extends conexion{
         }
     }
 
-    public function mensajearAAlumnos(){
+    public function traerAlumnos(){
         header('Content-Type: application/json');
-        $enviarMensaje = $_SESSION["idUser"];
+        $enviaMensaje = $_SESSION["idUser"];
         //son los datos del json
-        $query = "call sp_MensajearAAlumno($enviarMensaje);";
+        $query = "call sp_MensajearAAlumno($enviaMensaje);";
         
         $profes = parent::obtenerDatos($query);
     
@@ -96,18 +92,18 @@ class Mensajes extends conexion{
         }
     }
 
-    public function verTodosLosMensajes($json){
+    public function traerMensajes($json){
         $datos = json_decode($json,true);
         //son los datos del json
         //idHabloCon,comentario
-        $idEnvia = $_SESSION["idUser"];
-        $idRecibe = $datos["idHabloCon"];
+        $idDeQuien = $_SESSION["idUser"];
+        $idParaQuien = $datos["idHabloCon"];
         
         
-        $query = "Call sp_verMensajes($idEnvia,$idRecibe);";
+        $query = "Call sp_verMensajes($idDeQuien,$idParaQuien);";
         $mensajes = parent::obtenerDatos($query);
             
-        if(isset($mensajes[0]["idUser"])){           
+        if(isset($mensajes[0]["idUsuario"])){           
             return json_encode($mensajes);
         }else{
             $success="NoHayMensajes";
@@ -115,8 +111,6 @@ class Mensajes extends conexion{
         } 
         
     }
-
-
 }
 
 ?>
