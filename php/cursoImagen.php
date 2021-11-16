@@ -21,6 +21,7 @@ $_curso = new Cursos();
         $idCreador=$_SESSION["idUser"];
         $nuevoNombreTrailer="../videos/".$nombre.$idCreador.".mp4";
         move_uploaded_file($videoTrailer,$nuevoNombreTrailer);
+        $nuevoNombreTrailer="videos/".$nombre.$idCreador.".mp4";
 
         $json = [
             "nombreCurso" => $nombre,
@@ -39,14 +40,16 @@ $_curso = new Cursos();
         
             $videoTrailerNvl= $_FILES['videoNvl'.$contador]['tmp_name'];
             $nombreNvl=$_POST["nomNivel".$contador];
-            $nuevoNombreTrailerNvl="videos/".$nombre.$nombreNvl.$contador.".mp4";
+            $nuevoNombreTrailerNvl="../videos/".$nombre.$nombreNvl.$contador.".mp4";
             move_uploaded_file($videoTrailerNvl,$nuevoNombreTrailerNvl);
+            $nuevoNombreTrailerNvl="videos/".$nombre.$nombreNvl.$contador.".mp4";
             
             $tipo=$_FILES['otroArchNvl'.$contador]['name'];
             $otroArchNvl= $_FILES['otroArchNvl'.$contador]['tmp_name'];
             $nombreNvl=$_POST["nomNivel".$contador];
             $nuevoNombreArchNvl="../archivos/".$nombre.$nombreNvl.$contador.$tipo;
             move_uploaded_file($otroArchNvl,$nuevoNombreArchNvl);
+            $nuevoNombreArchNvl="archivos/".$nombre.$nombreNvl.$contador.$tipo;
 
             $json2[$contador2]=$nombreNvl;
             $contador2++;

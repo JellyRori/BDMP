@@ -75,7 +75,7 @@ $( document ).ready(function() {
                       var saltoDeLinea = document.createElement("br");
                       var etiqueta = document.createElement("a");
                       etiqueta.setAttribute("class","titCursos");
-                      etiqueta.setAttribute("href","html/Curso.html?id="+Jason[i]['idCurso']);//aqui pones la direccion html donde lo colocas
+                      etiqueta.setAttribute("href","Curso.html?id="+Jason[i]['idCurso']);//aqui pones la direccion html donde lo colocas
                       etiqueta.setAttribute("onclick","Curso.html");
                       etiqueta.innerHTML =Jason[i]["nomCurso"];
                       var saltoDeLinea2 = document.createElement("br");

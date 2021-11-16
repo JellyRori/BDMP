@@ -185,6 +185,7 @@ function ocultarVerCursos(){
             
             if(Jason=="CursoNoReg"){
                 document.getElementById("Compra").style.display = 'inline';
+                document.getElementById("paypal-button-container").style.display = 'inline';
                 document.getElementById("listaNiveles").style.display = 'none';
                /* document.getElementById("califCurso").style.display = 'none';*/
                 //document.getElementById("progresoCur").style.display = 'none';
@@ -196,6 +197,7 @@ function ocultarVerCursos(){
             }else{
                 if(Jason['terminado']!=""){
                     document.getElementById("Compra").style.display = 'none';
+                    document.getElementById("paypal-button-container").style.display = 'none';
                     document.getElementById("listaNiveles").style.display = 'inline';
                     document.getElementById("abrir").style.display = 'none';
                     document.getElementById("btn").disabled=false;
@@ -365,6 +367,32 @@ function ocultarVerCursos(){
         })
         
     }
+
+    // Render the PayPal button into #paypal-button-container
+     paypal.Buttons({
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: costo
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                comprarCurso();
+            });
+        }
+
+
+    }).render('#paypal-button-container');
    
     
 });
