@@ -21,6 +21,10 @@ select comentario.idComent,comentario.idCurso,usuarios.idUsuario,
 	from usuarios join comentario on usuarios.idUsuario=comentario.idEstado
     order by comentario.fechaPub;
 
+create view traerLosNiveles as
+select nivel.idNivel, nivel.idCurso, nivel.nomNivel as "nombreDelNivel",nivel.video, 
+nivel.contenido,nivel.numNivel as "numeroDeNivel", nivel.estado from nivel;
+
 
 create view cursosCompletosVentas as
 select CursoCompleto.idCurso, CursoCompleto.Clave_Profesor, CursoCompleto.nomCurso, 

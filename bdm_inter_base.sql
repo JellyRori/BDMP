@@ -41,6 +41,7 @@ create Table IF NOT  EXISTS curso(
     CONSTRAINT `FK_Us_Curso` FOREIGN KEY (idUsEsc) REFERENCES Usuarios(idUsuario)
 );
 
+
 #Creando tabla de niveles------------------------------------------------------------------------------------------------------------------------------
 create Table IF NOT  EXISTS nivel(
 	idNivel BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,

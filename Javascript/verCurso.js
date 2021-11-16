@@ -57,6 +57,7 @@ function ocultarVerCursos(){
                 document.getElementById("imgAvatar").style.display = 'inline';
                 document.getElementById("logOut").style.display = 'inline';
                 document.getElementById("imgAvatar").src = "php/laFotoDePerfil.php";
+                document.getElementById("paypal-button-container").style.display = 'none';
                 //document.getElementById("iniciaSes").style.display = 'none';  
                 document.getElementById("histUser").style.display = 'none';
                // document.getElementById("datosForAlumno").style.display = 'none';
