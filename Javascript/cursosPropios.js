@@ -4,6 +4,9 @@ $(document).ready(function () {
     $("#cursosCreados").on("click", ".titCursos", function () {
         cursoEsp(this.id);
     });
+    $("#btnEditPerfil").on("click", ".contact-btn", function () {
+        cursoEdit(this.id);
+    });
 
     function ocultarMisCursos() {
         var opc = 3;
@@ -64,7 +67,7 @@ $(document).ready(function () {
                                                 +Jason[i]['idCurso']+"' alt='fotoCurso' height='165' width='240'><br><p id="
                                                 +Jason[i]['idCurso']+" class='titCursos' >"+Jason[i]['nomCurso']
                                                 +"</p><br><p class='niveles'>Lvls:"+Jason[i]['cantNivel']+" </p><br><p>"
-                                                +Jason[i]['costo'] +"</p></div>");
+                                                +Jason[i]['costo'] +"</p><a href='editarCurso.html' class='contact-btn' id='btnEditPerfil'>Editar Curso</a></div><br><br><br>");
                 }
             }
         })
@@ -73,6 +76,9 @@ $(document).ready(function () {
 
     function cursoEsp(_postID) {
         window.location.href = "Curso.html?id="+_postID;
+    }
+    function cursoEdit(_postID) {
+        window.location.href = "editarCurso.html?id="+_postID;
     }
 
 

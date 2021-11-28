@@ -29,7 +29,7 @@ create Table IF NOT  EXISTS cate_Curso(
 
 #Creando tabla de cursos------------------------------------------------------------------------------------------------------------------------------
 create Table IF NOT  EXISTS curso(
-	idCurso BIGINT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+	idCurso BIGINT UNSIGNED NOT NULL unique AUTO_INCREMENT PRIMARY KEY,
     nomCurso varchar(70) NOT NULL UNIQUE,
     descCurso varchar(200) NOT NULL,
     imagCurso mediumblob NOT NULL,
@@ -37,7 +37,7 @@ create Table IF NOT  EXISTS curso(
     costo FLOAT NOT NULL,
     cantNivel INT NOT NULL,
     idUsEsc BIGINT UNSIGNED,
-    activo BOOL DEFAULT NULL,
+    activo  bool DEFAULT NULL,
     CONSTRAINT `FK_Us_Curso` FOREIGN KEY (idUsEsc) REFERENCES Usuarios(idUsuario)
 );
 
@@ -104,6 +104,8 @@ create table IF NOT  EXISTS pagoCurso(
     CONSTRAINT `FK_pago_User` FOREIGN KEY(idUsuario) REFERENCES Usuarios(idUsuario),
 	CONSTRAINT `FK_pago_Curso` FOREIGN KEY (idCurso) REFERENCES Curso(idCurso)
 );
+alter table pagoCurso add column metodoPago int;
+alter table pagoCurso add column fechaInsc TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
 #Creando una tabla asociativa entre el curso y la categoría-------------------------------------------------------------------------------------------------
 create table IF NOT  EXISTS tablaAsociativaCursoCategoria(
@@ -122,9 +124,19 @@ select*from nivel;
 select*from comentario;
 select*from historial;
 select*from mensajes;
-select * from pagoCurso;
+select * from pagoCurso where idCurso = 27;
 select * from cursoCalificacion;
 select * from tablaAsociativaCursoCategoria;
 select * from pagoCurso;
-truncate table curso;
+truncate table historial;
 
+select idUsuario from pagoCurso  join usuarios u on u.idUsuario = pagoCurso.idUsuario and idCurso=19;
+select u.idUsuario, u.nombre, u.apellidos,n.fechaInsc,n.idCurso, n.metodoPago, historial.progreso
+from usuarios u INNER join  historial on historial.idEstado = u.idUsuario
+INNER JOIN pagoCurso n on n.idUsuario = u.idUsuario where n.idCurso= 27
+group by u.idUsuario;
+
+select idUsuario from pagoCurso where idCurso = 19;
+
+select SUM(TotalVentas) as "sumaTotal" from cursosCompletosVentas join pagoCurso
+    where Clave_Profesor=2 AND sumayPal(pagoCurso.metodoPago);

@@ -118,7 +118,8 @@ public function pagarCurso($json){
     //son los datos del json
     $idUserAlumno = $_SESSION["idUser"];
     $idCurso = $datos["idCurso"];
-    $query = "Call sp_compraCurso($idUserAlumno,$idCurso);";
+    $idMetodo= $datos["metodo"];
+    $query = "Call sp_compraCurso($idUserAlumno,$idCurso,$idMetodo);";
 
     $verificacion = parent::rowsAfectados($query);
     if($verificacion == 1){
@@ -268,5 +269,37 @@ public function Vendidos(){
 
 }
 
+/*public function editarCurso($json,$json2,$foto){
+    $datos = json_decode($json,true);
+    //$id=$datos["_postID"];
+    //tomando los datos del Json--------------------------------------------------------------------------------------------
+    $idCurso = $datos["idCurso"];
+    $nombreCurso = $datos["nombreCurso"];
+    $descripcion= $datos["descripcionCurso"];
+    $videoPromo= $datos["videoPromo"];
+    $costoCurso= $datos["costoCurso"];
+    $idMaestro=  $_SESSION["idUser"];
+    //mandando a llamar el stored procedure-------------------------------------------------------------------------------
+    $query = "Call sp_EditCurso($idCurso ,'$nombreCurso','$descripcion',
+    '$videoPromo',$costoCurso,$idMaestro);";
+
+    $verificacion = parent::rowsAfectados($query);
+    $verificacion2 = false;
+
+    $contador=0;
+    $contador2=1;
+
+
+    
+    if($verificacion == 1){
+        $success="success";
+        return $success;
+    }else{
+        $success="fail";
+        return parent::Error();
+    }
+   //;
+}
+*/
 
 ?>

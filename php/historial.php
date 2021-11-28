@@ -34,5 +34,19 @@ $_Historial = new Historial;
         echo $jala;
         json_encode($jala); 
     }
+    if($datos["opc"]==5){
+        header('Content-Type: application/json');
+        $jala = $_Historial->verTotalUsuario($postbody);
+        header('Content-Type: application/json');//le dices que devuelve un json
+        echo $jala;
+        json_encode($jala); 
+    }
+    if($datos["opc"]==6){
+        header('Content-Type: application/json');
+        $jala = $_Historial->verDetallesAlumno($postbody);
+        header('Content-Type: application/json');//le dices que devuelve un json
+        echo $jala;
+        json_encode($jala); 
+    }
 
 ?>

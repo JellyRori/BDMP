@@ -68,6 +68,40 @@ class Historial extends conexion{
         }
     }
 
+    public function verTotalUsuario(){
+        header('Content-Type: application/json');
+        $ventaTotal=$_SESSION["idUser"];
+        //son los datos del json
+        $query = "Call sp_elIngresoTotalDeTodo('$ventaTotal');";
+        
+        $cursos = parent::obtenerDatos($query);
+        if(isset($cursos[0]["sumaTotal"])){           
+            return json_encode($cursos);
+        }
+        else{
+            $success="NoHayCursos";
+            return $success;
+        }
+    }
+
+    public function verDetallesAlumno($json){
+        $datos = json_decode($json,true);
+        header('Content-Type: application/json');
+        $verTotal=$_SESSION["idUser"];
+        $idCurso = $datos["idCurso"];
+        //son los datos del json
+        $query = "Call sp_LosAlumnosInscritos('$idCurso');";
+        
+        $cursos = parent::obtenerDatos($query);
+        if(isset($cursos[0]["idCurso"])){           
+            return json_encode($cursos);
+        }
+        else{
+            $success="NoHayCursos";
+            return $success;
+        }
+    }
+
 }
 
 ?>

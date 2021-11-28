@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="AgregarCursoC.css">
+  <script src="Javascript/jquery-2.1.4.min.js"></script>
+  <script src="Javascript/crearCurso.js"></script>
+    <link rel="text/javascript" type="js" href="validaciones.js">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+	<title>Editar Curso</title>
+</head>
+<body>
+
+<header> 
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="indexLoged.html">Art & Learn</a>
+      </div>
+      <ul class="nav navbar-nav">
+       <!-- <li class="active"><a href="#">Home</a></li>-->
+  
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><img id="imgAvatar" src="Imagenes/Erencio.jpg" alt="avatarUs" width="25"
+      height="25"><span class="caret"></span></a>
+      
+          <ul class="dropdown-menu">
+            <li><a href="Historial.html"     id="histUser">Historial</a></li>
+            <li><a href="Ventas.html"        id="ventUser">Ventas</a></li>
+            <li><a href="Chat.html"          id="chatUser">Chat</a></li>
+            <li><a href="Perfil.html"        id="perfilUser">Perfil</a></li>
+        <li><a href="CrearCate.html"      id="categUser">Agregar Categoria</a></li>
+            <li><a href="AgregarCurso.html"  id="cursoUser">Agregar-Curso</a></li>
+          </ul>
+        </li>
+  
+  
+  
+
+      </ul> 
+   
+      <ul class="nav navbar-nav navbar-right">
+       <!-- <li><a href="Registro.html"><span class="glyphicon glyphicon-user" id="signIn"></span> Sign Up</a></li>
+        <li><a href="Login.html"><span class="glyphicon glyphicon-log-in" id="logIn"></span> Login</a></li>-->
+      <li><a href="Login.php"><span class="glyphicon glyphicon-log-in" id="logOut"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav> 
+
+  </header>
+
+<div class="login-block">
+    <h1>Agregar Curso</h1>
+<!--<form action=""  class="forma" name="forma" id="forma" enctype="multipart/form-data">-->
+  <div class="contCurso">
+           <div class="contenedor-inputs">
+                        
+                       <input type="text" value="" placeholder="Nombre Del Curso" id="CursoN" required/>
+
+                       <textarea id="Dec" placeholder="Descripcion" required></textarea>
+
+                          <br>
+                           <label for="avatar">Costo Del Curso:</label>
+                           <input type="text" value="" id="CostoN" required/>
+                        
+                        <br>
+
+                        <div class="promoCurso">
+                          <h1>Vista Promocional</h1>
+                          <label for="avatar">Imagen Del Curso:</label>
+                          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" required>
+                          <label for="avatar">Video Promo para el curso:</label>
+                          <input type="file" id="videoPromo" accept="video/mp4" required>
+                        </div>
+                      <br>
+                    
+                        <br><br>
+                      
+               </div>
+             
+               
+       
+           <input type="submit" value="ACEPTAR" onclick="crearCurso();" class="btn"  id="Ing" />
+          </div>
+
+   <!--</form>--> 
+  
+
+
+</div>
+
+
+
+</div>
+
+
+</body>
+</html>

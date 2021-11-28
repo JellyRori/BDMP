@@ -14,8 +14,6 @@
     $fechaprofesor = getdate();
     $laFecha = $fechaprofesor;
     $fechaObtenida=$laFecha;
-    //Cambia el nombre por el png de tu firma, no metas la firma
-    //en ninguna carpeta
      $firmaDeInstructor = '5.png';
     $firmaDeCoInstructor = 'FirmaFS.png';
     //Cargando template

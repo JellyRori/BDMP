@@ -128,3 +128,23 @@ header{
 .cursos{
       display: inline;
 }
+
+#tablaCursos{
+      color: #f1f1f1; 
+}
+#tablaCursos2{
+      color: #f1f1f1;
+      margin-left: 490px;
+      width: 80px; 
+}
+
+#tablaCursos3{
+      color: #f1f1f1;
+      margin-left: 390px;
+      width: 80px; 
+}
+#explainPago{
+      color: #f1f1f1;
+      margin-left: 430px;
+      font-size: 20px;
+}

@@ -11,11 +11,12 @@ $(document).ready(function () {
         }
         return false;
     }
+
     $("#nivelesDeCurso").on("click", ".btnVerClase", function () {
         nivelEsp(this.id);
     });
     $("#opciones").on("click", "#btnTarjeta", function () {
-        comprarCurso();
+        comprarCurso(1);
     });
     $("#btnDiploma").on("click", "#btnDip", function () {
         var idCurso = getQueryVariable("id");
@@ -144,10 +145,11 @@ function ocultarVerCursos(){
             })
     }
 
-    function comprarCurso(){
+    function comprarCurso(metodo){
         var idCurso = getQueryVariable("id")
+
         var opc=6;
-        let Body = { idCurso,opc }
+        let Body = { idCurso,opc,metodo}
         let jsonBody = JSON.stringify(Body);
     
         fetch('php/cursos.php',{method:"POST",header:{'Content-Type':'application/json'},body:jsonBody})
@@ -187,6 +189,7 @@ function ocultarVerCursos(){
             if(Jason=="CursoNoReg"){
                 document.getElementById("Compra").style.display = 'inline';
                 document.getElementById("paypal-button-container").style.display = 'inline';
+                document.getElementById("nivelesDeCurso").style.display = 'none';
                 document.getElementById("listaNiveles").style.display = 'none';
                /* document.getElementById("califCurso").style.display = 'none';*/
                 //document.getElementById("progresoCur").style.display = 'none';
@@ -194,6 +197,7 @@ function ocultarVerCursos(){
                 document.getElementById("dip").style.display = 'none';
                 document.getElementById("califCurso").disabled=true;
                 document.getElementById("califCurso").style.display = 'none';
+                
                 
             }else{
                 if(Jason['terminado']!=""){
@@ -369,10 +373,9 @@ function ocultarVerCursos(){
         
     }
 
-    // Render the PayPal button into #paypal-button-container
+    // Muestra/Dibuja el botón de paypal
      paypal.Buttons({
-
-        // Set up the transaction
+        // Empieza la transaccipon
         createOrder: function(data, actions) {
             return actions.order.create({
                 purchase_units: [{
@@ -382,16 +385,14 @@ function ocultarVerCursos(){
                 }]
             });
         },
-
-        // Finalize the transaction
+        // Esto finaliza la transacción
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                // Show a success message to the buyer
+                // Le muestra al usuario el mensaje de que terminó la compra
                 alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                comprarCurso();
+                comprarCurso(2);
             });
         }
-
 
     }).render('#paypal-button-container');
    

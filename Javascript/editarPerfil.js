@@ -206,7 +206,8 @@
                                 window.location.href="Login.php"
                             }
                             else
-                                alert(Jason.result);
+                                //alert(Jason.result);
+                                alert("Cambios hechos, se cerrará su sesión para volver a entrar");
                                 window.location.href="Login.php";
                             //"status" => "ok",
                             //"result" => array()

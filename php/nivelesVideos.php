@@ -14,7 +14,7 @@ $_nivel = new Nivel;
         $idCreador=$_SESSION["idUser"];
         $nuevoNombreTrailer="../videos/".$nombre.$idCreador.".mp4";
         move_uploaded_file($videoTrailer,$nuevoNombreTrailer);
-
+        
         $json = [
              "nombre" => $nombre,
              "descripcionCurso"=> $descripcion,
